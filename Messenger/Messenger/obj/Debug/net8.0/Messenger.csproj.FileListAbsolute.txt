@@ -26,3 +26,4 @@ C:\Users\aleks\Saved Games\C++C#Projects\MessengerDevelopment\Messenger\Messenge
 C:\Users\aleks\Saved Games\C++C#Projects\MessengerDevelopment\Messenger\Messenger\obj\Debug\net8.0\Messenger.pdb
 C:\Users\aleks\Saved Games\C++C#Projects\MessengerDevelopment\Messenger\Messenger\obj\Debug\net8.0\Messenger.genruntimeconfig.cache
 C:\Users\aleks\Saved Games\C++C#Projects\MessengerDevelopment\Messenger\Messenger\obj\Debug\net8.0\ref\Messenger.dll
+C:\Users\aleks\Saved Games\C++C#Projects\MessengerDevelopment\Messenger\Messenger\obj\Debug\net8.0\Messenger.sourcelink.json

@@ -23,7 +23,7 @@ namespace Messenger
         {
             int br = 0;
             byte[] buffer = new byte[1024];
-            byte[] answer;
+            bool answer;
             string message;
             while (true)
             {
@@ -32,13 +32,15 @@ namespace Messenger
 
                 answer = ExecuteCommand(message);
 
-                _mainSocket.Send(answer);
+                if (answer)
+                    _mainSocket.Send(Encoding.ASCII.GetBytes("Complite"));
             }
         }
 
-        private byte[] ExecuteCommand(string command)
+        private bool ExecuteCommand(string command)
         {
-            return Encoding.ASCII.GetBytes(command);
+            Console.WriteLine(command);
+            return true;
         }
 
         public void Close()

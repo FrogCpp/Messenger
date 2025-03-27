@@ -3,19 +3,22 @@
   "WorkspaceRootPath": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\class2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\class2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\codefile1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\codefile1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\class2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\class2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\Saved Games\\BotNet\\Assets\\Scenes\\Scripts\\ClientSocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\Saved Games\\BotNet\\Assets\\Scenes\\Scripts\\MainOnlineLANScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,7 +32,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -39,7 +42,7 @@
               "RelativeDocumentMoniker": "..\\..\\..\\BotNet\\Assets\\Scenes\\Scripts\\MainOnlineLANScript.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\BotNet\\Assets\\Scenes\\Scripts\\MainOnlineLANScript.cs",
               "RelativeToolTip": "..\\..\\..\\BotNet\\Assets\\Scenes\\Scripts\\MainOnlineLANScript.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAAACAAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAMwBkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T15:06:06.785Z",
               "IsPinned": true,
@@ -48,19 +51,33 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ClientSocket.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\BotNet\\Assets\\Scenes\\Scripts\\ClientSocket.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\BotNet\\Assets\\Scenes\\Scripts\\ClientSocket.cs",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\BotNet\\Assets\\Scenes\\Scripts\\ClientSocket.cs",
+              "RelativeToolTip": "..\\..\\..\\BotNet\\Assets\\Scenes\\Scripts\\ClientSocket.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T15:02:40.382Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Class2.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Class2.cs",
               "RelativeDocumentMoniker": "Messenger\\Class2.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Class2.cs",
               "RelativeToolTip": "Messenger\\Class2.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwC0AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwB0AAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T15:09:12.357Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Class1.cs",
               "RelativeDocumentMoniker": "Messenger\\Class1.cs",
@@ -78,23 +95,22 @@
               "RelativeDocumentMoniker": "Messenger\\CodeFile1.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\CodeFile1.cs",
               "RelativeToolTip": "Messenger\\CodeFile1.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAADwvyIAAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAADwvyIAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T15:03:15.546Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Test.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs",
               "RelativeDocumentMoniker": "Messenger\\Test.cs",
-              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs*",
-              "RelativeToolTip": "Messenger\\Test.cs*",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs",
+              "RelativeToolTip": "Messenger\\Test.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T11:33:20.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T11:33:20.799Z"
             }
           ]
         }
