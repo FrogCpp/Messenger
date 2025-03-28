@@ -39,6 +39,10 @@ namespace Messenger
 
         private bool ExecuteCommand(string command)
         {
+            if (command == "Get")
+            {
+
+            }
             Console.WriteLine(command);
             return true;
         }
