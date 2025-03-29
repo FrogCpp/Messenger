@@ -15,7 +15,6 @@ namespace Messenger
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                //command.CommandText = "CREATE TABLE IF NOT EXISTS Users (Id INTEGER PRIMARY KEY, Name TEXT)";
                 command.CommandText = "CREATE TABLE IF NOT EXISTS Users (UserName STRING, UserLogin STRING, UserPasword STRING, MemberChats STRING)";
                 command.ExecuteNonQuery();
             }
