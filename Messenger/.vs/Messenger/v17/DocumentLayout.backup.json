@@ -49,8 +49,7 @@
               "ViewState": "AgIAAA0AAAAAAAAAAAAMwBkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T15:06:06.785Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "ViewState": "AgIAAAYAAAAAAAAAAIBJwBIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-27T15:02:40.382Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -72,9 +70,9 @@
               "Title": "SQLiteUser.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\MySql\\SQLiteUser.cs",
               "RelativeDocumentMoniker": "Messenger\\MySql\\SQLiteUser.cs",
-              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\MySql\\SQLiteUser.cs",
-              "RelativeToolTip": "Messenger\\MySql\\SQLiteUser.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAABYAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\MySql\\SQLiteUser.cs*",
+              "RelativeToolTip": "Messenger\\MySql\\SQLiteUser.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAACiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-28T17:42:15.408Z",
               "EditorCaption": ""
@@ -89,8 +87,7 @@
               "RelativeToolTip": "Messenger\\UserSocket.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:09:12.357Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T15:09:12.357Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "Messenger\\UserIdentity.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:07:44.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T15:07:44.063Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "Messenger\\Server.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T15:03:15.546Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T15:03:15.546Z"
             },
             {
               "$type": "Document",
@@ -128,8 +123,7 @@
               "RelativeToolTip": "Messenger\\Test.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-26T11:33:20.799Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-26T11:33:20.799Z"
             }
           ]
         }
