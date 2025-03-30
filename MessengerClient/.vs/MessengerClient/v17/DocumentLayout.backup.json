@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\",
+  "WorkspaceRootPath": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\egorg\\documents\\github\\messenger\\messengerclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messengerclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -28,9 +28,9 @@
               "DocumentIndex": 1,
               "Title": "Client.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\win-data-backup\\Client.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\aleks\\Saved Games\\win-data-backup\\Client.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\win-data-backup\\Client.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\win-data-backup\\Client.cs",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\aleks\\Saved Games\\win-data-backup\\Client.cs",
+              "RelativeToolTip": "..\\..\\..\\win-data-backup\\Client.cs",
               "ViewState": "AgIAAEgAAAAAAAAAAAAAAFcAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T21:15:53.247Z"
@@ -39,11 +39,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\Program.cs",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAUwDIAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAUwCAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T21:10:29.051Z",
               "EditorCaption": ""

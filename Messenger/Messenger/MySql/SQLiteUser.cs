@@ -52,7 +52,7 @@ namespace Messenger
             }
         }
 
-        public bool ChangeUser(string newName="*", string newLogin="*", string newPassword="*")
+        public bool ChangeUserSettings(string newName="*", string newLogin="*", string newPassword="*")
         {
             newName = (newName == "*" ? _userName : newName);
             newLogin = (newLogin == "*" ? _userLogin : newLogin);

@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\mysql\\sqliteuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\mysql\\sqliteuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -40,7 +40,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
@@ -83,12 +83,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SQLiteUser.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\MySql\\SQLiteUser.cs",
               "RelativeDocumentMoniker": "Messenger\\MySql\\SQLiteUser.cs",
-              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\MySql\\SQLiteUser.cs*",
-              "RelativeToolTip": "Messenger\\MySql\\SQLiteUser.cs*",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\MySql\\SQLiteUser.cs",
+              "RelativeToolTip": "Messenger\\MySql\\SQLiteUser.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAcwEIAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-28T17:42:15.408Z",
@@ -122,12 +122,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Test.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs",
               "RelativeDocumentMoniker": "Messenger\\Test.cs",
-              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs*",
-              "RelativeToolTip": "Messenger\\Test.cs*",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs",
+              "RelativeToolTip": "Messenger\\Test.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T11:33:20.799Z",
