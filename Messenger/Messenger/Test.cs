@@ -15,8 +15,10 @@ namespace CharTest_csharp
             //aboba.Start();
             //Console.ReadLine();
             //aboba.End();
-            var a = new SQLiteUser();
-            a.Start();
+            var a = new SQLiteUser("a", "a", "a");
+            a.AddUser();
+            a.ChangeUserSettings("Cab");
+            a.DrawDataBase();
         }
     }
 }
