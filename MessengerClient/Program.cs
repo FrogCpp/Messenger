@@ -5,31 +5,29 @@
 //using System.Linq;                      //
 //using System.Security.Cryptography;     //
 //using System.Threading.Tasks;           //
-//
+                                          //
 //using System.Net;                       //
 //using System.Net.Sockets;               //
 //using System.Text;                      //
 
 
-
-
-//using System.IO;                        //  In the future for the settings storing
-using System.Security.Cryptography;            //  For authentication purposes
-using System.Numerics;                         //
 using static System.Console;              //  Для удобства, чтобы не писать Console. каждый раз
 
 using static JabNetClient.DrawInterface;
 using static JabNetClient.CustomProcedures;
 using static JabNetClient.CustomFunctions;
 using static JabNetClient.GlobalSettings;
-using static JabNetClient.GlobalClasses;
+using static JabNetClient.GlobalVariables;
 using static JabNetClient.Authorisation;
-using static JabNetClient.REcipherSource;
+using static JabNetClient.CipherSource;
+using static JabNetClient.DataManipulation;
 
 
 
 
 /*
+ * И так, сейчас полностью напишу что требуется от тебя:
+ *
  * важно уточнить, перед работой клиента каждый раз надо прокидывать базовую конфигуряцию клиента
  * комманды для конфигурации:
  * setName(
@@ -64,136 +62,31 @@ namespace JabNetClient
 {
     internal class Program
     {
-
-        //  This function helps generating random 1024 usID
-        public static BigInteger GenerateRandom1024BitInteger()
+        static void Main()
         {
-            using (RandomNumberGenerator rng = new RNGCryptoServiceProvider())
-            {
-                byte[] bytes = new byte[128];
-                rng.GetBytes(bytes);
-                return new BigInteger(bytes);
-            }
-        }
-
-
-
-        //  User task, so the client program understands what the user wants
-        //  Also will be used for communication between the client and the server
-
-        //  Действие пользователя, нужно для того чтобы прога клиента понимала какое окно показывать
-        //  Также будет использоваться для упрощения комуникации между клиентом и серваком
-        enum ProgramTask
-        {
-            //  Window task for the program to show the settings menu
-            //  Оконная задача для программы для показа окна с изменением настроек
-            BrowseSettings,
-
-            //  Window task for the program to show the user profile menu
-            //  Оконная задача для программы для показа окна профиля пользователя
-            ShowProfile,
-
-            //  Window and communication task for the client
-            //  to change the users login and send it to the server
-            //
-            //  Оконная и коммуникативная задача для программы клиента,
-            //  которая вызывает окно изменения логина,
-            //  и отправляет соответствующую комманду серверу
-            ChangeLogin,
-
-            //  Window and communication task for the client
-            //  to change the users password and send it to the server
-            //
-            //  Оконная и коммуникативная задача для программы клиента,
-            //  которая вызывает окно изменения пароля,
-            //  и отправляет соответствующую комманду серверу
-            ChangePassword,
-
-            //  Communication task for the client
-            //  to request the server the contacts for this user
-            //
-            //  Задача для программы клиента,
-            //  которая заставляет клиент просить у сервера контакты пользователя
-            GetContacts,
-
-            //  Communication task for the client
-            //  to request the server the groups that the user is in
-            //
-            //  Задача для программы клиента,
-            //  которая заставляет клиент просить у сервера группы в которых пользователь состоит
-            GetGroups,
-
-            //  Communication task for the client
-            //  to request the server the history of a chosen chat
-            //
-            //  Задача для программы клиента,
-            //  которая заставляет клиент просить у сервера историю конкретного выбранного чата
-            GetHistory,
-
-            //  Communication task for the client
-            //  to send the server a message from the user, and update the chat
-            //
-            //  Задача для программы клиента,
-            //  которая заставляет клиент отправить серверу сообщение пользователя в конкретный чат
-            //  и затем чтобы сервер обновил историю
-            SendMessage,
-
-            //  Communication task for the client
-            //  to send the server a picture from the user, and update the chat
-            //
-            //  Задача для программы клиента,
-            //  которая заставляет клиент отправить серверу картинку пользователя в конкретный чат
-            //  и затем чтобы сервер обновил историю
-            //  
-            //  The reason I separated this task from the "SendFile" is:
-            //  because most of the time pictures a relatively small 
-            //  or even if they are "big" we can compress them
-            //  and use the same secure RE protocol to quickly encrypt them
-            //
-            //  Причина почему я разделил эту команду от "отправить файл":
-            //  картинки в большинстве случаев довольно маленькие,
-            //  а даже если нет мы их можем сжать
-            //  и использовать тот же надёжный метод шифровки РЕ для их шифрования
-            SendPicture,
-
-            //  Communication task for the client
-            //  to send the server a file from the user, and update the chat
-            //
-            //  Задача для программы клиента,
-            //  которая заставляет клиент отправить серверу файл пользователя в конкретный чат
-            //  и затем чтобы сервер обновил историю
-            SendFile,
-        }
-
-
-        /*static void Main()
-        {
-            /
             //  Small flag for exiting the program
             //  Упрощённая логика для закрытия программы
             bool exit = false;
+
+
+            //  Reset the settings to default parameters
+            //  Сбросить настройки до начальных / системных
+            ResetSettings();
+
+
+            //  Update all the settings for the user chosen options
+            //
+            //  Обновляем все настройки на пользовательские
+            //
+            //  Алексей, я сам допишу эту функцию, она будет в файле GlobalSettings.cs
+            ApplySettings();
+
 
             while (!exit)
             {
                 //  Set encoding type to unicode (Needed for the correct encryption by the RE system)
                 //  Переключить кодировку программы на юникод (нужно для корректной шифровки с помощью РЕ)
                 OutputEncoding = System.Text.Encoding.Unicode;
-
-
-                //  Update all the global settings variables according to the chosen settings
-                //
-                //  for example gAutoAuthorise for auto authorisation
-                //  and some gParameters for the RE keys
-                //
-                //
-                //
-                //  Обновляем все глобальные переменные настроек в соответствии с выбранными настройками
-                //
-                //  например gAutoAuthorise для автоматической авторизации
-                //  и некоторые gParameters для ключей РЕ
-                //
-                //  Алексей, я сам напишу эту функцию, она будет в файле GlobalSettings.cs
-                ApplySettings(path_for_stored_settings);
 
 
 
@@ -211,18 +104,20 @@ namespace JabNetClient
 
 
                 //   Settings for the RE key generation function
+                //   Temporary placeholder,
+                //   it will definetely change when I will finish the GenerateRandomSecureREkey function
+                //
                 //   Настройки для выбора случайного ключа шифрования
+                //   Временно выглядит непонятно я их точно переделаю
+                //   когда доделаю функцию GenerateRandomSecureREkey 
                 bool parameters1 = true, parameters2 = true, parameters3 = true, parameters4 = gGenerateExtraUnicode;
 
 
-                //   cipher version for the RE key
-                //   версия шифра для ключа РЕ
-                const byte cipherVersion = 4;
-
-
-                //  Generate a random secure RE key  (Лёш эту функцию сделаю я)
+                //  Generate a random secure RE key
+                //
                 //  Генерируем случайный надёжный ключ РЕ
-                uekRE = GenerateRandomSecureREkey(cipherVersion, parameters1, parameters2, parameters3, parameters4);
+                //  (Лёш эту функцию сделаю я)
+                uekRE = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
 
                 //  Connect to server and exchange RE encryption key with the server
                 //  Подключаемся к серверу и обмениваемся ключом шифрования РЕ с сервером
@@ -239,14 +134,21 @@ namespace JabNetClient
                 //  Пробуем автоматическую авторизацию
                 if (gAutoAuthorise)
                 {
-                    usID = TryAutoAuthorisation(path_to_stored_encrypted_account_details);
+                    //  Trying to automaticaly authorise the user (without any user input)
+                    //  Saving the unique session ID,
+                    //  if the authorisation fails, the function will return 0 to the static user ID
+                    //
+                    //  Пытаемся автоматически авторизовать пользователя (без какого-либо ввода с его стороны)
+                    //  В результате получим уникальный ключ сессии,
+                    //  если авторизация не удастся, функция вернёт 0 в статический ID пользователя
+                    usID = TryAutoAuthorisation(gPathForStoredAuthKey, ref staticUID);
 
-                    //  If the auto auth fails, try the manual authorisation
-                    //  Если авто авторизация не удастся, пробуем авторизоваться вручную
-                    if(usID == null) usID = TryAuthorise(uekRE, ref staticUID);
+                    //  If the auto auth fails, try to manually authorise the user
+                    //  Если авто авторизация не удастся, пробуем авторизовать пользователя вручную
+                    if (staticUID == 0) usID = TryAuthorise(uekRE, ref staticUID);
                 }
 
-                //  try to authorise manualy
+                //  Try to authorise manually
                 //  Пробуем авторизироваться вручную
                 else usID = TryAuthorise(uekRE, ref staticUID);
 
@@ -255,9 +157,15 @@ namespace JabNetClient
                 //  Если мы успешно вошли, программа начинает выполнять запросы пользователя
                 while (staticUID != 0 && !exit)
                 {
+                    //  This function will help the client program
+                    //  To understand what the user currently wants
+                    //
+                    //  Эта фунция поможет программе клиента
+                    //  Понять что хочет сделать пользователь в данный момент
+                    //  (Её напишу я)
                     ProgramTask userTask = GetUserTask();
 
-                    switch(userTask)
+                    switch (userTask)
                     {
                         //doWork();
                     }
@@ -266,7 +174,7 @@ namespace JabNetClient
                 }
             }
 
-        */
+
 
 
 
@@ -311,5 +219,6 @@ namespace JabNetClient
                 *    }     
                 *}
             */
+        }
     }
 }
