@@ -13,9 +13,16 @@ namespace Messenger
         {
             using (var connection = new SqliteConnection("Data Source=testDatabase.db"))
             {
-                execute("CREATE TABLE IF NOT EXISTS Users (UserName STRING, UserLogin STRING, UserPasword STRING, MemberChats STRING)");
+                executeNonQuery("CREATE TABLE IF NOT EXISTS Users (UserName STRING, UserLogin STRING, UserPasword STRING, MemberChats STRING)");
             }
         }
+
+
+        /*
+         * Нужно изменить данные (добавить, удалить, обновить)? → ExecuteNonQuery.
+         * Нужно получить набор данных (много строк/колонок)? → ExecuteReader.
+         * Нужно одно значение (количество, сумма и т.д.)? → ExecuteScalar.
+         */
 
         private string executeScalar(string commandS, string param="nonQuery")
         {
