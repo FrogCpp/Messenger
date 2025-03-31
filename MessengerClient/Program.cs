@@ -1,19 +1,19 @@
 ﻿using System;
 
 
-
-
-
 using static System.Console;              //  Для удобства, чтобы не писать Console. каждый раз
 
-//using static JabNetClient.DrawInterface;
+
+
 //using static JabNetClient.CustomProcedures;
+//using static JabNetClient.ServerCommunication;
+//using static JabNetClient.DataManipulation;
+using static JabNetClient.DrawInterface;
 using static JabNetClient.CustomFunctions;
 using static JabNetClient.GlobalSettings;
 using static JabNetClient.GlobalVariables;
 using static JabNetClient.Authorisation;
 using static JabNetClient.CipherSource;
-//using static JabNetClient.DataManipulation;
 
 
 
@@ -21,34 +21,38 @@ using static JabNetClient.CipherSource;
 /*
  * И так, сейчас полностью напишу что требуется от тебя:
  *
- * важно уточнить, перед работой клиента каждый раз надо прокидывать базовую конфигуряцию клиента
- * комманды для конфигурации:
- * setName(
- * задает имя пользователя на стороне сервера
- * )
- * 
- * setLogin(
- * задает логин на стороне сервера
- * )
- * 
- * setPasword(
- * задает пароль на стороне сервера
- * )
- * 
- * если на стороне сервера имеется аккаунт удовлетворяющий всем трем параметрам выше, то дальше работа идет с ним
- * 
- * getHistory: ***(
- *  *** - аргумент названия чата историю которого полуаешь
- * после определения клиента клиенту копируется история чатов. Подробнее о синтасисе передачи в функция этому посвещенных
- * )
- * комманды для работы:
- * sendMessage: ***(
- * *** - это аргумент (сама мессага) с фотками будет прикол а с видео и подавно,  ууу, готовлюсь :/
- * )
- * 
- * updateChat(
- * обновление чата, выщитывается чуть ли не постоянно, но работает только если чат на стороне сервера изменен
- * )
+ *
+ *      static public void SendMessageToServer(string _uscMessage)
+ *      {
+ *          //  Function logic
+ *          //  Логика функции
+ *      }
+ *      
+ *      Для этой функции:
+ *      - Точно будет входить один аргумент
+ *      - Передаваемое сообщение полностью готово (зашифровано, и содержит USC)
+ *      - Скорее всего функция не будет ничего возвращать (void)
+ *      - Можно добавить ещё аргументы если необходимо
+ *      
+ *      
+ *      
+ *      
+ *      static public string ReceiveMessageFromServer()
+ *      {
+ *          string _receivedMessage;
+ *          
+ *          //  Function logic
+ *          //  Логика функции
+ *      
+ *          return _receivedMessage;
+ *      }
+ *      
+ *      Для этой функции:
+ *      - Точно будет выплёвывать один аргумент (string)
+ *      - Манипуляции с полученным сообщением делать не надо будет
+ *      - Скорее всего функция не будет ничего принимать
+ *      - Можно добавить ещё аргументы если необходимо
+ *
  */
 
 namespace JabNetClient
@@ -160,7 +164,17 @@ namespace JabNetClient
 
                     switch (userTask)
                     {
-                        //doWork();
+                        case ProgramTask.None:
+                            userTask = GetUserTask();
+                            break;
+
+                        case ProgramTask.ShowMenu:
+                            if (receivedContacts && receivedGroups && receivedProfile)
+                            {
+                                string[] sortedChats = SortChats(receivedContacts, receivedGroups, gChatTypePriority);
+                                ShowUI(sortedChats, receivedProfile);
+                            }
+                            break;
                     }
 
                     //ShowUI();
