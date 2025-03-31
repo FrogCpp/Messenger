@@ -8,6 +8,7 @@ using static System.Console;              //  Для удобства, чтоб�
 //using static JabNetClient.CustomProcedures;
 //using static JabNetClient.ServerCommunication;
 //using static JabNetClient.DataManipulation;
+using static JabNetClient.InterfaceClasses;
 using static JabNetClient.DrawInterface;
 using static JabNetClient.CustomFunctions;
 using static JabNetClient.GlobalSettings;
@@ -169,10 +170,52 @@ namespace JabNetClient
                             break;
 
                         case ProgramTask.ShowMenu:
+
+                            //  Shows if a chat menu is active or hidden
+                            //  Probably change the type to a custom class later
+                            //
+                            //  Показывает активно ли хоть одно окно с чатом
+                            //  В будущем скорее всего переделаю в отдельный класс
+                            bool activeChat = false;
+
+
+
+                            //  Change boolean type to a custom class
+                            //
+                            //  Also the custom class for the groups and contacts
+                            //  Will be the same (because it is almost the same things)
+                            //
+                            //
+                            //  Изменить boolean переменные на собственные классы
+                            //  
+                            //  А также свой класс для контактов и групп
+                            //  Будет общий (поскольку это почти одно и то же)
+                            bool receivedContacts = true;
+                            bool receivedGroups = true;
+                            bool receivedProfile = true;
+                            
+
+
                             if (receivedContacts && receivedGroups && receivedProfile)
                             {
-                                string[] sortedChats = SortChats(receivedContacts, receivedGroups, gChatTypePriority);
-                                ShowUI(sortedChats, receivedProfile);
+                                string[] sortedChats = { "" };
+
+
+                                //  Sort the chats by last history update
+                                //  (last send message, or last active chat)
+                                //
+                                //  Для сортировки чатов по уведомлениям
+                                //  (по самым активным, или по последним отправленным сообщения)
+                                    //sortedChats = SortChats(receivedContacts, receivedGroups, gChatTypePriority);
+
+
+                                //  Show UI
+                                //  This function will probably split into multiple ones for different ui elements
+                                //
+                                //  Показывает весь пользовательский интерфейс
+                                //  Скорее всего разобью на много маленьких функций
+                                //  Где каждая для отдельной части интерфейса
+                                ShowUI(sortedChats, activeChat, receivedProfile);
                             }
                             break;
                     }

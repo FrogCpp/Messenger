@@ -1,6 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using static System.Console;
+
+
+
+using static JabNetClient.InterfaceClasses;
 
 
 namespace JabNetClient
@@ -8,31 +13,18 @@ namespace JabNetClient
     internal class DrawInterface
     {
 
-        static public class JabNetMessage
-        {
-            static string AuthorName;
-            static ushort SendTime;
-            static byte   Date;
-            static string Message;
 
-        }
-
-        static public class JabNetProfile
-        {
-            static byte[] Avatar;
-            static string Pseudoname;
-            static ulong  StaticUID;
-            static string Message;
-
-        }
-
-        static public void ShowUI(string _sortedChats[], )
+        static public void ShowUI(string[] _sortedChats, bool _isChatActive, bool _ourProfile)
         {
 
             Write("Insert console UI output");
 
 
+            List<JabNetMessage> _lastMessages = new List<JabNetMessage>();
+
+
             //  Placeholder for the UI
+            //  Временный код
         }
     }
 }
