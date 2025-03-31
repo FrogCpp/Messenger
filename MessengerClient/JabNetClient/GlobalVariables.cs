@@ -9,8 +9,19 @@
         //  Всевозможные действия пользователя,
         //  нужны для того чтобы программа клиента понимала какое окно показывать
         //  Также будет использоваться для упрощения комуникации между клиентом и сервером
-        enum ProgramTask
+        public enum ProgramTask
         {
+            //  No task is currently in need to be executed,
+            //  Used in the GetUserTask() function as a null value for the loop
+            //
+            //  Никаких действий на данный момент выполнять ненадо
+            //  Используется в функции GetUserTask() как значения null для цикла
+            None,
+
+            //  Window task for the program to show the main menu
+            //  Оконная задача для программы для показа главного окна
+            ShowMenu,
+
             //  Window task for the program to show the settings menu
             //  Оконная задача для программы для показа окна с изменением настроек
             BrowseSettings,

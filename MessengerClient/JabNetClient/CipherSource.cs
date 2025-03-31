@@ -252,5 +252,15 @@ namespace JabNetClient
             }
             Write("(mod " + Alphabet.Length + ")");
         }
+
+
+
+        static public string GenerateRandomSecureREkey(byte _cipherVersion, bool _setting1, bool _setting2, bool _setting3, bool _setting4)
+        {
+            //  Temporary placeholder for the random secure RE key generation
+            //  Временный код который держит место для генерации ключа шифрования РЕ
+            //
+            return "nothing";
+        }
     }
 }

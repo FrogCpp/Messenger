@@ -1,26 +1,19 @@
 ﻿using System;
 
 
-//using System.Collections.Generic;       //  Пока не надо
-//using System.Linq;                      //
-//using System.Security.Cryptography;     //
-//using System.Threading.Tasks;           //
-                                          //
-//using System.Net;                       //
-//using System.Net.Sockets;               //
-//using System.Text;                      //
+
 
 
 using static System.Console;              //  Для удобства, чтобы не писать Console. каждый раз
 
-using static JabNetClient.DrawInterface;
-using static JabNetClient.CustomProcedures;
+//using static JabNetClient.DrawInterface;
+//using static JabNetClient.CustomProcedures;
 using static JabNetClient.CustomFunctions;
 using static JabNetClient.GlobalSettings;
 using static JabNetClient.GlobalVariables;
 using static JabNetClient.Authorisation;
 using static JabNetClient.CipherSource;
-using static JabNetClient.DataManipulation;
+//using static JabNetClient.DataManipulation;
 
 
 
@@ -124,7 +117,7 @@ namespace JabNetClient
                 //
                 //  Эта функция для тебя,
                 //  в отдельном файле будет механизм работы который нужно реализовать
-                SecureConnectionToServer(uekRE);
+                SecureConnectionWithServer(uekRE);
 
 
                 //  gAutoAuthorise = global setting for auto authorisation
@@ -141,7 +134,7 @@ namespace JabNetClient
                     //  Пытаемся автоматически авторизовать пользователя (без какого-либо ввода с его стороны)
                     //  В результате получим уникальный ключ сессии,
                     //  если авторизация не удастся, функция вернёт 0 в статический ID пользователя
-                    usID = TryAutoAuthorisation(gPathForStoredAuthKey, ref staticUID);
+                    usID = TryAutoAuthorise(gPathForStoredAuthKey, ref staticUID);
 
                     //  If the auto auth fails, try to manually authorise the user
                     //  Если авто авторизация не удастся, пробуем авторизовать пользователя вручную
