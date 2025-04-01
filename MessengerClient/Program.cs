@@ -218,8 +218,92 @@ namespace JabNetClient
                                 ShowUI(sortedChats, activeChat, receivedProfile);
                             }
                             break;
-                    }
 
+                        case ProgramTask.BrowseSettings:
+
+                            //  Temporary code for settings browser 
+                            ChangeSettings();
+                            break;
+
+                        case ProgramTask.ShowProfile:
+
+                            //  Temporary logic
+                            receivedProfile = true;
+                            if (receivedProfile)
+                            {
+                                //ShowProfile(receivedProfile);
+                            }
+                            break;
+
+                        case ProgramTask.ChangeLogin:
+                            //TryChangeLogin(uekRE, usID, staticUID);
+                            break;
+
+                        case ProgramTask.ChangePassword:
+                            //TryChangePassword(uekRE, usID, staticUID);
+                            break;
+
+                        case ProgramTask.GetContacts:
+
+                            //  Request the (contact chats) the user is in (from the server)
+                            //
+                            //  We transmit the encryption details
+                            //  to later send an encrypted request to the server
+                            //
+                            //
+                            //  Запрос на получение личных чатов (с контактами) в которых пользователь состоит
+                            //  
+                            //  Мы также передаём в функцию детали шифрования
+                            //  Потому что чуть позже планируем отправлять зашифрованный запрос серверу
+
+                            //  Also the void type is temporary
+                            //  И ещё когда я закончу функция точно будет НЕ void
+                            RequestContacts(uekRE, usID, staticUID);
+                            break;
+
+                        case ProgramTask.GetGroups:
+
+                            //  Request the groups that the user is in (from the server)
+                            //
+                            //  We transmit the encryption details
+                            //  to later send an encrypted request to the server
+                            //
+                            //
+                            //  Запрос на получение чатов в которых пользователь состоит
+                            //  
+                            //  Мы также передаём в функцию детали шифрования
+                            //  Потому что чуть позже планируем отправлять зашифрованный запрос серверу
+
+                            //  Also the void type is temporary
+                            //  И ещё когда я закончу функция точно будет НЕ void
+                            RequestGroups(uekRE, usID, staticUID);
+                            break;
+
+                        case ProgramTask.GetHistory:
+
+                            //  Placeholder for the selected chat logic
+                            //  Probably will still be a string tho
+                            //
+                            //  Временное сырое обьявление выбранного чата
+                            //  Но при этом тип string скорее всего останется
+                            string selectedChat = "temp";
+
+
+                            //  Request the history from the selected chat (from the server)
+                            //
+                            //  We transmit the encryption details
+                            //  to later send an encrypted request to the server
+                            //
+                            //
+                            //  Запрос на получение истории выбранного чата (у сервера)
+                            //  
+                            //  Мы также передаём в функцию детали шифрования
+                            //  Потому что чуть позже планируем отправлять зашифрованный запрос серверу
+                            RequestHistory(uekRE, usID, staticUID, selectedChat);
+                            break;
+
+                    }
+                    Write("Iteration complete\n\n");
                     //ShowUI();
                 }
             }
