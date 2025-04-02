@@ -1,11 +1,12 @@
-﻿using System.Dynamic;
-using System.Numerics;
+﻿using System.Numerics;
 using System.Security.Cryptography;
 
 
+using static JabNetClient.USC;
 using static JabNetClient.CipherSource;
 using static JabNetClient.GlobalSettings;
 using static JabNetClient.ServerCommunication;
+
 
 namespace JabNetClient
 {
@@ -32,6 +33,14 @@ namespace JabNetClient
             //  Он не будет влиять на процесс шифрования сообщений
 
 
+            //  Get the inputed login for the future auth request
+            //  Получаем логин (его вводит пользователь) для будующего запроса на авторизацию
+            string _login = GetLoginFromInput();
+
+
+            //  Get the inputed password for the future auth request
+            //  Получаем пароль (его вводит пользователь) для будующего запроса на авторизацию
+            string _password = GetPasswordFromInput();
 
 
             //  Encrypt the user login
@@ -47,7 +56,7 @@ namespace JabNetClient
             //  Создаём специальный запрос на авторизацию для отправки серверу
             //
             //  Лёш эту функцию я создам сам
-            string _uscMessage = CreateAuthRequest(_uekRE, _cipherProperties, _login, _password);
+            string _uscMessage = CreateAuthRequest(_encryptedLogin, _encryptedPassword, _cipherProperties);
 
             //  Send an auth request message to the server
             //
