@@ -48,5 +48,24 @@ namespace JabNetClient
         }
              //  Receive 1 message from the server
              //  Получаем 1 сообщение от сервера
+
+        static public string ExecuteCommand(string _uscMessage, string _ipAddress, int _port)
+        {
+            //  This is the main function to execute a command
+            //  It will send a message to the server and receive a response
+            //
+            //  Это главная функция для выполнения команды
+            //  Она отправляет сообщение серверу и получает ответ
+            SendMessageToServer(_uscMessage);
+
+            //  Add magic here
+            //  This is just a placeholder
+            //
+            //  Добавь сюда магию
+            //  Это временный кусок кода
+
+            string response = ReceiveMessageFromServer();
+            return response;
+        }
     }
 }

@@ -3,24 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\egorg\\documents\\github\\messenger\\messengerclient\\jabnetclient\\authorisation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\authorisation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\authorisation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\egorg\\documents\\github\\messenger\\messengerclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\interfaceclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\interfaceclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\egorg\\documents\\github\\messenger\\messengerclient\\jabnetclient\\customfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\customfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\servercommunication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\servercommunication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\globalvariables.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,6 +17,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\drawinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\drawinterface.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\customfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\customfunctions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\jabnetclient\\usc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\usc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +34,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "USC.cs",
+              "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\USC.cs",
+              "RelativeDocumentMoniker": "JabNetClient\\USC.cs",
+              "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\USC.cs",
+              "RelativeToolTip": "JabNetClient\\USC.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwCAAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-02T21:46:45.685Z"
             },
             {
               "$type": "Document",
@@ -52,40 +60,26 @@
               "RelativeDocumentMoniker": "JabNetClient\\Authorisation.cs",
               "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\Authorisation.cs",
               "RelativeToolTip": "JabNetClient\\Authorisation.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAAwKgAAABSAAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAAYwJoAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-01T17:59:30.753Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "CustomFunctions.cs",
               "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\CustomFunctions.cs",
               "RelativeDocumentMoniker": "JabNetClient\\CustomFunctions.cs",
               "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\CustomFunctions.cs",
               "RelativeToolTip": "JabNetClient\\CustomFunctions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-01T17:17:31.66Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-01T17:17:31.66Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InterfaceClasses.cs",
-              "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\InterfaceClasses.cs",
-              "RelativeDocumentMoniker": "JabNetClient\\InterfaceClasses.cs",
-              "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\InterfaceClasses.cs",
-              "RelativeToolTip": "JabNetClient\\InterfaceClasses.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T21:48:41.487Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "DrawInterface.cs",
               "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\DrawInterface.cs",
               "RelativeDocumentMoniker": "JabNetClient\\DrawInterface.cs",
@@ -93,25 +87,11 @@
               "RelativeToolTip": "JabNetClient\\DrawInterface.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T21:24:44.195Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-31T21:24:44.195Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ServerCommunication.cs",
-              "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\ServerCommunication.cs",
-              "RelativeDocumentMoniker": "JabNetClient\\ServerCommunication.cs",
-              "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\ServerCommunication.cs",
-              "RelativeToolTip": "JabNetClient\\ServerCommunication.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T01:41:32.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "GlobalVariables.cs",
               "DocumentMoniker": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\JabNetClient\\GlobalVariables.cs",
               "RelativeDocumentMoniker": "JabNetClient\\GlobalVariables.cs",
@@ -119,8 +99,7 @@
               "RelativeToolTip": "JabNetClient\\GlobalVariables.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAQwAsAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-30T23:02:38.829Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-30T23:02:38.829Z"
             },
             {
               "$type": "Document",
@@ -130,7 +109,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\MessengerClient\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAADgBAAAAAAAAAAAYwPIAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T21:10:29.051Z",
               "EditorCaption": ""

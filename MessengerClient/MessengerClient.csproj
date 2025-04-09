@@ -54,6 +54,7 @@
     <Compile Include="JabNetClient\CipherSource.cs" />
     <Compile Include="JabNetClient\InterfaceClasses.cs" />
     <Compile Include="JabNetClient\ServerCommunication.cs" />
+    <Compile Include="JabNetClient\USC.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
