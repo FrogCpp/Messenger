@@ -28,7 +28,7 @@ class Server(IPAddress StaticIpAdreesForHost, int Port)
 
     public void End()
     {
-        _myMainThreadController?.Cancel();
+        _myMainThreadController.Cancel();
     }
 
     private void ListenConnectons(CancellationToken threadToken)
@@ -65,11 +65,16 @@ class Server(IPAddress StaticIpAdreesForHost, int Port)
             // a и b использются как логическая последовательность создания клиента
             var b = new UserSocket(args.AcceptSocket);
 
-            var c = _myMainThreadController.Token;
-            Task.Run(() => b.Communication(c), c);
+            CancellationTokenSource clientThread = new CancellationTokenSource();
 
-            var a = new UserIdentity("", "", "", c);
+            var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(clientThread.Token, _myMainThreadController.Token);
+            CancellationToken linkedToken = linkedCts.Token;
+
+            Task.Run(() => b.Communication(linkedToken), linkedToken);
+
+            var a = new UserIdentity("", "", "", linkedToken, clientThread);
             _connectionArray.TryAdd(a, b);
+            Console.WriteLine("new client!");
         }
         args.AcceptSocket = null;
     }

@@ -23,7 +23,7 @@ namespace Messenger
         {
             int br = 0;
             byte[] buffer = new byte[1024];
-            string answer;
+            byte[] answer;
             string message;
             try
             {
@@ -32,26 +32,10 @@ namespace Messenger
                     mainThreadToken.ThrowIfCancellationRequested();
                     br = _mainSocket.Receive(buffer);
                     message = Encoding.ASCII.GetString(buffer, 0, br);
-                    if (message == "Start")
-                    {
-                        _mainSocket.Send(Encoding.ASCII.GetBytes("Ready"));
 
-                        byte[] ans = new byte[0];
-                        int Br = 1024;
-                        while (Br == 1024)
-                        {
-                            byte[] reader = new byte[1024];
-                            Br = _mainSocket.Receive(reader);
-                            byte[] bts = new byte[ans.Length + reader.Length];
-                            Buffer.BlockCopy(ans, 0, bts, 0, ans.Length);
-                            Buffer.BlockCopy(reader, 0, bts, ans.Length, reader.Length);
-                            ans = bts;
-                        }
+                    answer = Encoding.ASCII.GetBytes(ExecuteCommand(message));
 
-                        answer = ExecuteCommand(Encoding.ASCII.GetString(ans));
-
-                        _mainSocket.Send(Encoding.ASCII.GetBytes(answer));
-                    }
+                    _mainSocket.Send(answer);
                 }
             }
             catch (OperationCanceledException)
@@ -63,11 +47,6 @@ namespace Messenger
         private string ExecuteCommand(string command)
         {
             return command;
-        }
-
-        public void Close()
-        {
-            _mainSocket.Close();
         }
     }
 }

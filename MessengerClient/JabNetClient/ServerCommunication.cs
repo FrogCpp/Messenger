@@ -65,20 +65,10 @@ namespace JabNetClient
 
         public string ExecuteCommand(string _uscMessage)
         {
+            SendMessageToServer(_uscMessage);
 
-            SendMessageToServer("Start");
-            if (ReceiveMessageFromServer() == Encoding.ASCII.GetBytes("Ready"))
-            {
-
-                SendMessageToServer(_uscMessage);
-
-                string response = Encoding.ASCII.GetString(ReceiveMessageFromServer());
-                return response;
-            }
-            else
-            {
-                return "Error";
-            }
+            string response = Encoding.ASCII.GetString(ReceiveMessageFromServer());
+            return response;
         }
 
         public void Start() // необходимо вызвать при создании

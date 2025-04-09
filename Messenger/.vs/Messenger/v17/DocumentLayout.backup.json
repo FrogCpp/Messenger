@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\server.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\useridentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\useridentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\usersocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\usersocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\useridentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\useridentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messenger\\messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2A7942FC-B323-4D02-9D12-B2ADD3F0320C}|Messenger\\Messenger.csproj|solutionrelative:messenger\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\Saved Games\\BotNet\\Assets\\Scenes\\Scripts\\ClientSocket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -63,6 +63,10 @@
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "UserSocket.cs",
@@ -70,27 +74,23 @@
               "RelativeDocumentMoniker": "Messenger\\UserSocket.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\UserSocket.cs",
               "RelativeToolTip": "Messenger\\UserSocket.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAwDoAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwC8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T20:15:26.915Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "UserIdentity.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\UserIdentity.cs",
               "RelativeDocumentMoniker": "Messenger\\UserIdentity.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\UserIdentity.cs",
               "RelativeToolTip": "Messenger\\UserIdentity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T20:13:07.111Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
@@ -100,14 +100,14 @@
               "RelativeDocumentMoniker": "Messenger\\Server.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Server.cs",
               "RelativeToolTip": "Messenger\\Server.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwB4AAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T15:03:15.546Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Test.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\Messenger\\Messenger\\Test.cs",
               "RelativeDocumentMoniker": "Messenger\\Test.cs",
