@@ -19,32 +19,50 @@ namespace Messenger
     {
         private Socket _mainSocket = mainSocket;
 
-        public void Communication()
+        public void Communication(CancellationToken mainThreadToken)
         {
             int br = 0;
             byte[] buffer = new byte[1024];
-            bool answer;
+            string answer;
             string message;
-            while (true)
+            try
             {
-                br = _mainSocket.Receive(buffer);
-                message = Encoding.ASCII.GetString(buffer, 0, br);
+                while (true)
+                {
+                    mainThreadToken.ThrowIfCancellationRequested();
+                    br = _mainSocket.Receive(buffer);
+                    message = Encoding.ASCII.GetString(buffer, 0, br);
+                    if (message == "Start")
+                    {
+                        _mainSocket.Send(Encoding.ASCII.GetBytes("Ready"));
 
-                answer = ExecuteCommand(message);
+                        byte[] ans = new byte[0];
+                        int Br = 1024;
+                        while (Br == 1024)
+                        {
+                            byte[] reader = new byte[1024];
+                            Br = _mainSocket.Receive(reader);
+                            byte[] bts = new byte[ans.Length + reader.Length];
+                            Buffer.BlockCopy(ans, 0, bts, 0, ans.Length);
+                            Buffer.BlockCopy(reader, 0, bts, ans.Length, reader.Length);
+                            ans = bts;
+                        }
 
-                if (answer)
-                    _mainSocket.Send(Encoding.ASCII.GetBytes("Complite"));
+                        answer = ExecuteCommand(Encoding.ASCII.GetString(ans));
+
+                        _mainSocket.Send(Encoding.ASCII.GetBytes(answer));
+                    }
+                }
+            }
+            catch (OperationCanceledException)
+            {
+                _mainSocket.Close();
             }
         }
 
-        private bool ExecuteCommand(string command)
+        private string ExecuteCommand(string command)
         {
-            if (command == "Get")
-            {
-
-            }
-            Console.WriteLine(command);
-            return true;
+            return command;
         }
 
         public void Close()

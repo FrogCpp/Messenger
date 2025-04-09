@@ -11,14 +11,10 @@ namespace CharTest_csharp
     {
         static void Main(string[] args)
         {
-            //Server aboba = new Server(IPAddress.Parse("127.0.0.1"), 8000);
-            //aboba.Start();
-            //Console.ReadLine();
-            //aboba.End();
-            var a = new SQLiteUser("a", "a", "a");
-            a.AddUser();
-            a.ChangeUserSettings("Cab");
-            a.DrawDataBase();
+            Server aboba = new Server(IPAddress.Parse("127.0.0.1"), 8000);
+            aboba.Start();
+            Console.ReadLine();
+            aboba.End();
         }
     }
 }

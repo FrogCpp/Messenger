@@ -16,6 +16,7 @@ using static JabNetClient.GlobalSettings;
 using static JabNetClient.GlobalVariables;
 using static JabNetClient.Authorisation;
 using static JabNetClient.CipherSource;
+using System.Net;
 
 
 
@@ -117,6 +118,17 @@ namespace JabNetClient
                 //  Генерируем случайный надёжный ключ РЕ
                 //  (Лёш эту функцию сделаю я)
                 uekRE = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
+
+
+                // это тестовая часть, ее потом снеси, ок?
+                var a = new ServerCommunication(IPAddress.Parse("127.0.0.1"), 8000);
+                a.Start();
+                string msg;
+                while (true)
+                {
+                    msg = Console.ReadLine();
+                    Console.WriteLine(a.ExecuteCommand(msg));
+                }
 
                 //  Connect to server and exchange RE encryption key with the server
                 //  Подключаемся к серверу и обмениваемся ключом шифрования РЕ с сервером

@@ -15,40 +15,45 @@ using System.Text;
 class Server(IPAddress StaticIpAdreesForHost, int Port)
 {
     private IPAddress _address = StaticIpAdreesForHost;
-    private Thread _mainListnerThread = null;
     private int _port = Port;
+    private CancellationTokenSource _myMainThreadController = new CancellationTokenSource();
+    private CancellationToken _mainListnerThreadToken;
     private ConcurrentDictionary<UserIdentity, UserSocket> _connectionArray = new ConcurrentDictionary<UserIdentity, UserSocket>();
 
     public void Start()
     {
-        Thread _mainListnerThread = new Thread(() => ListenConnectons());
-        _mainListnerThread.Start();
+        _mainListnerThreadToken = _myMainThreadController.Token;
+        Task.Run(() => ListenConnectons(_mainListnerThreadToken), _mainListnerThreadToken);
     }
 
     public void End()
     {
-        foreach (var i in _connectionArray.Keys)
-        {
-            i.MyThread.Abort();
-            _connectionArray[i].Close();
-        }
-        _mainListnerThread.Abort();
+        _myMainThreadController?.Cancel();
     }
 
-    private void ListenConnectons()
+    private void ListenConnectons(CancellationToken threadToken)
     {
         using (Socket mainListenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp))
         {
             mainListenSocket.Bind(new IPEndPoint(IPAddress.Any, _port));
             mainListenSocket.Listen();
-            while (true)
+            try
             {
-                SocketAsyncEventArgs args = new SocketAsyncEventArgs(); // не забудь переиминовать
-                args.Completed += AcceptClients;
-                if (!mainListenSocket.AcceptAsync(args))
+                while (true)
                 {
-                    AcceptClients(mainListenSocket, args);
+                    threadToken.ThrowIfCancellationRequested();
+
+                    SocketAsyncEventArgs args = new SocketAsyncEventArgs(); // не забудь переиминовать
+                    args.Completed += AcceptClients;
+                    if (!mainListenSocket.AcceptAsync(args))
+                    {
+                        AcceptClients(mainListenSocket, args);
+                    }
                 }
+            }
+            catch (OperationCanceledException)
+            {
+                mainListenSocket.Close();
             }
         }
     }
@@ -60,10 +65,10 @@ class Server(IPAddress StaticIpAdreesForHost, int Port)
             // a и b использются как логическая последовательность создания клиента
             var b = new UserSocket(args.AcceptSocket);
 
-            Thread clientThread = new Thread(() => b.Communication());
-            clientThread.Start();
+            var c = _myMainThreadController.Token;
+            Task.Run(() => b.Communication(c), c);
 
-            var a = new UserIdentity("", "", "", clientThread);
+            var a = new UserIdentity("", "", "", c);
             _connectionArray.TryAdd(a, b);
         }
         args.AcceptSocket = null;

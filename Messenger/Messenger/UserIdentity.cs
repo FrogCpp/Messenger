@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Messenger
 {
-    class UserIdentity(string name, string login, string password, Thread myMainThread)
+    class UserIdentity(string name, string login, string password, CancellationToken myMainThread)
     {
         public string Name = name;
-        public Thread MyThread = myMainThread;
+        public CancellationToken MyThread = myMainThread;
         private string _password = password;
         private string _login = login;
     }
