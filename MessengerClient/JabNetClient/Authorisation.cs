@@ -35,28 +35,28 @@ namespace JabNetClient
 
             //  Get the inputed login for the future auth request
             //  Получаем логин (его вводит пользователь) для будующего запроса на авторизацию
-            string _login = GetLoginFromInput();
+            string _login;// = GetLoginFromInput();
 
 
             //  Get the inputed password for the future auth request
             //  Получаем пароль (его вводит пользователь) для будующего запроса на авторизацию
-            string _password = GetPasswordFromInput();
+            string _password;// = GetPasswordFromInput();
 
 
             //  Encrypt the user login
             //  Зашифровываем полученный логин пользователя
-            string _encryptedLogin = Encrypt(gCipherVersion, _login, _uekRE);
+            string _encryptedLogin;// = Encrypt(gCipherVersion, _login, _uekRE);
 
             //  Encrypt the user password
             //  Зашифровываем полученный пароль пользователя
-            string _encryptedPassword = Encrypt(gCipherVersion, _password, _uekRE);
+            string _encryptedPassword;// = Encrypt(gCipherVersion, _password, _uekRE);
 
 
             //  Creating a special auth request message to send to the server
             //  Создаём специальный запрос на авторизацию для отправки серверу
             //
             //  Лёш эту функцию я создам сам
-            string _uscMessage = CreateAuthRequest(_encryptedLogin, _encryptedPassword, _cipherProperties);
+            string _uscMessage;// = CreateAuthRequest(_encryptedLogin, _encryptedPassword, _cipherProperties);
 
             //  Send an auth request message to the server
             //
@@ -74,7 +74,7 @@ namespace JabNetClient
             //            > Сгенерировать 1024 битное число - уникальный код сессии для авторизации пользователя
             //            > Зашифровать сообщение: "разрешено~статичныйUID~1024код"
             //            > Отправить зашифрованное сообщение пользователю
-            SendMessageToServer(_uscMessage);
+            //SendMessageToServer(_uscMessage);
 
             //  Receive server response to our auth request
             //  Получить ответ сервера на наш запрос на вход
@@ -82,14 +82,14 @@ namespace JabNetClient
             //  Лёш эта функция тоже для тебя
             //  С шифрованиием мудрить не надо
             //  Просто получить сообщение от сервера
-            string _encryptedResponse = ReceiveMessageFromServer();
+            string _encryptedResponse;// = ReceiveMessageFromServer();
 
             //  Split the server response into different parts
             //  For easier using of it
             //
             //  Разбиваем ответ сервера на куски в массив,
             //  для более удобной работы с ним
-            string[] _serverResponse = Decrypt(_encryptedResponse).Split("~");
+            string[] _serverResponse = { "" };// = Decrypt(_encryptedResponse).Split("~");
 
             //  If we don't receive "Denied"   <-- Whatever chosen "access denied" message from the server
             //  Если мы не получили "Denied"   <-- Смотря какую ключевую фразу мы придумаем для "вход запрещё"
@@ -121,8 +121,8 @@ namespace JabNetClient
                         byte[] _usID = new byte[128];
 
 
-                        if (TryParseUSID(_serverResponse[2], ref _usID))
-                        {
+                        //if (TryParseUSID(_serverResponse[2], ref _usID))
+                        //{
                             //  TryParseUSID is a custom function that I will make
                             //  It will try to parse a string number to an array of 128 bytes
                             //  (Or a 1024 bit binary integer)
@@ -146,8 +146,8 @@ namespace JabNetClient
                             //  Если авторизации окажется успешной
                             //  (и мы успешно получили _staticUID и _udID)
                             //  Мы возвращаем _usID через return, и _staticUID через 'ref'
-                            return _usID;
-                        }
+                            //return _usID;
+                        //}
                     }
                 }
 
@@ -196,15 +196,15 @@ namespace JabNetClient
             //  Он не будет влиять на процесс шифрования сообщений
 
 
-            string[] _storedAuthKeys = ExtractAuthKey(gPathForStoredAuthKey);
+            string[] _storedAuthKeys;// = ExtractAuthKey(gPathForStoredAuthKey);
 
 
             //  For encryption:
             //     _storedAuthKeys[0] = cipher version for encryption
             //     _storedAuthKeys[1] = actual authentication key
             //     _storedAuthKeys[2] = special encryption key for the auth request
-            string _encryptedAuthKey = Encrypt(_storedAuthKeys[0], _storedAuthKeys[1], _storedAuthKeys[2]);
-            
+            string _encryptedAuthKey;// = Encrypt(_storedAuthKeys[0], _storedAuthKeys[1], _storedAuthKeys[2]);
+
 
             //  For the usc message:
             //     _storedAuthKeys[4] = stores the staticUID for the server 
@@ -213,7 +213,7 @@ namespace JabNetClient
             //  Для usc сообщения:
             //     _storedAuthKeys[4] = хранит staticUID для того
             //          чтобы серверу ускорить процесс аутентификации
-            string _uscMessage = CreateAutoAuthRequest(_storedAuthKeys[4], _encryptedAuthKey, true);
+            string _uscMessage;//= CreateAutoAuthRequest(_storedAuthKeys[4], _encryptedAuthKey, true);
 
 
             //  Send an AUTO auth request message to the server
@@ -235,7 +235,7 @@ namespace JabNetClient
             //                   > Дополнительно добавить в сообщение серию для специального ключа
             //                       (и не забыть зашифровать)
             //            > Отправить зашифрованное сообщение пользователю
-            SendMessageToServer(_uscMessage);
+            //SendMessageToServer(_uscMessage);
 
 
             //  Receive server response to our auth request
@@ -244,7 +244,7 @@ namespace JabNetClient
             //  Лёш эта функция тоже для тебя
             //  С шифрованиием мудрить не надо
             //  Просто получить сообщение от сервера
-            string _encryptedResponse = ReceiveMessageFromServer();
+            string _encryptedResponse;// = ReceiveMessageFromServer();
 
 
             //  Split the server response into different parts
@@ -252,7 +252,7 @@ namespace JabNetClient
             //
             //  Разбиваем ответ сервера на куски в массив,
             //  для более удобной работы с ним
-            string[] _serverResponse = Decrypt(_encryptedResponse).Split("~");
+            string[] _serverResponse = { "" };// = Decrypt(_encryptedResponse).Split("~");
 
             //  If we don't receive "Denied"   <-- Whatever chosen "access denied" message from the server
             //  Если мы не получили "Denied"   <-- Смотря какую ключевую фразу мы придумаем для "вход запрещё"
@@ -284,10 +284,10 @@ namespace JabNetClient
                         byte[] _usID = new byte[128];
 
 
-                        if (TryParseUSID(_serverResponse[2], ref _usID))
-                        {
-                            if (CheckForNewAuthKey(_serverResponse[3]))
-                            {
+                        //if (TryParseUSID(_serverResponse[2], ref byte[] _usID))
+                        //{
+                            //if (CheckForNewAuthKey(_serverResponse[3]))
+                            //{
                                 //  TryParseUSID is a custom function that I will make
                                 //  It will try to parse a string number to an array of 128 bytes
                                 //  (Or a 1024 bit binary integer)
@@ -311,9 +311,9 @@ namespace JabNetClient
                                 //  Если авторизации окажется успешной
                                 //  (и мы успешно получили _staticUID и _udID)
                                 //  Мы возвращаем _usID через return, и _staticUID через 'ref'
-                                return _usID;
-                            }
-                        }
+                                //return _usID;
+                            //}
+                        //}
                     }
                 }
 
@@ -330,10 +330,6 @@ namespace JabNetClient
                 //  Возвращаем ошибку авторизации для  _usID
                 return null;
             }
-            else return null;
-
-
-
 
             /*  TryAutoAuthorisation(string path) Explained:
 
@@ -377,8 +373,8 @@ namespace JabNetClient
                 *}
             */
 
-            byte[] _usID = new byte[128];
-            _staticUID = 0;
+            //byte[] _usID = new byte[128];
+            //_staticUID = 0;
 
             // Do the logic here
 
@@ -406,12 +402,12 @@ namespace JabNetClient
             //
             //  Зашифровываем наш уникальный ключ шифрования (_uek)
             //  С помощью нового временного сгенерированного ключа шифрования
-            string _ourEcryptedMessage = Encrypt(gCipherVersion, _uekRE, _temporaryEncryptionKey);
+            string _ourEcryptedMessage;// = Encrypt(gCipherVersion, _uekRE, _temporaryEncryptionKey);
 
 
             //  Create a message for the connection request for the server
             //  Создаём сообщения для запроса на подключения
-            string _connectionRequestClientEncrypted = CreateConnectionRequestMessage(_ourEcryptedMessage);
+            string _connectionRequestClientEncrypted;// = CreateConnectionRequestMessage(_ourEcryptedMessage);
 
 
             //  Send an connection request message to the server
@@ -426,7 +422,7 @@ namespace JabNetClient
             //      > Сгенерировать случайный ключ шифрования
             //      > Зашифровать полученное сообщение
             //      > Отправить его обратно
-            SendMessageToServer(_connectionRequestClientEncrypted);
+            //SendMessageToServer(_connectionRequestClientEncrypted);
 
 
             //  Receive server response to our connection request
@@ -435,7 +431,7 @@ namespace JabNetClient
             //  Лёш эта функция тоже для тебя
             //  С шифрованиием мудрить не надо
             //  Просто получить сообщение от сервера
-            string _serverResponseEncryptedTwice = ReceiveMessageFromServer();
+            string _serverResponseEncryptedTwice;// = ReceiveMessageFromServer();
 
 
             //  Decrypting the twice encrypted server response
@@ -445,7 +441,7 @@ namespace JabNetClient
             //  Дешифруем полученный ответ, который уже дважды зашифрован
             //    Шифрование сервера мы не снимаем
             //    Потому что оно нам нужно, а также потому что мы не знаем как его снять
-            string _serverEncryptedConnection = Decrypt(gCipherVersion, _serverResponseEncryptedTwice, _temporaryEncryptionKey);
+            string _serverEncryptedConnection;// = Decrypt(gCipherVersion, _serverResponseEncryptedTwice, _temporaryEncryptionKey);
 
 
             //  Send an connection request message to the server (final stage)
@@ -461,7 +457,7 @@ namespace JabNetClient
             //      > Расшифровать полученное сообщение
             //      > Запомнить полученный в сообщении ключ шифрования
             //      (записав его в себе к таблицу - к соединениям - к этому устройству)
-            SendMessageToServer(_serverEncryptedConnection);
+            //SendMessageToServer(_serverEncryptedConnection);
         }
              //  Perform a cryptographycally safe key exchange with the server
              //  Криптографически надёжно обмениваемся ключом шифрования с сервером

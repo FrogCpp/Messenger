@@ -53,15 +53,15 @@ namespace JabNetClient
             //  Create a universal server command to send it to the server
             //_uscRequest = CreateContactsRequest(_uekRE, _usID, _staticUID);
 
-            SendMessageToServer(_uscRequest);
+            //SendMessageToServer(_uscRequest);
 
             List<string> _userContacts = new List<string>();
             
-            string _serverResponse = ReceiveMessageFromServer();
+            //string _serverResponse = ReceiveMessageFromServer();
 
 
-            for (int i = 0; i < _serverResponse.Length; i++)
-            {
+            //for (int i = 0; i < _serverResponse.Length; i++)
+            //{
                 //  Parse server response here
                 //  From a string to either a list of strings 
                 //  Or a custom class
@@ -69,7 +69,7 @@ namespace JabNetClient
                 //  Превращаем ответ сервера
                 //  Из string либо в динамический массив string
                 //  Либо в собственный класс
-            }
+            //}
 
             //return _userMessages;
             //}
@@ -86,15 +86,15 @@ namespace JabNetClient
             //  Create a universal server command to send it to the server
             //_uscRequest = CreateGroupsRequest(_uekRE, _usID, _staticUID);
 
-            SendMessageToServer(_uscRequest);
+            //SendMessageToServer(_uscRequest);
 
             List<string> _userGroups = new List<string>();
 
-            string _serverResponse = ReceiveMessageFromServer();
+            string _serverResponse;// = ReceiveMessageFromServer();
 
 
-            for (int i = 0; i < _serverResponse.Length; i++)
-            {
+            //for (int i = 0; i < _serverResponse.Length; i++)
+            //{
                 //  Parse server response here
                 //  From a string to either a list of strings 
                 //  Or a custom class
@@ -102,7 +102,7 @@ namespace JabNetClient
                 //  Превращаем ответ сервера
                 //  Из string либо в динамический массив string
                 //  Либо в собственный класс
-            }
+            //}
 
             //return _userGroups;
             //}
@@ -119,21 +119,21 @@ namespace JabNetClient
                 //  Create a universal server command to send it to the server
                 //_uscRequest = CreateHistoryRequest(_uekRE, _usID, _staticUID);
 
-                SendMessageToServer(_uscRequest);
+                //SendMessageToServer(_uscRequest);
 
                 List<JabNetMessage> _latestMessages = new List<JabNetMessage>();
 
-                string _serverResponse = ReceiveMessageFromServer();
+            string _serverResponse;// = ReceiveMessageFromServer();
 
 
-                for(int i = 0; i < _serverResponse.Length; i++)
-                {
-                //  Parse server response here
-                //  From a string to the custom class JabNetMessage
-                //
-                //  Превращаем ответ сервера
-                //  Из string либо в собственный класс
-            }
+            //for(int i = 0; i < _serverResponse.Length; i++)
+            //{
+            //  Parse server response here
+            //  From a string to the custom class JabNetMessage
+            //
+            //  Превращаем ответ сервера
+            //  Из string либо в собственный класс
+            //}
 
             //return _latestMessages;
             //}
