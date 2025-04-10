@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\jabnetclient\\servercommunication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:jabnetclient\\servercommunication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messengerclient\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|c:\\users\\aleks\\saved games\\c\u002B\u002Bc#projects\\messengerdevelopment\\messengerclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{183A0C06-4541-4F23-A0D8-FB3CE83B91C3}|MessengerClient.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,25 +31,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "App.config",
+              "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\App.config",
+              "RelativeDocumentMoniker": "App.config",
+              "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\App.config",
+              "RelativeToolTip": "App.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-04-10T17:25:02.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "ServerCommunication.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\JabNetClient\\ServerCommunication.cs",
               "RelativeDocumentMoniker": "JabNetClient\\ServerCommunication.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\JabNetClient\\ServerCommunication.cs",
               "RelativeToolTip": "JabNetClient\\ServerCommunication.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAwEIAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABYAAAAAAAAAAAAiwC4AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-31T01:41:32.266Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\aleks\\Saved Games\\C\u002B\u002BC#Projects\\MessengerDevelopment\\MessengerClient\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAGUAAAAAAAAAAAAuwHcAAAB2AAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAA3wFgAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-26T21:10:29.051Z",
               "EditorCaption": ""

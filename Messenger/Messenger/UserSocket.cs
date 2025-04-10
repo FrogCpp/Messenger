@@ -19,34 +19,33 @@ namespace Messenger
     {
         private Socket _mainSocket = mainSocket;
 
-        public void Communication(CancellationToken mainThreadToken)
+        public byte[] ReadMessage()
         {
-            int br = 0;
-            byte[] buffer = new byte[1024];
-            byte[] answer;
-            string message;
-            try
+            byte[] answer = new byte[0];
+            int Br = 1024;
+            while (Br == 1024)
             {
-                while (true)
-                {
-                    mainThreadToken.ThrowIfCancellationRequested();
-                    br = _mainSocket.Receive(buffer);
-                    message = Encoding.ASCII.GetString(buffer, 0, br);
-
-                    answer = Encoding.ASCII.GetBytes(ExecuteCommand(message));
-
-                    _mainSocket.Send(answer);
-                }
+                byte[] reader = new byte[1024];
+                Br = _mainSocket.Receive(reader);
+                byte[] bts = new byte[answer.Length + reader.Length];
+                Buffer.BlockCopy(answer, 0, bts, 0, answer.Length);
+                Buffer.BlockCopy(reader, 0, bts, answer.Length, reader.Length);
+                answer = bts;
             }
-            catch (OperationCanceledException)
-            {
-                _mainSocket.Close();
-            }
+
+            return answer;
         }
 
-        private string ExecuteCommand(string command)
+        public void Reply(string message)
         {
-            return command;
+
+
+            _mainSocket.Send(Encoding.UTF32.GetBytes(message));
+        }
+
+        public void Close()
+        {
+            _mainSocket.Close();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -29,37 +30,18 @@ namespace JabNetClient
           
         private void SendMessageToServer(string _uscMessage)
         {
-            //  We just need to send a message to the server
-            //  The message is fully ready, containing a usc - universal server comand
-            //  
-            //  Нам нужно просто отправить сообщение серверу
-            //  Мы точно знаем что сообщение уже полностью готово
-            //  (В сообщение уже включена usc - универсальная серверная команда)
-            _myPersonalSocket.Send(Encoding.ASCII.GetBytes(_uscMessage)); // магия -- вещь удивительно крохотная XD
+            byte[] message = Encoding.UTF32.GetBytes(_uscMessage);
+            int len = message.Length;
 
+            _myPersonalSocket.Send(Encoding.UTF32.GetBytes(len.ToString()));
+
+            _myPersonalSocket.Send(BitConverter.GetBytes(len));
         }
 
 
-        private byte[] ReceiveMessageFromServer()
+        public byte[] ReceiveMessageFromServer()
         {
-            //  We just need to receive the message from the server
-            //  No decrypting, parsing, or whatever, just receive
-            //
-            //  Нам нужно просто получить сообщение от сервера
-            //  Никаких дешифрований, парсингов соверщать не надо
-
-            byte[] answer = new byte[0]; // не спрашивай, просто так надо
-            int Br = 1024;
-            while (Br == 1024)
-            {
-                byte[] reader = new byte[1024];
-                Br = _myPersonalSocket.Receive(reader);
-                byte[] bts = new byte[answer.Length + reader.Length];
-                Buffer.BlockCopy(answer, 0, bts, 0, answer.Length);
-                Buffer.BlockCopy(reader, 0, bts, answer.Length, reader.Length);
-                answer = bts;
-            }
-
+            byte[] answer = new byte[_myPersonalSocket.ReceiveBufferSize];
             return answer;
         }
 
@@ -67,7 +49,10 @@ namespace JabNetClient
         {
             SendMessageToServer(_uscMessage);
 
-            string response = Encoding.ASCII.GetString(ReceiveMessageFromServer());
+
+            string response = Encoding.UTF32.GetString(ReceiveMessageFromServer());
+
+
             return response;
         }
 

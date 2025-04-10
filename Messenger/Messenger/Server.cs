@@ -70,10 +70,13 @@ class Server(IPAddress StaticIpAdreesForHost, int Port)
             var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(clientThread.Token, _myMainThreadController.Token);
             CancellationToken linkedToken = linkedCts.Token;
 
-            Task.Run(() => b.Communication(linkedToken), linkedToken);
+            //Task.Run(() => b.Communication(linkedToken), linkedToken);
 
-            var a = new UserIdentity("", "", "", linkedToken, clientThread);
+            var a = new UserIdentity("", "", "", b, linkedToken, clientThread);
             _connectionArray.TryAdd(a, b);
+
+            Task.Run(() => a.mainAction(), linkedToken);
+
             Console.WriteLine("new client!");
         }
         args.AcceptSocket = null;
