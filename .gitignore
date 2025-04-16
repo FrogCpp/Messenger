@@ -18,13 +18,13 @@ CHECKLIST.md
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
+#[Rr]elease/
+#[Rr]eleases/
 x64/
 x86/
 bld/
-[Bb]in/
-[Oo]bj/
+#[Bb]in/
+#[Oo]bj/
 [Ll]og/
 
 # Visual Studio 2015 cache/options directory
@@ -56,7 +56,7 @@ artifacts/
 *_i.h
 *.ilk
 *.meta
-*.obj
+#*.obj
 *.pch
 *.pdb
 *.pgc
@@ -291,9 +291,13 @@ __pycache__/
 *.xsd.cs
 
 # Our messenger clients cashes
-MessengerClient\.vs
-MessengerClient\obj
-
+*/Debug/
 *.suo
 *.cache
 *.json
+/MessengerClient/Properties
+*.csproj
+MessengerClient/obj/Release/MessengerClient.csproj.FileListAbsolute.txt
+MessengerClient/obj/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
+*.targets
+*.props
