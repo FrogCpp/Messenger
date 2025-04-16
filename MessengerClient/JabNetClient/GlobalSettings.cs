@@ -55,7 +55,7 @@ namespace JabNetClient
             //
             //  Прочесть сохранённые настройки из указанного файла
             //  False = сделать это тихо (без какого либо вывода информации))
-            List<string> _data = ReadSavedData(gPathForCustomSettings, "Settings.txt", false);
+            List<string> _data = ReadData(gPathForCustomSettings, "Settings.txt", false);
 
             if (_data != null)
             {
@@ -67,7 +67,8 @@ namespace JabNetClient
                 //  в настройки, и изменить их соответствующе
                 //
                 //  Лёш, я сам это сделаю
-                //ParseSettingsFromData(_data);
+                //
+                //ParseData(_data, true, true, "*", "", "*", true);
             }
         }
              //  Apply user settings
