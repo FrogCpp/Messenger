@@ -64,6 +64,10 @@ namespace JabNetClient
     {
         static void Main()
         {
+            //  Set the title of the console window
+            //  Устанавливаем заголовок консольного окна
+            Title = "JabNet Client"; 
+
             //  Small flag for exiting the program
             //  Упрощённая логика для закрытия программы
             bool exit = false;
