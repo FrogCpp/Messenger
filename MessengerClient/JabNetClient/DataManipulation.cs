@@ -3,18 +3,18 @@ using System.IO;
 using System.Collections.Generic;
 
 using static System.Console;
-//using System.Diagnostics.Eventing.Reader;
 
 
 namespace JabNetClient
 {
     internal class DataManipulation
     {
-
         //-----------------------------  Path related functions  ------------------------------------------//
 
 
-        static public string GetPath(bool _custom = false, string _subFolder = "\\Gyroscopic\\Unnamed", bool _showInfo = false)
+        static public string GetPath(bool _custom = false, string _subFolder = "\\Gyroscopic\\Unnamed",
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
             //  Storing the final path here
             string _path;
@@ -34,18 +34,44 @@ namespace JabNetClient
                         //  Try to create the directory
                         Directory.CreateDirectory(_path);
 
-                        //  Show success message if needed
-                        if (_showInfo) Write("\n\tCreated the folder: " + _path);
+                        //  Show success message (optional)
+                        if (_showInfo)
+                        {
+                            //  Write the newline and margin (optional)
+                            Write(_startLine + _margin);
+
+                            //  Write the success message
+                            if (_engLang) Write("Successfully created the folder: " + _path);
+                            else Write("Успешно создана папка: " + _path);
+
+                            //  Write endline (optional)
+                            Write(_endLine);
+                        }
                     }
                     catch (Exception e)
                     {
                         //  If an unexpected error happens
 
+                        //  Show error message (optional)
                         if (_showInfo)
                         {
-                            //  Ouput error message
-                            Write("\n\tError while creating the folder: " + _path);
-                            Write("\n\tOutput error: " + e);
+                            //  Write the newline and margin (optional)
+                            Write(_startLine + _margin);
+
+                            //  Write the error message
+                            if (_engLang)
+                            {
+                                Write("Error while creating the folder: " + _path + "\n");
+                                Write(_margin + "Output error: " + e);
+                            }
+                            else
+                            {
+                                Write("Ошибка при создании папки: " + _path + "\n");
+                                Write(_margin + "Код ошибки: " + e);
+                            }
+
+                            //  Write endline (optional)
+                            Write(_endLine);
                         }
 
                         //  If the documents folder is unavailable
@@ -53,7 +79,7 @@ namespace JabNetClient
                         _path = GetLocalAppdataPath(_subFolder, _showInfo);
 
                         //  Return the path to the LocalAppData folder (If succeeded)
-                        //  Or null (If failed)
+                        //  Or null (If the process failed)
                         return _path;
                     }
                 }
@@ -73,11 +99,26 @@ namespace JabNetClient
                 }
                 catch (Exception e)
                 {
-                    //  Show error output if wanted
+                    //  Show error output (optional))
                     if (_showInfo)
                     {
-                        Write("\n\tError while creating a subfolder at the path: " + _path);
-                        Write("\n\tOutput error: " + e);
+                        //  Write the newline and margin (optional)
+                        Write(_startLine + _margin);
+
+                        //  Write the error message
+                        if (_engLang)
+                        {
+                            Write("Error while creating a subfolder at the path: " + _path + "\n");
+                            Write(_margin + "Output error: " + e);
+                        }
+                        else
+                        {
+                            Write("Ошибка при создании подпапки по пути: " + _path + "\n");
+                            Write(_margin + "Код ошибки: " + e);
+                        }
+
+                        //  Write endline (optional)
+                        Write(_endLine);
                     }
 
                     //  If the documents folder is unavailable
@@ -97,11 +138,12 @@ namespace JabNetClient
             else
             {
                 //  Ask the user for a path to save the files
-                Write("\n\tEnter a path for the files to save sample data: ");
+                Write(_startLine + _margin);
+                if (_engLang) Write("Enter a path for the files to save sample data: ");
+                else Write("Введите путь для сохранения файлов с тестовыми данными: ");
 
-
-                //  Read the user "path"
-                _path = ReadLine();
+                //  Read the user "path", without the spaces in the start, end, and the " characters
+                _path = ReadLine().Trim().Replace("\"", "");
 
 
                 //  Check if the chosen path exists
@@ -123,11 +165,21 @@ namespace JabNetClient
                             //  Try to create it
                             Directory.CreateDirectory(_path);
 
+
+                            //  Show success message (optional)
                             if (_showInfo)
                             {
-                                //  Show success message if needed
-                                Write("\n\tSuccessfully created the folder: " + _path);
+                                //  Write the newline and margin (optional)
+                                Write(_startLine + _margin);
+
+                                //  Write the success message
+                                if (_engLang) Write("Successfully created the folder: " + _path);
+                                else Write("Успешно создана папка: " + _path);
+
+                                //  Write endline (optional)
+                                Write(_endLine);
                             }
+
 
                             //  Return the successfully created user path
                             return _path;
@@ -136,11 +188,26 @@ namespace JabNetClient
                         {
                             //  If we catch an error happens
                             //  (For example Unauthorized access to the folder)
+                            //  Show error message (optional)
                             if (_showInfo)
                             {
-                                //  Ouput error message
-                                Write("\n\tError while creating the folder: " + _path);
-                                Write("\n\tOutput error: " + e);
+                                //  Write the newline and margin (optional)
+                                Write(_startLine + _margin);
+
+                                //  Write the error message
+                                if (_engLang)
+                                {
+                                    Write("Error while creating the folder: " + _path + "\n");
+                                    Write(_margin + "Output error: " + e);
+                                }
+                                else
+                                {
+                                    Write("Ошибка при создании папки: " + _path + "\n");
+                                    Write(_margin + "Код ошибки: " + e);
+                                }
+
+                                //  Write endline (optional)
+                                Write(_endLine);
                             }
                         }
                     }
@@ -157,18 +224,20 @@ namespace JabNetClient
                 return _path;
             }
         }
-             /* Universal function or getting a path
-              *     -  User path (custom = true)
-              *     -  C:\Users\user_name\Documents
-              *     -  C:\Users\user_name\AppData\Local
-              *  
-              *  ACCEPTS:
-              *     -  Adding any subfolders into the selected directory path
-              *     -  Default input as stated in the function arguments
-              *     -  Error outputing                                     */
+        /* Universal function or getting a path
+         *     -  User path (custom = true)
+         *     -  C:\Users\user_name\Documents
+         *     -  C:\Users\user_name\AppData\Local
+         *  
+         *  ACCEPTS:
+         *     -  Adding any subfolders into the selected directory path
+         *     -  Default input as stated in the function arguments
+         *     -  Error outputing                                     */
 
 
-        static private string GetLocalAppdataPath(string _subFolder = "\\Gyroscopic\\Unnamed", bool _showInfo = false)
+        static private string GetLocalAppdataPath(string _subFolder = "\\Gyroscopic\\Unnamed",
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
             //  If we cant get the rights to the documents folder
             try
@@ -182,12 +251,19 @@ namespace JabNetClient
                 //  Try to create the subfolders
                 Directory.CreateDirectory(_path);
 
+                //  Show success message (optional)
                 if (_showInfo)
                 {
-                    //  Show success message if needed
-                    Write("\n\tSuccessfully created the subfolder: " + _path);
-                }
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
 
+                    //  Write the success message
+                    if (_engLang) Write("Successfully created the subfolder: " + _path);
+                    else Write("Успешно создана подпапка: " + _path);
+
+                    //  Write end line (optional)
+                    Write(_endLine);
+                }
 
                 //  Return the path to the LocalAppData folder
                 return _path;
@@ -204,20 +280,36 @@ namespace JabNetClient
                  *  -  Or could create the subfolders / Get the rights to them
                 */
 
+                //  Show error message (optional)
                 if (_showInfo)
                 {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
                     //  If we cant get the rights to the LocalAppData folder
-                    Write("\n\tError while getting the path to the LocalAppData folder");
-                    Write("\n\tOutput error: " + e);
+                    if (_engLang)
+                    {
+                        Write("Error while getting the path to the LocalAppData folder\n");
+                        Write(_margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка при получении пути к папке LocalAppData");
+                        Write("\n" + _margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(_endLine);
                 }
 
                 //  Return null path (fatal error)
                 return null;
             }
         }
-             //  Getting the path to the LocalAppData folder
-             //  Trying to create the selected subfolders there
-             //  Return null if the process fails
+        //  Getting the path to the LocalAppData folder
+        //  Trying to create the selected subfolders there
+        //  Return null if the process fails
 
 
 
@@ -226,7 +318,9 @@ namespace JabNetClient
 
         static public List<string> ParseData(List<string> _data, bool _removeEmptyLines = false,
             bool _removeSpace = false, string _spaceRemoveException = "",
-            string _lineIgnoreKeys = "", string _ignoreTheseChars = "", bool _showInfo = false)
+            string _lineIgnoreKeys = "", string _ignoreTheseChars = "",
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
 
             //  Storing the parsed data here
@@ -245,7 +339,7 @@ namespace JabNetClient
             bool _ignoreThisLineFlag;
 
 
-            //  If the data input is correct
+            //  If the data input is correct (it exists)
             if (_data != null)
             {
                 for (int i = 0; i < _data.Count; i++)
@@ -349,64 +443,139 @@ namespace JabNetClient
             }
             else
             {
-                if (_showInfo) Write("\tError while parsing the data! Data is null");
+                //  Show error message (optional)
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang) Write("Error while parsing the data! Data is null");
+                    else Write("Ошибка при парсинге данных! Данные равны null");
+
+                    //  Write endline (optional)
+                    Write(_endLine);
+                }
+
+                //  Return error
                 return null;
             }
         }
-             /*  Universal parser for the read data
-              *  
-              *  ACCEPTED FUNCTIONALITY:
-              *     -  Removing  empty lines
-              *     -  Removing  white space
-              *     -  Exception characters for the white space removal
-              *     -  Ignoring  lines with special characters
-              *     -  Character ignoring in the whole file
-              *     -  Information output                            */
+        /*  Universal parser for the read data
+         *  
+         *  ACCEPTED FUNCTIONALITY:
+         *     -  Removing  empty lines
+         *     -  Removing  white space
+         *     -  Exception characters for the white space removal
+         *     -  Ignoring  lines with special characters
+         *     -  Character ignoring in the whole file
+         *     -  Information output                            */
 
 
-        static public List<string> ReadData(string _path, string _fileName, bool _showInfo = false)
+        static public List<string> ReadData(string _path, string _fileName,
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
             if (File.Exists(Path.Combine(_path, _fileName)))
             {
-                //  Open the file from the selected path
-                StreamReader _dataReader = new StreamReader(Path.Combine(_path, _fileName));
-
-                //  Storing the parsed result from the file
-                List<string> _foundData = new List<string>();
-
-                //  Temporary string to hold the data before saving it
-                string _helper = _dataReader.ReadLine();
-
-                //  While the end of the document isnt reached - continue reading and saving the info
-                while (_helper != null)
+                try
                 {
-                    //  Save the previous read data
-                    _foundData.Add(_helper);
+                    //  Open the file from the selected path
+                    StreamReader _dataReader = new StreamReader(Path.Combine(_path, _fileName));
 
-                    //  Parse the next line in the file
-                    _helper = _dataReader.ReadLine();
+                    //  Storing the parsed result from the file
+                    List<string> _foundData = new List<string>();
+
+                    //  Temporary string to hold the data before saving it
+                    string _helper = _dataReader.ReadLine();
+
+
+
+                    //  While the end of the document isnt reached - continue reading and saving the info
+                    while (_helper != null)
+                    {
+                        //  Save the previous read data
+                        _foundData.Add(_helper);
+
+                        //  Parse the next line in the file
+                        _helper = _dataReader.ReadLine();
+                    }
+
+                    //  Close the file manager
+                    _dataReader.Close();
+
+
+                    //  Show success message (optional)
+                    if (_showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(_startLine + _margin);
+
+                        //  Write the success message
+                        if (_engLang) Write("File >" + _fileName + "< was successfully read");
+                        else Write("Файл >" + _fileName + "< был успешно прочитан");
+
+                        //  Write end line (optional)
+                        Write(_endLine);
+                    }
+
+                    //  Return the found data
+                    return _foundData;
                 }
+                catch (Exception e)  // Error exception
+                {
+                    //  Show error message (optional)
+                    if (_showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(_startLine + _margin);
 
-                //  Close the file manager
-                _dataReader.Close();
+                        //  Write the error message
+                        if (_engLang)
+                        {
+                            Write("Error while reading the file >" + _fileName + "<\n");
+                            Write(_margin + "Output error: " + e);
+                        }
+                        else
+                        {
+                            Write("Ошибка при чтении файла >" + _fileName + "<\n");
+                            Write(_margin + "Код ошибки: " + e);
+                        }
 
-                //  If wanted, output success message
-                if (_showInfo) Write("\tFile >" + _fileName + "< was successfully read");
+                        //  Write end line (optional)
+                        Write(_endLine);
+                    }
 
-                //  Return the parsed data
-                return _foundData;
+                    //  Return error
+                    return null;
+                }
             }
             else
             {
                 //  If the file was not found, output error message (optional)
-                if (_showInfo) Write("\tError while reading the file! File >" + _fileName + "< was not found");
-                return null;  //  Return error
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang) Write("Error while reading the file! File >" + _fileName + "< was not found");
+                    else Write("Ошибка при чтении файла! Файл >" + _fileName + "< не найден");
+
+                    //  Write end line (optional)
+                    Write(_endLine);
+                }
+
+                //  Return error
+                return null;
             }
         }
-             //  Reading and returning the data inside a file
+        //  Reading and returning the data inside a file
 
 
-        static public void SaveData(string _path, string _fileName, List<string> _data, bool _dontOverwrite, bool _showInfo = false)
+        static public void SaveData(string _path, string _fileName, List<string> _data,
+            bool _dontOverwrite, bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
             try
             {
@@ -421,28 +590,83 @@ namespace JabNetClient
                         _dataSaver.Write(_data[i] + "\n");
                     }
 
-                    //  Show success message if wanted
-                    if (_showInfo) Write("\tSuccessfully saved the data to the file >" + _fileName + "<");
+                    //  Show success message (optional)
+                    if (_showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(_startLine + _margin);
+
+                        //  Write the success message
+                        if (_engLang) Write("Successfully saved the data to the file >" + _fileName + "<");
+                        else Write("Успешно сохранены данные в файл >" + _fileName + "<");
+
+                        //  Write end line (optional)
+                        Write(_endLine);
+                    }
                 }
-                else
+
+                //  Show error message (optional)
+                else if (_showInfo)
                 {
-                    //  Show error message if wanted
-                    if (_showInfo) Write("\tError saving the data to the file >" + _fileName + "<\n\tOutput error: Data is null");
+                    //  Write the newline and margin if needed
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang)
+                    {
+                        Write("Error saving the data to the file >" + _fileName + "<\n");
+                        Write(_margin + "Output error: Data is null");
+                    }
+                    else
+                    {
+                        Write("Ошибка сохранения данных в файл >" + _fileName + "<\n");
+                        Write(_margin + "Код ошибки: Данные равны null");
+                    }
+
+                    //  Write end line if needed
+                    Write(_endLine);
                 }
+
 
                 //  Close the file manager
                 _dataSaver.Close();
             }
             catch (Exception e)  // Error exception
             {
-                //  Showing error message if needed
-                if (_showInfo) Write("\tError saving the data to the file >" + _fileName + "<\n\tOutput error: " + e);
+                //  Show error message (optional)
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang)
+                    {
+                        Write("Error saving the data to the file >" + _fileName + "<\n");
+                        Write(_margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка сохранения данных в файл >" + _fileName + "<\n");
+                        Write(_margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(_endLine);
+                }
             }
         }
-             //  Saving some data to a chosen file, or trying to create it and then save the data
+        //  Saving some data to a chosen file, or trying to create it and then save the data
 
 
-        static public void DeleteFile(string _path, string _fileName, bool _showInfo = false)
+
+        //  --------------------  File management related functions  --------------------------------------//
+
+
+
+        static public void DeleteFile(string _path, string _fileName,
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
             try
             {
@@ -452,25 +676,66 @@ namespace JabNetClient
                     //  Deleting the file
                     File.Delete(Path.Combine(_path, _fileName));
 
-                    //  Showing additional info if needed
-                    if (_showInfo) Write("\tFile >" + _fileName + "< was successfully deleted");
+                    //  Show success message (optional)
+                    if (_showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(_startLine + _margin);
+
+                        //  Write the success message
+                        if (_engLang) Write("File >" + _fileName + "< was successfully deleted");
+                        else Write("Файл >" + _fileName + "< был успешно удалён");
+
+                        //  Write end line (optional)
+                        Write(_endLine);
+                    }
                 }
-                else
+
+                //  Show error message (optional)
+                else if (_showInfo)
                 {
-                    //  Showing error message if needed
-                    if (_showInfo) Write("\tError! File >" + _fileName + "< was not found");
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang) Write("Error! File >" + _fileName + "< was not found");
+                    else Write("Ошибка! Файл >" + _fileName + "< не найден");
+
+                    //  Write end line (optional)
+                    Write(_endLine);
                 }
             }
             catch (Exception e)  // Error exception
             {
-                //  Showing error message if needed
-                if (_showInfo) Write("\tError while deleting the file >" + _fileName + "<\n\tOutput error: " + e);
+                //  Show error message (optional)
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang)
+                    {
+                        Write("Error while deleting the file >" + _fileName + "<\n");
+                        Write(_margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка при удалении файла >" + _fileName + "<\n");
+                        Write(_margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(_endLine);
+                }
             }
         }
-             //  Deleting a file
+        //  Deleting a file
 
 
-        static public void ClearFile(string _path, string _fileName, bool _showInfo)
+        static public void ClearFile(string _path, string _fileName,
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
         {
             try
             {
@@ -480,36 +745,90 @@ namespace JabNetClient
                     //  New file manager to clear the file
                     StreamWriter _clearFile = new StreamWriter(Path.Combine(_path, _fileName), false);
 
-                    //  Showing additional info if needed
-                    if (_showInfo) Write("\tFile >" + _fileName + "< was successfully cleared");
+                    //  Show success message (optional)
+                    if (_showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(_startLine + _margin);
+
+                        //  Write the success message
+                        if (_engLang) Write("File >" + _fileName + "< was successfully cleared");
+                        else Write("Файл >" + _fileName + "< был успешно очищен");
+
+                        //  Write end line (optional)
+                        Write(_endLine);
+                    }
 
                     //  Close the file manager
                     _clearFile.Close();
                 }
-                else
+
+                //  Show error message (optional)
+                else if (_showInfo)
                 {
-                    //  Showing error message if needed
-                    if (_showInfo) Write("\tError! File >" + _fileName + "< was not found");
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang) Write("Error! File >" + _fileName + "< was not found");
+                    else Write("Ошибка! Файл >" + _fileName + "< не найден");
+
+                    //  Write end line (optional)
+                    Write(_endLine);
                 }
+
             }
             catch (Exception e)  // Error exception
             {
-                //  Showing error message if needed
-                if (_showInfo) Write("\tError while clearing the file >" + _fileName + "<\n\tOutput error: " + e);
+                //  Show error message (optional)
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang)
+                    {
+                        Write("Error while clearing the file >" + _fileName + "<\n");
+                        Write(_margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка при очистке файла >" + _fileName + "<\n");
+                        Write(_margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(_endLine);
+                }
             }
         }
-             //  Clearing all the contents inside the chosen file
+        //  Clearing all the contents inside the chosen file
 
 
 
-        //-------------------------------------  Demo functions  --------------------------------------------------//
+        //-----------------------------  For demo only functions  ----------------------------------------------------//
 
-        static public void WaitForKey()
+        static public void WaitForAnyKey(bool _clearAfter = false,
+            bool _engLang = true, string _margin = "\t",
+            string _startLine = "\n", string _endLine = "\n\n")
         {
-            Write("\n\tPress any key to continue ");
+            //  Write the newline and margin (optional)
+            Write(_startLine + _margin);
+
+            //  Write the message
+            if (_engLang) Write("Press any key to continue ");
+            else Write("Нажмите любую клавишу для продолжения ");
+
+            //  Wait for the user input
             ReadKey();
-            Write("\n\n");
+
+            //  Clearing the console (optional)
+            if (_clearAfter) Clear();
+
+            //  Write the endline (optional)
+            Write(_endLine);
         }
-             //  Temporary placeholder useless procedure
+        //  Demo function, otherwise unnecessary
     }
 }
