@@ -9,6 +9,7 @@ namespace JabNetClient
 {
     internal class DataManipulation
     {
+
         //-----------------------------  Path related functions  ------------------------------------------//
 
 
@@ -661,6 +662,86 @@ namespace JabNetClient
 
 
         //  --------------------  File management related functions  --------------------------------------//
+
+
+
+        static public string[] GetFiles(string _path, bool _removePathFromFileNames,
+            bool _showInfo = false, bool _engLang = true, string _margin = "\t",
+            string _startLine = "", string _endLine = "\n")
+        {
+            string[] _foundFiles = null;
+
+            try
+            {
+                //  Get the file names for the chosen directory path
+                _foundFiles = Directory.GetFiles(_path);
+
+                //  Cut the path from the file names (optional)
+                if (_removePathFromFileNames)
+                {
+                    //  For every found file
+                    for (int i = 0; i < _foundFiles.Length; i++)
+                    {
+                        //  Edit the file name to not include the path
+                        _foundFiles[i] = Path.GetFileName(_foundFiles[i]);
+                    }
+                }
+
+                //  Show success message (optional)
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  If the files were found
+                    if (_foundFiles.Length > 0)
+                    {
+                        //  Write the success message
+                        if (_engLang) Write("Successfully got the files from the path >" + _path + "<");
+                        else Write("Успешно получены файлы по пути >" + _path + "<");
+                    }
+
+                    //  If no files were found
+                    else
+                    {
+                        //  Write the error message
+                        if (_engLang) Write("No files found in the path >" + _path + "<");
+                        else Write("Не найдено ни одного файла по пути >" + _path + "<");
+                    }
+
+
+                    //  Write endline (optional)
+                    Write(_endLine);
+                }
+            }
+            catch (Exception e)
+            {
+                //  Write the error message (optional)
+                if (_showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(_startLine + _margin);
+
+                    //  Write the error message
+                    if (_engLang)
+                    {
+                        Write("Error while getting the files from the path >" + _path + "<\n");
+                        Write(_margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка при получении файлов по пути >" + _path + "<\n");
+                        Write(_margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write endline (optional)
+                    Write(_endLine);
+                }
+            }
+
+            //  return the found file names
+            return _foundFiles;
+        }
 
 
 
