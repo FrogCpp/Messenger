@@ -9,7 +9,7 @@ using static System.Console;              //  Для удобства, чтоб�
 //using static JabNetClient.ServerCommunication;
 //using static JabNetClient.DataManipulation;
 //using static JabNetClient.InterfaceClasses;
-using static JabNetClient.USC;
+//using static JabNetClient.USC;
 using static JabNetClient.DrawInterface;
 using static JabNetClient.CustomFunctions;
 using static JabNetClient.GlobalSettings;
