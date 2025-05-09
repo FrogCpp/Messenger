@@ -82,9 +82,9 @@ namespace JabNetClient
 
 
         static public string CreateSendMessageRequest(string encryptedMessage, 
-            ulong receiverUID, ulong staticUID, string encrypted_usID)
+            ulong receiverUID, ulong staticUID, string encryptedusID)
         {
-            string usc = "SENDM~" + receiverUID + "~" + staticUID + "~" + encrypted_usID + "~" + encryptedMessage;
+            string usc = "SENDM~" + receiverUID + "~" + staticUID + "~" + encryptedusID + "~" + encryptedMessage;
 
 
             return usc;

@@ -185,9 +185,9 @@ namespace JabNetClient
 
                         //  Encrypting our unique session ID
                         //  Зашифровываем свой клю доступа
-                        string encrypted_usID = ERE4(usID, uekRE, temporaryShift);
+                        string encryptedusID = ERE4(usID, uekRE, temporaryShift);
 
-                        Write("\n\t\t[i]  - Зашифрованый usID: " + encrypted_usID);
+                        Write("\n\t\t[i]  - Зашифрованый usID: " + encryptedusID);
 
 
 
@@ -196,7 +196,7 @@ namespace JabNetClient
                         //
                         //  Создаём usc реквест на отправку сообщения конкретному пользователю
                         //  staticUID и usID используется для подтверждения нашей личности
-                        string uscSendMessage = CreateSendMessageRequest(encryptedMessage, receiverUID, staticUID, encrypted_usID);
+                        string uscSendMessage = CreateSendMessageRequest(encryptedMessage, receiverUID, staticUID, encryptedusID);
 
                         Write("\n\t\t[i]  - USC: " + uscSendMessage);
 

@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 
 using static System.Console;
+using System.Text;
 
 
 namespace JabNetClient
@@ -13,9 +14,9 @@ namespace JabNetClient
         //-----------------------------  Path related functions  ------------------------------------------//
 
 
-        static public string GetPath(bool custom = false, string subFolder = "\\Gyroscopic\\Unnamed",
-            bool showInfo = false, bool engLang = true, string margin = "\t",
-            string startLine = "", string endLine = "\n")
+        static public string GetPath(bool custom = false, bool tryDefault = true, string subFolder = "\\Gyroscopic\\Unnamed",
+             bool showInfo = false, bool engLang = true, string margin = "\t",
+             string startLine = "", string endLine = "\n")
         {
             //  Storing the final path here
             string path;
@@ -217,7 +218,8 @@ namespace JabNetClient
                     //  And we can't create it
                     //  Get the stock path (C:\Users\username\Documents\Gyroscopic\Unnamed)
                     //  (Or C:\Users\username\AppData\Local\Gyroscopic\Unnamed)
-                    path = GetPath(false, subFolder, showInfo);
+                    if (tryDefault) path = GetPath(false, tryDefault, subFolder, showInfo);
+                    else return null;
                 }
 
 
@@ -225,15 +227,16 @@ namespace JabNetClient
                 return path;
             }
         }
-        /* Universal function or getting a path
-         *     -  User path (custom = true)
-         *     -  C:\Users\username\Documents
-         *     -  C:\Users\username\AppData\Local
-         *  
-         *  ACCEPTS:
-         *     -  Adding any subfolders into the selected directory path
-         *     -  Default input as stated in the function arguments
-         *     -  Error outputing                                     */
+             /* Universal function or getting a path
+              *     -  User path (custom = true)
+              *     -  C:\Users\username\Documents
+              *     -  C:\Users\username\AppData\Local
+              *  
+              *  ACCEPTS:
+              *     -  Adding any subfolders into the selected directory path
+              *     -  Default input as stated in the function arguments
+              *     -  Flag - dont try to return default path if user input fails
+              *     -  Error outputing                                     */
 
 
         static private string GetLocalAppdataPath(string subFolder = "\\Gyroscopic\\Unnamed",
@@ -308,14 +311,15 @@ namespace JabNetClient
                 return null;
             }
         }
-        //  Getting the path to the LocalAppData folder
-        //  Trying to create the selected subfolders there
-        //  Return null if the process fails
+             //  Getting the path to the LocalAppData folder
+             //  Trying to create the selected subfolders there
+             //  Return null if the process fails
 
 
 
         //----------------------------  Data manipulation related functions  ---------------------------------//
 
+        //============================  Data reading  and parsing functions  =================================//
 
         static public List<string> ParseData(List<string> data, bool removeEmptyLines = false,
             bool removeSpace = false, string spaceRemoveException = "",
@@ -462,26 +466,27 @@ namespace JabNetClient
                 return null;
             }
         }
-        /*  Universal parser for the read data
-         *  
-         *  ACCEPTED FUNCTIONALITY:
-         *     -  Removing  empty lines
-         *     -  Removing  white space
-         *     -  Exception characters for the white space removal
-         *     -  Ignoring  lines with special characters
-         *     -  Character ignoring in the whole file
-         *     -  Information output                            */
+             /*  Universal parser for the read data
+              *  
+              *  ACCEPTED FUNCTIONALITY:
+              *     -  Removing  empty lines
+              *     -  Removing  white space
+              *     -  Exception characters for the white space removal
+              *     -  Ignoring  lines with special characters
+              *     -  Character ignoring in the whole file
+              *     -  Information output                            */
+
 
 
         static public List<string> ReadData(string path, string fileName,
             bool showInfo = false, bool engLang = true, string margin = "\t",
             string startLine = "", string endLine = "\n")
         {
-            if (File.Exists(Path.Combine(path, fileName)))
+            try
             {
-                try
+                if (File.Exists(Path.Combine(path, fileName)))
                 {
-                    //  Open the file from the selected path
+                    //  Initialize the file manager
                     StreamReader dataReader = new StreamReader(Path.Combine(path, fileName));
 
                     //  Storing the parsed result from the file
@@ -523,38 +528,10 @@ namespace JabNetClient
                     //  Return the found data
                     return foundData;
                 }
-                catch (Exception e)  // Error exception
-                {
-                    //  Show error message (optional)
-                    if (showInfo)
-                    {
-                        //  Write the newline and margin (optional)
-                        Write(startLine + margin);
 
-                        //  Write the error message
-                        if (engLang)
-                        {
-                            Write("Error while reading the file >" + fileName + "<\n");
-                            Write(margin + "Output error: " + e);
-                        }
-                        else
-                        {
-                            Write("Ошибка при чтении файла >" + fileName + "<\n");
-                            Write(margin + "Код ошибки: " + e);
-                        }
 
-                        //  Write end line (optional)
-                        Write(endLine);
-                    }
-
-                    //  Return error
-                    return null;
-                }
-            }
-            else
-            {
                 //  If the file was not found, output error message (optional)
-                if (showInfo)
+                else if (showInfo)
                 {
                     //  Write the newline and margin (optional)
                     Write(startLine + margin);
@@ -570,26 +547,166 @@ namespace JabNetClient
                 //  Return error
                 return null;
             }
+            catch (Exception e)  // Error exception
+            {
+                //  Show error message (optional)
+                if (showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang)
+                    {
+                        Write("Error while reading the file >" + fileName + "<\n");
+                        Write(margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка при чтении файла >" + fileName + "<\n");
+                        Write(margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(endLine);
+                }
+
+                //  Return error
+                return null;
+            }
         }
-        //  Reading and returning the data inside a file
+             //  Reading and returning the data inside a file
 
 
-        static public void SaveData(string path, string fileName, List<string> data,
-            bool dontOverwrite, bool showInfo = false, bool engLang = true, string margin = "\t",
+        static public List<byte> ReadBinaryData(string path, string fileName,
+            bool showInfo = false, bool engLang = true, string margin = "\t",
             string startLine = "", string endLine = "\n")
         {
             try
             {
-                //  Open the file from the selected path
+                if (File.Exists(Path.Combine(path, fileName)))
+                {
+                    //  Set the data read mode
+                    Stream stream = new FileStream(Path.Combine(path, fileName), FileMode.Open);
+
+                    //  Initialize the file manager
+                    BinaryReader binaryDataReader = new BinaryReader(stream);
+
+
+                    //  Storing the parsed result from the file
+                    List<byte> foundData = new List<byte>();
+
+                    //  Temporary buffer to store the read bytes
+                    byte helper;
+
+                    //  Read bytes untill the file end
+                    for (int i = 0; i < binaryDataReader.BaseStream.Length; i++)
+                    {
+                        //  Read next byte from current position
+                        helper = binaryDataReader.ReadByte();
+
+                        //  Save the read byte
+                        foundData.Add(helper);
+                    }
+
+                    //  Close the file manager
+                    binaryDataReader.Close();
+
+
+                    //  Show success message (optional)
+                    if (showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(startLine + margin);
+
+                        //  Write the success message
+                        if (engLang) Write("Binary file >" + fileName + "< was successfully read");
+                        else Write("Двоичный файл >" + fileName + "< был успешно прочитан");
+
+                        //  Write end line (optional)
+                        Write(endLine);
+                    }
+
+                    //  Return the found data
+                    return foundData;
+                }
+
+                //  If the file was not found, output error message (optional)
+                else if (showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang) Write("Error while reading the binary file! File >" + fileName + "< was not found");
+                    else Write("Ошибка при чтении двоичного файла! Файл >" + fileName + "< не найден");
+
+                    //  Write end line (optional)
+                    Write(endLine);
+                }
+
+                //  Return error
+                return null;
+            }
+            catch (Exception e)  // Error exception
+            {
+                //  Show error message (optional)
+                if (showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang)
+                    {
+                        Write("Error while reading the binary file >" + fileName + "<\n");
+                        Write(margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка при чтении двоичного файла >" + fileName + "<\n");
+                        Write(margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(endLine);
+                }
+
+                //  Return error
+                return null;
+            }
+
+        }
+             //  Reading and returning the binary data inside a file
+
+
+
+        //============================  Data saving related functions  =======================================//
+
+
+        static public void SaveData(string path, string fileName, List<string> data,
+            bool dontOverwrite, string splitDataBy = "\n",
+            bool showInfo = false, bool engLang = true, string margin = "\t",
+            string startLine = "", string endLine = "\n")
+        {
+            try
+            {
+                //  Initialize the file manager
                 StreamWriter dataSaver = new StreamWriter(Path.Combine(path, fileName), dontOverwrite);
 
                 if (data != null)
                 {
-                    for (int i = 0; i < data.Count; i++)
+                    for (int i = 0; i < data.Count - 1; i++)
                     {
                         //  Save the data to the file
-                        dataSaver.Write(data[i] + "\n");
+                        dataSaver.Write(data[i]);
+
+                        //  Split the data in the file
+                        if (splitDataBy.Length > 0) dataSaver.Write(splitDataBy);
                     }
+                    //  Save the last data chunk (without the splitter)
+                    dataSaver.Write(data[data.Count - 1]);
+
 
                     //  Show success message (optional)
                     if (showInfo)
@@ -657,7 +774,230 @@ namespace JabNetClient
                 }
             }
         }
-        //  Saving some data to a chosen file, or trying to create it and then save the data
+             //  Saving some data to a chosen file, or trying to create it and then save the data
+
+
+        static public void SaveBinaryData(string path, string fileName, List<byte> data,
+            bool dontOverwrite, string splitDataBy = "\n",
+            bool showInfo = false, bool engLang = true, string margin = "\t",
+            string startLine = "", string endLine = "\n")
+        {
+            try
+            {
+                //  Initialize the data saving mode
+                FileStream stream;
+                if (!dontOverwrite) stream = new FileStream(Path.Combine(path, fileName), FileMode.Create);
+                else stream = new FileStream(Path.Combine(path, fileName), FileMode.Append);
+
+                //  Create a new binary writer
+                BinaryWriter binaryDataSaver = new BinaryWriter(stream);
+
+                if (data != null)
+                {
+                    //  Convert data splitters to bytes (for binary encoding)
+                    byte[] splitterBytes = Encoding.UTF8.GetBytes(splitDataBy);
+
+                    for (int i = 0; i < data.Count - 1; i++)
+                    {
+                        //  Save the data to the file
+                        binaryDataSaver.Write(data[i]);
+
+                        //  Split the data in the file (also in binary)
+                        if (splitterBytes.Length > 0) binaryDataSaver.Write(splitterBytes);
+                    }
+                    //  Save the final data chunk to the file (without the splitter)
+                    binaryDataSaver.Write(data[data.Count - 1]);
+
+
+
+                    //  Show success message (optional)
+                    if (showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(startLine + margin);
+
+                        //  Write the success message
+                        if (engLang) Write("Successfully saved the binary data to the file >" + fileName + "<");
+                        else Write("Успешно сохранены двоичные данные в файл >" + fileName + "<");
+
+                        //  Write end line (optional)
+                        Write(endLine);
+                    }
+                }
+
+                //  Show error message (optional)
+                else if (showInfo)
+                {
+                    //  Write the newline and margin if needed
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang)
+                    {
+                        Write("Error saving the binary data to the file >" + fileName + "<\n");
+                        Write(margin + "Output error: Data is null");
+                    }
+                    else
+                    {
+                        Write("Ошибка сохранения двоичных данных в файл >" + fileName + "<\n");
+                        Write(margin + "Код ошибки: Данные равны null");
+                    }
+
+                    //  Write end line if needed
+                    Write(endLine);
+                }
+
+
+                //  Close the file manager
+                binaryDataSaver.Close();
+            }
+            catch (Exception e)  // Error exception
+            {
+                //  Show error message (optional)
+                if (showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang)
+                    {
+                        Write("Error saving the binary data to the file >" + fileName + "<\n");
+                        Write(margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка сохранения двоичных данных в файл >" + fileName + "<\n");
+                        Write(margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(endLine);
+                }
+            }
+        }
+             //  Saving some data to a chosen file, or trying to create it and then save the data
+
+
+
+        /// <summary>
+        /// 
+        /// Code purpose: <br/>
+        ///  - Saves the byte[] binary <paramref name="data"/> 
+        /// to a file <paramref name="fileName"/> at the chosen <paramref name="path"/>
+        /// 
+        /// </summary>
+        /// 
+        /// <param name="path"> - path for the file location</param>
+        /// <param name="fileName"> - name for the final file</param>
+        /// <param name="data"> - byte[] array of our data</param>
+        /// <param name="dontOverwrite"> - flag for not overwriting the contents in the file</param>
+        /// <param name="splitDataBy"> - splitter for the data array</param>
+        /// <param name="showInfo"> - flag for showing info about the process</param>
+        /// <param name="engLang"> - language for the info output</param>
+        /// <param name="margin"> - margin for the info output</param>
+        /// <param name="startLine"> - startline before each info output</param>
+        /// <param name="endLine"> - endline after each info output</param>
+        static public void SaveBinaryData(string path, string fileName, List<byte[]> data,
+            bool dontOverwrite, string splitDataBy = "\n",
+            bool showInfo = false, bool engLang = true, string margin = "\t",
+            string startLine = "", string endLine = "\n")
+        {
+            try
+            {
+                //  Initialize the data saving mode
+                FileStream stream;
+                if (!dontOverwrite) stream = new FileStream(Path.Combine(path, fileName), FileMode.Create);
+                else stream = new FileStream(Path.Combine(path, fileName), FileMode.Append);
+
+                //  Create a new binary writer
+                BinaryWriter binaryDataSaver = new BinaryWriter(stream);
+
+                if (data != null)
+                {
+                    //  Convert data splitters to bytes (for binary encoding)
+                    byte[] splitterBytes = Encoding.UTF8.GetBytes(splitDataBy);
+
+                    for (int i = 0; i < data.Count - 1; i++)
+                    {
+                        //  Save the data to the file
+                        binaryDataSaver.Write(data[i]);
+
+                        //  Split the data in the file (also in binary)
+                        if (splitterBytes.Length > 0) binaryDataSaver.Write(splitterBytes);
+                    }
+                    //  Save the final data chunk to the file (without the splitter)
+                    binaryDataSaver.Write(data[data.Count - 1]);
+
+
+                    //  Show success message (optional)
+                    if (showInfo)
+                    {
+                        //  Write the newline and margin (optional)
+                        Write(startLine + margin);
+
+                        //  Write the success message
+                        if (engLang) Write("Successfully saved the binary data to the file >" + fileName + "<");
+                        else Write("Успешно сохранены двоичные данные в файл >" + fileName + "<");
+
+                        //  Write end line (optional)
+                        Write(endLine);
+                    }
+                }
+
+                //  Show error message (optional)
+                else if (showInfo)
+                {
+                    //  Write the newline and margin if needed
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang)
+                    {
+                        Write("Error saving the binary data to the file >" + fileName + "<\n");
+                        Write(margin + "Output error: Data is null");
+                    }
+                    else
+                    {
+                        Write("Ошибка сохранения двоичных данных в файл >" + fileName + "<\n");
+                        Write(margin + "Код ошибки: Данные равны null");
+                    }
+
+                    //  Write end line if needed
+                    Write(endLine);
+                }
+
+
+                //  Close the file manager
+                binaryDataSaver.Close();
+            }
+            catch (Exception e)  // Error exception
+            {
+                //  Show error message (optional)
+                if (showInfo)
+                {
+                    //  Write the newline and margin (optional)
+                    Write(startLine + margin);
+
+                    //  Write the error message
+                    if (engLang)
+                    {
+                        Write("Error saving the binary data to the file >" + fileName + "<\n");
+                        Write(margin + "Output error: " + e);
+                    }
+                    else
+                    {
+                        Write("Ошибка сохранения двоичных данных в файл >" + fileName + "<\n");
+                        Write(margin + "Код ошибки: " + e);
+                    }
+
+                    //  Write end line (optional)
+                    Write(endLine);
+                }
+            }
+        }
+             //  Saving some data to a chosen file, or trying to create it and then save the data
+
 
 
 
@@ -742,6 +1082,9 @@ namespace JabNetClient
             //  return the found file names
             return foundFiles;
         }
+             //  Get all the file names in the selected directory
+             //  Can return the full names (with the path)
+             //  Or just the file names (without the path)
 
 
 
@@ -811,7 +1154,7 @@ namespace JabNetClient
                 }
             }
         }
-        //  Deleting a file
+             //  Deleting a file
 
 
         static public void ClearFile(string path, string fileName,
@@ -884,7 +1227,7 @@ namespace JabNetClient
                 }
             }
         }
-        //  Clearing all the contents inside the chosen file
+             //  Clearing all the contents inside the chosen file
 
 
 
@@ -910,6 +1253,49 @@ namespace JabNetClient
             //  Write the endline (optional)
             Write(endLine);
         }
-        //  Demo function, otherwise unnecessary
+             //  Demo function, waits for any user key to continue
+
+        static public bool GetLanguage()
+        {
+            string userInput = "";
+            bool firstTry = true;
+
+            //  Write newline for a better error output
+            Clear();
+            Write("\n\n");
+
+            while (userInput != "e" && userInput != "en" && userInput != "eng" && userInput != "english"
+                && userInput != "r" && userInput != "ru" && userInput != "rus" && userInput != "russian")
+            {
+                //  If we havent exited the loop
+                //  - its either our first try
+                //  - or the user input was invalid
+                //
+                //  So this is a simplified error detection output logic
+                if (!firstTry) Write("\n\t[!]  - Invalid input, please try again\n");
+
+                //  Ask for input
+                Write("\n\t[?]  - Enter the language for the demo info output:");
+                Write("\n\t          > English (e / en / eng / english)");
+                Write("\n\t          > Russian (r / ru / rus / russian)\n");
+                Write("\n\t[->] - Choice: ");
+                userInput = ReadLine().ToLower().Replace(" ", "");
+
+                //  Clear the info output console
+                Clear();
+
+                //  Set to not first try anymore
+                firstTry = false;
+            }
+            Write("\n");
+
+            //  Funny way to determine the chosen language
+            //  Because the only user input possible are
+            //  > english-russian and shorter versions of them
+            //  
+            //  And we know for sure that the russian version doesnt have an "e" in it
+            return userInput.Contains("e");
+        }
+             //  Demo function - gets the language for the demo output
     }
 }
