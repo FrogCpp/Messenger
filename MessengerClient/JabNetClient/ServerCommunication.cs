@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
+
 //using System.Collections.Generic;       //  Will be necessary soon (probably)
 //using System.Linq;                      //  Скоро понадобятся (наверное)
 //using System.Security.Cryptography;     //
@@ -18,35 +19,42 @@ namespace JabNetClient
 {
     internal class ServerCommunication
     {
-        private IPAddress _serverAdress;
-        private int _serverPort;
-        private Socket _myPersonalSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        private IPAddress serverAdress;
+        private int serverPort;
+        static private Socket myPersonalSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         public ServerCommunication(IPAddress StaticIpAdreesForHost, int Port)
         {
-            _serverAdress = StaticIpAdreesForHost;
-            _serverPort = Port; 
+            serverAdress = StaticIpAdreesForHost;
+            serverPort = Port; 
         }
           
-        private void SendMessageToServer(string _uscMessage)
+        static private void SendMessageToServer(string uscMessage)
         {
-            byte[] message = Encoding.UTF32.GetBytes(_uscMessage);
+            byte[] message = Encoding.UTF32.GetBytes(uscMessage);
             int len = message.Length;
 
-            _myPersonalSocket.Send(Encoding.UTF32.GetBytes(len.ToString()));
+            myPersonalSocket.Send(Encoding.UTF32.GetBytes(len.ToString()));
 
-            _myPersonalSocket.Send(BitConverter.GetBytes(len));
+            myPersonalSocket.Send(BitConverter.GetBytes(len));
+        }
+
+        static public void SendAbstract(string uscMessage)
+        {
+            //  Temporary
+            //  Временно, пока ты нормально не сделаешь отправку
+            SendMessageToServer(uscMessage);
         }
 
 
         public byte[] ReceiveMessageFromServer()
         {
-            byte[] answer = new byte[_myPersonalSocket.ReceiveBufferSize];
+            byte[] answer = new byte[myPersonalSocket.ReceiveBufferSize];
             return answer;
         }
 
-        public string ExecuteCommand(string _uscMessage)
+        public string ExecuteCommand(string uscMessage)
         {
-            SendMessageToServer(_uscMessage);
+            SendMessageToServer(uscMessage);
 
 
             string response = Encoding.UTF32.GetString(ReceiveMessageFromServer());
@@ -59,7 +67,7 @@ namespace JabNetClient
         {
             try
             {
-                _myPersonalSocket.Connect(_serverAdress, _serverPort);
+                myPersonalSocket.Connect(serverAdress, serverPort);
             }
             catch (Exception e)
             {

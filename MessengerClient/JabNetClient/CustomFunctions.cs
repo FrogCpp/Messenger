@@ -6,7 +6,6 @@ using static System.Console;
 
 using static JabNetClient.GlobalVariables;
 using static JabNetClient.InterfaceClasses;
-using static JabNetClient.ServerCommunication;
 
 
 
@@ -14,18 +13,41 @@ namespace JabNetClient
 {
     internal class CustomFunctions
     {
+
         static public ProgramTask GetUserTask()
         {
+            
             //  Store the chosen task here
             //  Храним выбранную задачу здесь
-            ProgramTask _chosenTask = ProgramTask.None;
+            ProgramTask chosenTask = ProgramTask.None;
 
-            //  User input for the console interface
-            //  Ввод пользователя для консольного интерфейса
-            string _userInput = ReadLine();
 
-            while(_chosenTask == ProgramTask.None)
+            while (chosenTask == ProgramTask.None)
             {
+                Clear();
+
+                //  Write all possible options (test)
+                //  Выводим все возможные варианты (временно так мало)
+                Write("\n\n\n\n");
+                Write("\n\t\t[?]  - Что вы хотите сделать?");
+                Write("\n\t\t   > 1 <    - Отправить сообщение (тест)");
+                Write("\n\t\t   > 2 <    - Получить все контакты (потом сделаю автоматом)");
+                Write("\n\t\t   > 3 <    - Посмотреть конкретный чат (тесттест)\n");
+
+                Write("\n\t\t   > 4 <    - Создать защищённый ключ");
+                Write("\n\t\t   > 5 <    - Быстрый обмен новыми ключами");
+                Write("\n\t\t   > 6 <    - Безопасный обмен новыми ключами\n");
+
+                Write("\n\t\t   > 7 <    - Настройки");
+                Write("\n\t\t   > 0 <    - Выход\n");
+
+                Write("\n\t\t[->] Ваш выбор: ");
+
+                //  User input for the console interface
+                //  Ввод пользователя для консольного интерфейса
+                string userInput = ReadLine().Trim();
+
+
                 //  Parse user input
                 //  Transform it into a program task
                 //  exit the loop
@@ -33,34 +55,47 @@ namespace JabNetClient
                 //  Прочитать ввод пользователя
                 //  Преобразовать его в программную задачу
                 //  Выйти из цикла
+                switch (userInput)
+                {
+                    case "1": chosenTask = ProgramTask.SendMessage;       break;
+                    case "2": chosenTask = ProgramTask.GetContacts;       break;
+                    case "3": chosenTask = ProgramTask.ShowChat;          break;
+                    case "4": chosenTask = ProgramTask.GenerateSecureKey; break;
+                    case "5": chosenTask = ProgramTask.FastKeyExchange;   break;
+                    case "6": chosenTask = ProgramTask.SecureKeyExchange; break;
+                    case "7": chosenTask = ProgramTask.BrowseSettings;    break;
+                    case "0": chosenTask = ProgramTask.Exit;              break;
+                }
             }
+
+            Write("\n\n\t\t[i]  - Выбрано: " + chosenTask);
             
             //  Return the chosen program task
             //  Возвращаем выбранную задачу для программы
-            return _chosenTask;
+            return chosenTask;
         }
-        //  Getting a task from the user
-        //  Получаем задачу от пользователя
+             //  Getting a task from the user
+             //  Получаем задачу от пользователя
 
 
 
-        static public void RequestContacts(string _uekRE, byte[] _usID, ulong _staticUID)
+        static public void RequestContacts(string uekRE, string usID, ulong staticUID)
         {
             //if(CheckForAuthorisation())
             //{
-            string _uscRequest = "";
+            string uscRequest = "";
 
             //  Create a universal server command to send it to the server
-            //_uscRequest = CreateContactsRequest(_uekRE, _usID, _staticUID);
+            //uscRequest = CreateContactsRequest(uekRE, usID, staticUID);
 
-            //SendMessageToServer(_uscRequest);
+            //SendMessageToServer(uscRequest);
 
-            List<string> _userContacts = new List<string>();
+            List<string> userContacts = new List<string>();
             
-            //string _serverResponse = ReceiveMessageFromServer();
+            //string serverResponse = ReceiveMessageFromServer();
 
 
-            //for (int i = 0; i < _serverResponse.Length; i++)
+            //for (int i = 0; i < serverResponse.Length; i++)
             //{
                 //  Parse server response here
                 //  From a string to either a list of strings 
@@ -71,29 +106,29 @@ namespace JabNetClient
                 //  Либо в собственный класс
             //}
 
-            //return _userMessages;
+            //return userMessages;
             //}
             //return null;
         }
 
 
-        static public void RequestGroups(string _uekRE, byte[] _usID, ulong _staticUID)
+        static public void RequestGroups(string uekRE, string usID, ulong staticUID)
         {
             //if(CheckForAuthorisation())
             //{
-            string _uscRequest = "";
+            string uscRequest = "";
 
             //  Create a universal server command to send it to the server
-            //_uscRequest = CreateGroupsRequest(_uekRE, _usID, _staticUID);
+            //uscRequest = CreateGroupsRequest(uekRE, usID, staticUID);
 
-            //SendMessageToServer(_uscRequest);
+            //SendMessageToServer(uscRequest);
 
-            List<string> _userGroups = new List<string>();
+            List<string> userGroups = new List<string>();
 
-            string _serverResponse;// = ReceiveMessageFromServer();
+            string serverResponse;// = ReceiveMessageFromServer();
 
 
-            //for (int i = 0; i < _serverResponse.Length; i++)
+            //for (int i = 0; i < serverResponse.Length; i++)
             //{
                 //  Parse server response here
                 //  From a string to either a list of strings 
@@ -104,29 +139,29 @@ namespace JabNetClient
                 //  Либо в собственный класс
             //}
 
-            //return _userGroups;
+            //return userGroups;
             //}
             //return null;
         }
 
 
-        static public void RequestHistory(string _uekRE, byte[] _usID, ulong _staticUID, string _selectedChat)
+        static public void RequestHistory(string uekRE, string usID, ulong staticUID, string selectedChat)
         {
             //if(CheckForAuthorisation())
             //{
-                string _uscRequest = "";
+                string uscRequest = "";
 
                 //  Create a universal server command to send it to the server
-                //_uscRequest = CreateHistoryRequest(_uekRE, _usID, _staticUID);
+                //uscRequest = CreateHistoryRequest(uekRE, usID, staticUID);
 
-                //SendMessageToServer(_uscRequest);
+                //SendMessageToServer(uscRequest);
 
-                List<JabNetMessage> _latestMessages = new List<JabNetMessage>();
+                List<JabNetMessage> latestMessages = new List<JabNetMessage>();
 
-            string _serverResponse;// = ReceiveMessageFromServer();
+            string serverResponse;// = ReceiveMessageFromServer();
 
 
-            //for(int i = 0; i < _serverResponse.Length; i++)
+            //for(int i = 0; i < serverResponse.Length; i++)
             //{
             //  Parse server response here
             //  From a string to the custom class JabNetMessage
@@ -135,7 +170,7 @@ namespace JabNetClient
             //  Из string либо в собственный класс
             //}
 
-            //return _latestMessages;
+            //return latestMessages;
             //}
             //return null;
         }

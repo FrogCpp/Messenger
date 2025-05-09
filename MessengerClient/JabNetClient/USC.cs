@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 
 
 namespace JabNetClient
@@ -34,7 +34,7 @@ namespace JabNetClient
          *  
          */
 
-        static public string CreateAuthRequest(string _encrLogin, string _encrPass, ulong _staticUID = 0)
+        static public string CreateAuthRequest(string encrLogin, string encrPass, ulong staticUID = 0)
         {
             //  Creating the usc,
             //  Currently pretty simple, probably will add more stuff later
@@ -45,10 +45,10 @@ namespace JabNetClient
             //  Очень простой запрос, скорее всего в будущем что-то добавиться
             //  Но при этом чем проще запрос тем лучше
             //  (конечно пока мы не начинаем терять в безопасности)
-            string _usc = "AR~" + _staticUID.ToString() + "~" + _encrLogin + "~" + _encrPass;
+            string usc = "STDAU~" + staticUID.ToString() + "~" + encrLogin + "~" + encrPass;
 
 
-            //  AR - authorisation request
+            //  STDAU - standart authorisation request
             //
             //  StaticUID - needed for the faster auth check for the server
             //  With it the server only checks for one selected user
@@ -75,10 +75,20 @@ namespace JabNetClient
 
             //  Return the created usc
             //  Возвращаем созданный usc
-            return _usc;
+            return usc;
         }
              //  Create a USC for a standart authorisation request
              //  Создаём  usc для стандартного запроса на авторизацию
+
+
+        static public string CreateSendMessageRequest(string encryptedMessage, 
+            ulong receiverUID, ulong staticUID, string encrypted_usID)
+        {
+            string usc = "SENDM~" + receiverUID + "~" + staticUID + "~" + encrypted_usID + "~" + encryptedMessage;
+
+
+            return usc;
+        }
 
     }
 }

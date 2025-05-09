@@ -55,9 +55,9 @@ namespace JabNetClient
             //
             //  Прочесть сохранённые настройки из указанного файла
             //  False = сделать это тихо (без какого либо вывода информации))
-            List<string> _data = ReadData(gPathForCustomSettings, "Settings.txt", false);
+            List<string> data = ReadData(gPathForCustomSettings, "Settings.txt", false);
 
-            if (_data != null)
+            if (data != null)
             {
                 //  Add logic for parsing the data 
                 //  And extracting settings from them
@@ -68,7 +68,7 @@ namespace JabNetClient
                 //
                 //  Лёш, я сам это сделаю
                 //
-                //ParseData(_data, true, true, "*", "", "*", true);
+                //ParseData(data, true, true, "*", "", "*", true);
             }
         }
              //  Apply user settings
@@ -104,9 +104,9 @@ namespace JabNetClient
 
         static public void ChangeSettings()
         {
-            bool _confirmNewSettings = false;
+            bool confirmNewSettings = false;
 
-            while (!_confirmNewSettings)
+            while (!confirmNewSettings)
             {
 
 
@@ -114,14 +114,14 @@ namespace JabNetClient
                 //  Settings changing logic here
             }
 
-            List<string> _data = EncodeCurrentSettings();
+            List<string> data = EncodeCurrentSettings();
 
             //  False1 = overwrite current stored settings file
             //  False2 = perform the saving silent (dont show any info)
             //  
             //  False1 = перезаписывать файл с настройками
             //  False2 = делать это тихо (без какого либо вывода информации)
-            SaveData(gPathForCustomSettings, "Settings.txt", _data, false, false);
+            SaveData(gPathForCustomSettings, "Settings.txt", data, false, false);
         }
              //  Changing the settings for the user's choice
              //  Изменяем настройки на пользовательские
@@ -130,10 +130,10 @@ namespace JabNetClient
         {
             //  We will be storing the encoded settings data here
             //  Мы будем хранить закодированные настройки здесь
-            List<string> _encodedData = new List<string>();
+            List<string> encodedData = new List<string>();
 
 
-            return _encodedData;
+            return encodedData;
         }
              //  Encode the current settings by transforming them into a txt file
              //  Закодируем текущие настройки, превратя их в данные для .тхт файла
