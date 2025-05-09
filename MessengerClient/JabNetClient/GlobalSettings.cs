@@ -121,7 +121,7 @@ namespace JabNetClient
             //  
             //  False1 = перезаписывать файл с настройками
             //  False2 = делать это тихо (без какого либо вывода информации)
-            SaveData(gPathForCustomSettings, "Settings.txt", data, false, false);
+            SaveData(gPathForCustomSettings, "Settings.txt", data, false, "\n", false);
         }
              //  Changing the settings for the user's choice
              //  Изменяем настройки на пользовательские
