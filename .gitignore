@@ -301,3 +301,12 @@ MessengerClient/obj/Release/MessengerClient.csproj.FileListAbsolute.txt
 MessengerClient/obj/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
 *.targets
 *.props
+MessengerClient/obj/Release/Messenge.E5B8A37B.Up2Date
+
+MessengerClient/bin/Release/AdditionalVariablesControl.dll
+MessengerClient/bin/Release/AdditionalVariablesControl.dll.config
+MessengerClient/bin/Release/CompactDateTimeLibrary.dll
+MessengerClient/bin/Release/CompactDateTimeLibrary.dll.config
+MessengerClient/bin/Release/GyroscopicDataLibrary.dll
+MessengerClient/bin/Release/GyroscopicDataLibrary.dll.config
+MessengerClient/bin/Release/GyroscopicDataLibrary.xml

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-using static JabNetClient.DataManipulation;
+using GyroscopicDataLibrary;
 
 
 namespace JabNetClient
@@ -55,7 +55,7 @@ namespace JabNetClient
             //
             //  Прочесть сохранённые настройки из указанного файла
             //  False = сделать это тихо (без какого либо вывода информации))
-            List<string> data = ReadData(gPathForCustomSettings, "Settings.txt", false);
+            List<string> data = BetterDataIO.ReadData(gPathForCustomSettings, "Settings.txt", false);
 
             if (data != null)
             {
@@ -121,7 +121,7 @@ namespace JabNetClient
             //  
             //  False1 = перезаписывать файл с настройками
             //  False2 = делать это тихо (без какого либо вывода информации)
-            SaveData(gPathForCustomSettings, "Settings.txt", data, false, "\n", false);
+            BetterDataIO.SaveData(gPathForCustomSettings, "Settings.txt", data, false, "\n", false);
         }
              //  Changing the settings for the user's choice
              //  Изменяем настройки на пользовательские
