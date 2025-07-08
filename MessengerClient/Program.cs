@@ -1,16 +1,7 @@
-﻿//using System;
-//using System.Net;
+﻿using System;
 
-using static System.Console;              //  Для удобства, чтобы не писать Console. каждый раз
+using static System.Console;
 
-
-
-//using static JabNetClient.DataManipulation;
-//using static JabNetClient.InterfaceClasses;
-
-//using static JabNetClient.FullTestLogic;
-//using static JabNetClient.DrawInterface;
-//using static JabNetClient.Authorisation;
 
 using static JabNetClient.USC;
 using static JabNetClient.CipherSource;
@@ -22,6 +13,7 @@ using static JabNetClient.GlobalSettings;
 using static JabNetClient.GlobalVariables;
 
 using static JabNetClient.ServerCommunication;
+using System.Collections.Generic;
 
 
 
@@ -33,8 +25,7 @@ using static JabNetClient.ServerCommunication;
  *
  *      static public void SendMessageToServer(string uscMessage)
  *      {
- *          //  Function logic
- *          //  Логика функции
+ *          ...
  *      }
  *      
  *      Для этой функции:
@@ -50,8 +41,7 @@ using static JabNetClient.ServerCommunication;
  *      {
  *          string receivedMessage;
  *          
- *          //  Function logic
- *          //  Логика функции
+ *          ...
  *      
  *          return receivedMessage;
  *      }
@@ -70,25 +60,15 @@ namespace JabNetClient
     {
         static void Main()
         {
-
-            //  Set the title of the console window
-            //  Устанавливаем заголовок консольного окна
             Title = "JabNet Client pre-alpha";
-
-
-            //  Set encoding type to unicode (Needed for the correct encryption by the RE system)
-            //  Переключить кодировку программы на юникод (нужно для корректной шифровки с помощью РЕ)
             OutputEncoding = System.Text.Encoding.UTF8;
 
-
-            //  Small flag for exiting the program
-            //  Упрощённая логика для закрытия программы
-            bool exit = false;
+            bool exitFlag = false;
 
 
-            //  uEK = unique encryption key in the RE system
-            //  uEK = уникальный ключь шифрования в системе РЕ
-            string uekRE;
+            //  uEK = unique RE encryption key
+            //  uEK = уникальный ключь РЕ шифрования
+            string uekRE;  //  temporary a string will later turn it into a struct
 
             //  usID = temporary unique session ID for this client
             //  usID = временный уникальный ключь доступа этой сессии для клиента
@@ -96,16 +76,10 @@ namespace JabNetClient
 
             //  Static user id (stored on the server for easier communication between the server and the client)
             //  Статический идентификатор пользователя (хранится на сервере для упрощения общения между сервером и клиентом)
-            ulong staticUID = 0;
+            UInt64 staticUID = 0;
 
 
-            //   Settings for the RE key generation function
-            //   Temporary placeholder,
-            //   it will definetely change when I will finish the GenerateRandomSecureREkey function
-            //
             //   Настройки для выбора случайного ключа шифрования
-            //   Временно выглядит непонятно я их точно переделаю
-            //   когда доделаю функцию GenerateRandomSecureREkey 
             bool parameters1 = true, parameters2 = true, parameters3 = true, parameters4 = gGenerateExtraUnicode;
 
 
@@ -117,34 +91,16 @@ namespace JabNetClient
             uekRE = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
 
 
-            //  Reset the settings to default parameters
-            //  Сбросить настройки до начальных / системных
+
+            //  Reload settings
             ResetSettings();
-
-
-            //  Update all the settings for the user chosen options
-            //
-            //  Обновляем все настройки на пользовательские
-            //
-            //  Алексей, я сам допишу эту функцию, она будет в файле GlobalSettings.cs
             ApplySettings();
-
-
-            // это тестовая часть, ее потом снеси, ок?
-            /*var a = new ServerCommunication(IPAddress.Parse("127.0.0.1"), 8000);
-            a.Start();
-            string msg;
-            while (true)
-            {
-                msg = Console.ReadLine();
-                Console.WriteLine(a.ExecuteCommand(msg));
-            }*/
 
 
 
             ProgramTask currentTask = ProgramTask.None;
 
-            int temporaryShift = 0;
+            Int32 temporaryShift = 0;
             uekRE = "1234567890 йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ";
             usID = "35абоба";
 
@@ -167,7 +123,7 @@ namespace JabNetClient
 
                         //  The static UID of our chat partner
                         //  Статический UID нашего собеседника
-                        ulong receiverUID = GetReceiverUID();
+                        UInt64 receiverUID = GetReceiverUID();
 
 
                         //  Our message to the chat partner
@@ -184,7 +140,7 @@ namespace JabNetClient
 
 
                         //  Encrypting our unique session ID
-                        //  Зашифровываем свой клю доступа
+                        //  Зашифровываем свой ключ доступа
                         string encryptedusID = ERE4(usID, uekRE, temporaryShift);
 
                         Write("\n\t\t[i]  - Зашифрованый usID: " + encryptedusID);
@@ -196,7 +152,7 @@ namespace JabNetClient
                         //
                         //  Создаём usc реквест на отправку сообщения конкретному пользователю
                         //  staticUID и usID используется для подтверждения нашей личности
-                        string uscSendMessage = CreateSendMessageRequest(encryptedMessage, receiverUID, staticUID, encryptedusID);
+                        string uscSendMessage = SendMessageRequest(encryptedMessage, receiverUID, staticUID, encryptedusID);
 
                         Write("\n\t\t[i]  - USC: " + uscSendMessage);
 
@@ -207,7 +163,7 @@ namespace JabNetClient
 
                         
                         //  Temporary function to send the message
-                        //  Времменная заглушка отвечающая за отправку сообщения
+                        //  заглушка отвечающая за отправку сообщения
                         SendAbstract(uscSendMessage);
 
 
@@ -225,12 +181,7 @@ namespace JabNetClient
                 }
 
 
-                
-                
             }
-
-
-
 
 
             /*  TryAutoAuthorisation(string path) Explained:

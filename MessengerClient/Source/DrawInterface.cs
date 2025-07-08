@@ -20,7 +20,7 @@ namespace JabNetClient
             Write("Insert console UI output");
 
 
-            List<JabNetMessage> lastMessages = new List<JabNetMessage>();
+            List<Message> lastMessages = new List<Message>();
 
 
             //  Placeholder for the UI

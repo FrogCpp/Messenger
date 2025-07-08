@@ -4,25 +4,14 @@ using System.Net.Sockets;
 using System.Text;
 
 
-//using System.Collections.Generic;       //  Will be necessary soon (probably)
-//using System.Linq;                      //  Скоро понадобятся (наверное)
-//using System.Security.Cryptography;     //
-//using System.Threading.Tasks;           //
-
-//using System.Net;                       //
-//using System.Net.Sockets;               //
-//using System.Text;                      //
-
-
-
 namespace JabNetClient
 {
     internal class ServerCommunication
     {
         private IPAddress serverAdress;
-        private int serverPort;
+        private Int32 serverPort;
         static private Socket myPersonalSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        public ServerCommunication(IPAddress StaticIpAdreesForHost, int Port)
+        public ServerCommunication(IPAddress StaticIpAdreesForHost, Int32 Port)
         {
             serverAdress = StaticIpAdreesForHost;
             serverPort = Port; 
@@ -31,7 +20,7 @@ namespace JabNetClient
         static private void SendMessageToServer(string uscMessage)
         {
             byte[] message = Encoding.UTF32.GetBytes(uscMessage);
-            int len = message.Length;
+            Int32 len = message.Length;
 
             myPersonalSocket.Send(Encoding.UTF32.GetBytes(len.ToString()));
 
@@ -40,9 +29,8 @@ namespace JabNetClient
 
         static public void SendAbstract(string uscMessage)
         {
-            //  Temporary
-            //  Временно, пока ты нормально не сделаешь отправку
-            SendMessageToServer(uscMessage);
+            //  Я    Ж Д У
+            //SendMessageToServer(uscMessage);
         }
 
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-using GyroscopicDataLibrary;
+using DataIO;
 
 
 namespace JabNetClient
@@ -25,7 +25,7 @@ namespace JabNetClient
         //  true = try to auto authorise,  false = don't auto authorise
         //  
         //  Настройка отвечает за попытку автоматической авторизации пользователя при запуске программы
-        //  true = да, пытайся автоматом авторизировать,     false = нет, не пытайся
+        //  true = да, пытайся сделать авто авторизацию,     false = нет, не пытайся
         static public bool gAutoAuthorise;
 
 
@@ -55,7 +55,7 @@ namespace JabNetClient
             //
             //  Прочесть сохранённые настройки из указанного файла
             //  False = сделать это тихо (без какого либо вывода информации))
-            List<string> data = BetterDataIO.ReadData(gPathForCustomSettings, "Settings.txt", false);
+            List<string> data = Data.Read(gPathForCustomSettings, "Settings.txt", false);
 
             if (data != null)
             {
@@ -121,7 +121,7 @@ namespace JabNetClient
             //  
             //  False1 = перезаписывать файл с настройками
             //  False2 = делать это тихо (без какого либо вывода информации)
-            BetterDataIO.SaveData(gPathForCustomSettings, "Settings.txt", data, false, "\n", false);
+            Data.Save(gPathForCustomSettings, "Settings.txt", data, false, "\n", false);
         }
              //  Changing the settings for the user's choice
              //  Изменяем настройки на пользовательские
@@ -136,6 +136,6 @@ namespace JabNetClient
             return encodedData;
         }
              //  Encode the current settings by transforming them into a txt file
-             //  Закодируем текущие настройки, превратя их в данные для .тхт файла
+             //  Закодируем текущие настройки, превратя их в данные для файла
     }
 }

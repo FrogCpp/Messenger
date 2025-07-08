@@ -48,7 +48,7 @@ namespace JabNetClient
                 //    "1234567890 йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ"
                 if (message != "" && message != null)
                 {
-                    for (int i = 0; i < message.Length; i++)
+                    for (Int32 i = 0; i < message.Length; i++)
                     {
                         if (uekRE.IndexOf(message[i]) == -1)
                         {
@@ -99,9 +99,9 @@ namespace JabNetClient
              //  Проверка строки на соответствие кодировке UTF-8
 
 
-        static public ulong GetReceiverUID()
+        static public UInt64 GetReceiverUID()
         {
-            ulong chosenReceiverUID = 0;
+            UInt64 chosenReceiverUID = 0;
             string userInput;
 
             while (chosenReceiverUID == 0)
@@ -116,7 +116,7 @@ namespace JabNetClient
 
                 //  Try parsing into a 64 bit number
                 //  Пытаемся преобразовать в 64 битное число
-                ulong.TryParse(userInput, out chosenReceiverUID);
+                UInt64.TryParse(userInput, out chosenReceiverUID);
             }
 
             Write("\n\t\t[i]  - Выбранный ID собеседника: " + chosenReceiverUID);

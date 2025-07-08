@@ -310,3 +310,7 @@ MessengerClient/bin/Release/CompactDateTimeLibrary.dll.config
 MessengerClient/bin/Release/GyroscopicDataLibrary.dll
 MessengerClient/bin/Release/GyroscopicDataLibrary.dll.config
 MessengerClient/bin/Release/GyroscopicDataLibrary.xml
+MessengerClient/bin/Release/DataIO.dll.config
+MessengerClient/bin/Release/DataIO.xml
+MessengerClient/bin/Release/AVcontrol.dll.config
+MessengerClient/bin/Release/DateTime4b.dll.config

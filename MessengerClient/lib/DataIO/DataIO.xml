@@ -1,20 +1,19 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>GyroscopicDataLibrary</name>
+        <name>DataIO</name>
     </assembly>
     <members>
-        <member name="M:GyroscopicDataLibrary.BetterDataIO.SaveBinaryData(System.String,System.String,System.Collections.Generic.List{System.Byte[]},System.Boolean,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String)">
+        <member name="M:DataIO.Data.SaveBinary(System.String,System.String,System.Collections.Generic.List{System.Byte[]},System.Boolean,System.String,System.Boolean,System.Boolean,System.String,System.String,System.String)">
             <summary>
             
-            Code purpose: <br/>
-             - Saves the byte[] binary <paramref name="data"/> 
+            Saves the byte[] binary <paramref name="data"/> 
             to a file <paramref name="fileName"/> at the chosen <paramref name="path"/>
             
             </summary>
             
             <param name="path"> - path for the file location</param>
-            <param name="fileName"> - name for the final file</param>
+            <param name="fileName"> - name for the output file</param>
             <param name="data"> - byte[] array of our data</param>
             <param name="dontOverwrite"> - flag for not overwriting the contents in the file</param>
             <param name="splitDataBy"> - splitter for the data array</param>

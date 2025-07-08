@@ -1,5 +1,4 @@
-﻿//using System;
-//using System.Net;
+﻿using System;
 
 
 using static System.Console;
@@ -34,7 +33,7 @@ namespace JabNetClient
 
             //  Static user id (stored on the server for easier communication between the server and the client)
             //  Статический идентификатор пользователя (хранится на сервере для упрощения общения между сервером и клиентом)
-            ulong staticUID = 0;
+            UInt64 staticUID = 0;
 
 
             //   Settings for the RE key generation function

@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System;
+using System.Numerics;
 using System.Security.Cryptography;
 
 
@@ -10,7 +11,7 @@ namespace JabNetClient
 {
     internal class Authorisation
     {
-        static public string TryAuthorise(string uekRE, ref ulong staticUID)
+        static public string TryAuthorise(string uekRE, ref UInt64 staticUID)
         {
             //  uekRE - unique RE encryption key
             //  It is known both by the user and the client to this point
@@ -107,11 +108,11 @@ namespace JabNetClient
                 {
 
                     //  Try to parse the server message at ID[1]
-                    //  to a ulong value for the staticUID 
+                    //  to a UInt64 value for the staticUID 
                     //
                     //  Пытаемся преобразовать строку под индексом[1] в массиве сообщений от сервера
-                    //  В числовое значение ulong для staticUID
-                    if (ulong.TryParse(serverResponse[1], out staticUID))
+                    //  В числовое значение UInt64 для staticUID
+                    if (UInt64.TryParse(serverResponse[1], out staticUID))
                     {
 
                         //  Store the future unique session ID here
@@ -173,156 +174,156 @@ namespace JabNetClient
              //  Иначе - 0 и null    соотвественно
 
 
-        static public string TryAutoAuthorise(string uekRE, ref ulong staticUID)
+        static public string TryAutoAuthorise(string uekRE, ref UInt64 staticUID)
         {
-            //  uekRE - unique RE encryption key
-            //  It is known both by the user and the client to this point
-            //  It will be used to encrypt the send and recieved messages between the server and the client
-            //
-            //  uekRE - уникальный ключ шифрования РЕ
-            //  На данный момент его знает и клиент и сервер
-            //  Он будет использоваться для шифрования полученных и отправленных сообщений между клиентом и сервером
+            ////  uekRE - unique RE encryption key
+            ////  It is known both by the user and the client to this point
+            ////  It will be used to encrypt the send and recieved messages between the server and the client
+            ////
+            ////  uekRE - уникальный ключ шифрования РЕ
+            ////  На данный момент его знает и клиент и сервер
+            ////  Он будет использоваться для шифрования полученных и отправленных сообщений между клиентом и сервером
 
 
-            //  staticUID - short unique user ID that is persistent (doesn't change)
-            //  It will be send to the client by the server to allow for easier communication
-            //  It will not affect the encryption proccess of the messages
-            //
-            //  staticUID - короткий уникальный ID пользователя который статичный
-            //  (никогда не меняется после создания аккаунта)
-            //  Он поможет упростить коммуникацию между пользователем и клиентом
-            //  Он не будет влиять на процесс шифрования сообщений
+            ////  staticUID - short unique user ID that is persistent (doesn't change)
+            ////  It will be send to the client by the server to allow for easier communication
+            ////  It will not affect the encryption proccess of the messages
+            ////
+            ////  staticUID - короткий уникальный ID пользователя который статичный
+            ////  (никогда не меняется после создания аккаунта)
+            ////  Он поможет упростить коммуникацию между пользователем и клиентом
+            ////  Он не будет влиять на процесс шифрования сообщений
 
 
-            string[] storedAuthKeys;// = ExtractAuthKey(gPathForStoredAuthKey);
+            //string[] storedAuthKeys = ExtractAuthKey(gPathForStoredAuthKey);
 
 
-            //  For encryption:
-            //     storedAuthKeys[0] = cipher version for encryption
-            //     storedAuthKeys[1] = actual authentication key
-            //     storedAuthKeys[2] = special encryption key for the auth request
-            string encryptedAuthKey;// = Encrypt(storedAuthKeys[0], storedAuthKeys[1], storedAuthKeys[2]);
+            ////  For encryption:
+            ////     storedAuthKeys[0] = cipher version for encryption
+            ////     storedAuthKeys[1] = actual authentication key
+            ////     storedAuthKeys[2] = special encryption key for the auth request
+            //string encryptedAuthKey = Encrypt(storedAuthKeys[0], storedAuthKeys[1], storedAuthKeys[2]);
 
 
-            //  For the usc message:
-            //     storedAuthKeys[4] = stores the staticUID for the server 
-            //        (for a faster decryption and authentication check)
-            //
-            //  Для usc сообщения:
-            //     storedAuthKeys[4] = хранит staticUID для того
-            //          чтобы серверу ускорить процесс аутентификации
-            string uscMessage;//= CreateAutoAuthRequest(storedAuthKeys[4], encryptedAuthKey, true);
+            ////  For the usc message:
+            ////     storedAuthKeys[4] = stores the staticUID for the server 
+            ////        (for a faster decryption and authentication check)
+            ////
+            ////  Для usc сообщения:
+            ////     storedAuthKeys[4] = хранит staticUID для того
+            ////          чтобы серверу ускорить процесс аутентификации
+            //string uscMessage = CreateAutoAuthRequest(storedAuthKeys[4], encryptedAuthKey, true);
 
 
-            //  Send an AUTO auth request message to the server
-            //
-            //  Отправляем сообщение серверу - АВТОМАТИЧЕСКИЙ запрос на вход
-            //
-            //
-            //  Лёш эта функция тебе - нужно просто отправить серваку сообщение (строку)
-            //  Сообщение уже зашифровано и содержит всю необходимую информацию
-            //
-            //  В свою очередь сервер должен будет:
-            //      > Его расшифровать (специальным ключом для авто верификации)
-            //      > Проверить специальный ключь верификации
-            //      > В случае неудачи отправить "Denied" ну или на что мы там договорились
-            //      > В случае удачи:
-            //            > Сгенерировать 1024 битное число - уникальный код сессии для авторизации пользователя
-            //            > Зашифровать сообщение: "разрешено~статичныйUID~1024код"
-            //             > Если у клиента в запросе была просьба о повторной генерации специального ключа
-            //                   > Дополнительно добавить в сообщение серию для специального ключа
-            //                       (и не забыть зашифровать)
-            //            > Отправить зашифрованное сообщение пользователю
+            ////  Send an AUTO auth request message to the server
+            ////
+            ////  Отправляем сообщение серверу - АВТОМАТИЧЕСКИЙ запрос на вход
+            ////
+            ////
+            ////  Лёш эта функция тебе - нужно просто отправить серваку сообщение (строку)
+            ////  Сообщение уже зашифровано и содержит всю необходимую информацию
+            ////
+            ////  В свою очередь сервер должен будет:
+            ////      > Его расшифровать (специальным ключом для авто верификации)
+            ////      > Проверить специальный ключь верификации
+            ////      > В случае неудачи отправить "Denied" ну или на что мы там договорились
+            ////      > В случае удачи:
+            ////            > Сгенерировать 1024 битное число - уникальный код сессии для авторизации пользователя
+            ////            > Зашифровать сообщение: "разрешено~статичныйUID~1024код"
+            ////             > Если у клиента в запросе была просьба о повторной генерации специального ключа
+            ////                   > Дополнительно добавить в сообщение серию для специального ключа
+            ////                       (и не забыть зашифровать)
+            ////            > Отправить зашифрованное сообщение пользователю
             //SendMessageToServer(uscMessage);
 
 
-            //  Receive server response to our auth request
-            //  Получить ответ сервера на наш запрос на вход
-            //
-            //  Лёш эта функция тоже для тебя
-            //  С шифрованиием мудрить не надо
-            //  Просто получить сообщение от сервера
-            string encryptedResponse;// = ReceiveMessageFromServer();
+            ////  Receive server response to our auth request
+            ////  Получить ответ сервера на наш запрос на вход
+            ////
+            ////  Лёш эта функция тоже для тебя
+            ////  С шифрованиием мудрить не надо
+            ////  Просто получить сообщение от сервера
+            //string encryptedResponse = ReceiveMessageFromServer();
 
 
-            //  Split the server response into different parts
-            //  For easier using of it
-            //
-            //  Разбиваем ответ сервера на куски в массив,
-            //  для более удобной работы с ним
-            string[] serverResponse = { "" };// = Decrypt(encryptedResponse).Split("~");
+            ////  Split the server response into different parts
+            ////  For easier using of it
+            ////
+            ////  Разбиваем ответ сервера на куски в массив,
+            ////  для более удобной работы с ним
+            //string[] serverResponse = Decrypt(encryptedResponse).Split("~");
 
-            //  If we don't receive "Denied"   <-- Whatever chosen "access denied" message from the server
-            //  Если мы не получили "Denied"   <-- Смотря какую ключевую фразу мы придумаем для "вход запрещё"
-            if (serverResponse[0] != "Denied")
-            {
+            ////  If we don't receive "Denied"   <-- Whatever chosen "access denied" message from the server
+            ////  Если мы не получили "Denied"   <-- Смотря какую ключевую фразу мы придумаем для "вход запрещё"
+            //if (serverResponse[0] != "Denied")
+            //{
 
-                //  If the server message array has a realistic length after splitting
-                //  We are excpecting the server to send us either:
-                //  "Denied"
-                //  or "Allowed~staticUID~usID"
-                //
-                //  Если после разделения строки на массив у него реалистичная длина
-                //  Мы ожидаем получить от сервера:
-                //  либо "Denied"  (доступ запрещён)
-                //  либо "Allowed~staticUID~usID"
-                if (serverResponse.Length == 4)
-                {
+            //    //  If the server message array has a realistic length after splitting
+            //    //  We are excpecting the server to send us either:
+            //    //  "Denied"
+            //    //  or "Allowed~staticUID~usID"
+            //    //
+            //    //  Если после разделения строки на массив у него реалистичная длина
+            //    //  Мы ожидаем получить от сервера:
+            //    //  либо "Denied"  (доступ запрещён)
+            //    //  либо "Allowed~staticUID~usID"
+            //    if (serverResponse.Length == 4)
+            //    {
 
-                    //  Try to parse the server message at ID[1]
-                    //  to a ulong value for the staticUID 
-                    //
-                    //  Пытаемся преобразовать строку под индексом[1] в массиве сообщений от сервера
-                    //  В числовое значение ulong для staticUID
-                    if (ulong.TryParse(serverResponse[1], out staticUID))
-                    {
+            //        //  Try to parse the server message at ID[1]
+            //        //  to a UInt64 value for the staticUID 
+            //        //
+            //        //  Пытаемся преобразовать строку под индексом[1] в массиве сообщений от сервера
+            //        //  В числовое значение UInt64 для staticUID
+            //        if (UInt64.TryParse(serverResponse[1], out staticUID))
+            //        {
 
-                        //  Store the future unique session ID here
-                        //  Храним будующий уникальный ID сессии здесь
-                        string usID = "";
-
-
-                        //if (TryParseUSID(serverResponse[2], ref byte[] usID))
-                        //{
-                            //if (CheckForNewAuthKey(serverResponse[3]))
-                            //{
-                                //  TryParseUSID is a custom function that I will make
-                                //  It will try to parse a string number to an array of 128 bytes
-                                //  (Or a 1024 bit binary integer)
-                                //
-                                //  If the parsing fails, the function will return false = parsing error
-                                //
-                                //
-                                //  TryParseUSID это не системная функция которую мне предстоит сделать
-                                //  Она будет пытаться преобразовать строку в массив 128 байт
-                                //  (Или в двоичное число состоящее из 1024 бит)
-                                //
-                                //  Если преобразование не удастся, функия вернёт false = ошибка преобразования
+            //            //  Store the future unique session ID here
+            //            //  Храним будующий уникальный ID сессии здесь
+            //            string usID = "";
 
 
+            //            if (TryParseUSID(serverResponse[2], ref byte[] usID))
+            //            {
+            //                if (CheckForNewAuthKey(serverResponse[3]))
+            //                {
+            //                    //  TryParseUSID is a custom function that I will make
+            //                    //  It will try to parse a string number to an array of 128 bytes
+            //                    //  (Or a 1024 bit binary integer)
+            //                    //
+            //                    //  If the parsing fails, the function will return false = parsing error
+            //                    //
+            //                    //
+            //                    //  TryParseUSID это не системная функция которую мне предстоит сделать
+            //                    //  Она будет пытаться преобразовать строку в массив 128 байт
+            //                    //  (Или в двоичное число состоящее из 1024 бит)
+            //                    //
+            //                    //  Если преобразование не удастся, функия вернёт false = ошибка преобразования
 
 
-                                //  If the authorisation process was successfull
-                                //  And we successfully got the staticUID and the usID
-                                //  We return the usID through return, and the staticUID through 'ref'
-                                //
-                                //  Если авторизации окажется успешной
-                                //  (и мы успешно получили staticUID и udID)
-                                //  Мы возвращаем usID через return, и staticUID через 'ref'
-                                //return usID;
-                            //}
-                        //}
-                    }
-                }
 
-                //  If an unexpected error happens - reset the static uID to 0
-                //  So the program doesn't think the login was successfull when in reality it wasn't
-                //
-                //  Если случится непредвиденная ошибка с парсингом ответа сервера
-                //  Нужно сбросить статичный ID в 0
-                //  Это необходимо для того, чтобы программа не получила ложно положительный результат входа
-                //  (чтобы не было ситуации - вход выполнен небыл, а программа считает что вход удался)
-                staticUID = 0;
+
+            //                    //  If the authorisation process was successfull
+            //                    //  And we successfully got the staticUID and the usID
+            //                    //  We return the usID through return, and the staticUID through 'ref'
+            //                    //
+            //                    //  Если авторизации окажется успешной
+            //                    //  (и мы успешно получили staticUID и udID)
+            //                    //  Мы возвращаем usID через return, и staticUID через 'ref'
+            //                    return usID;
+            //                }
+            //            }
+            //        }
+            //    }
+
+            //    //  If an unexpected error happens - reset the static uID to 0
+            //    //  So the program doesn't think the login was successfull when in reality it wasn't
+            //    //
+            //    //  Если случится непредвиденная ошибка с парсингом ответа сервера
+            //    //  Нужно сбросить статичный ID в 0
+            //    //  Это необходимо для того, чтобы программа не получила ложно положительный результат входа
+            //    //  (чтобы не было ситуации - вход выполнен небыл, а программа считает что вход удался)
+            //    staticUID = 0;
 
                 //  Return authorisation error for the usID
                 //  Возвращаем ошибку авторизации для  usID
@@ -376,8 +377,8 @@ namespace JabNetClient
 
             // Do the logic here
 
-            return null;
-        }
+            //return null;
+        //}
              //  File an automatic authorisation request and send it to the server
              //  If successfull - return staticUID and usID
              //  Else - 0 and Null   respectively
