@@ -25,7 +25,7 @@ namespace JabNetClient
 
             //  uEK = unique encryption key in the RE system
             //  uEK = уникальный ключь шифрования в системе РЕ
-            string uekRE;
+            string reKey;
 
             //  usID = temporary unique session ID for this client
             //  usID = временный уникальный ключь доступа этой сессии для клиента
@@ -50,7 +50,7 @@ namespace JabNetClient
             //
             //  Генерируем случайный надёжный ключ РЕ
             //  (Лёш эту функцию сделаю я)
-            uekRE = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
+            reKey = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
 
 
             
@@ -59,7 +59,7 @@ namespace JabNetClient
             //
             //  Эта функция для тебя,
             //  в отдельном файле будет механизм работы который нужно реализовать
-            SecureConnectionWithServer(uekRE);
+            SecureConnectionWithServer(reKey);
 
 
             //  gAutoAuthorise = global setting for auto authorisation
@@ -80,12 +80,12 @@ namespace JabNetClient
 
                 //  If the auto auth fails, try to manually authorise the user
                 //  Если авто авторизация не удастся, пробуем авторизовать пользователя вручную
-                if (staticUID == 0) usID = TryAuthorise(uekRE, ref staticUID);
+                if (staticUID == 0) usID = TryAuthorise(reKey, ref staticUID);
             }
 
             //  Try to authorise manually
             //  Пробуем авторизироваться вручную
-            else usID = TryAuthorise(uekRE, ref staticUID);
+            else usID = TryAuthorise(reKey, ref staticUID);
 
 
             //  If the authorisation was successful, do the client logic
@@ -173,11 +173,11 @@ namespace JabNetClient
                         break;
 
                     case ProgramTask.ChangeLogin:
-                        //TryChangeLogin(uekRE, usID, staticUID);
+                        //TryChangeLogin(reKey, usID, staticUID);
                         break;
 
                     case ProgramTask.ChangePassword:
-                        //TryChangePassword(uekRE, usID, staticUID);
+                        //TryChangePassword(reKey, usID, staticUID);
                         break;
 
                     case ProgramTask.GetContacts:
@@ -195,7 +195,7 @@ namespace JabNetClient
 
                         //  Also the void type is temporary
                         //  И ещё когда я закончу функция точно будет НЕ void
-                        RequestContacts(uekRE, usID, staticUID);
+                        RequestContacts(reKey, usID, staticUID);
                         break;
 
                     case ProgramTask.GetGroups:
@@ -213,7 +213,7 @@ namespace JabNetClient
 
                         //  Also the void type is temporary
                         //  И ещё когда я закончу функция точно будет НЕ void
-                        RequestGroups(uekRE, usID, staticUID);
+                        RequestGroups(reKey, usID, staticUID);
                         break;
 
                     case ProgramTask.GetHistory:
@@ -236,7 +236,7 @@ namespace JabNetClient
                         //  
                         //  Мы также передаём в функцию детали шифрования
                         //  Потому что чуть позже планируем отправлять зашифрованный запрос серверу
-                        RequestHistory(uekRE, usID, staticUID, selectedChat);
+                        RequestHistory(reKey, usID, staticUID, selectedChat);
                         break;
 
                 }

@@ -11,7 +11,7 @@ namespace JabNetClient
     internal class MessagingLogic
     {
 
-        static public string CreateMessage(string uekRE)
+        static public string CreateMessage(string reKey)
         {
             string message = "";
 
@@ -42,15 +42,15 @@ namespace JabNetClient
                 if (!IsValidUTF8(message)) message = "";
 
 
-                //  TEMPORARY checking for containing non supported uekRE characters 
-                //  ВРЕМЕННАЯ проверка на наличие символов не имеющихся в uekRE
-                //  - Это проверка на наличие не русский сиволов, потому что на данный момент uekRE содержит только:
+                //  TEMPORARY checking for containing non supported reKey characters 
+                //  ВРЕМЕННАЯ проверка на наличие символов не имеющихся в reKey
+                //  - Это проверка на наличие не русский сиволов, потому что на данный момент reKey содержит только:
                 //    "1234567890 йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ"
                 if (message != "" && message != null)
                 {
                     for (Int32 i = 0; i < message.Length; i++)
                     {
-                        if (uekRE.IndexOf(message[i]) == -1)
+                        if (reKey.IndexOf(message[i]) == -1)
                         {
                             i += message.Length;
                             message = "";

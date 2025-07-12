@@ -11,13 +11,13 @@ namespace JabNetClient
 {
     internal class Authorisation
     {
-        static public string TryAuthorise(string uekRE, ref UInt64 staticUID)
+        static public string TryAuthorise(string reKey, ref UInt64 staticUID)
         {
-            //  uekRE - unique RE encryption key
+            //  reKey - unique RE encryption key
             //  It is known both by the user and the client to this point
             //  It will be used to encrypt the send and recieved messages between the server and the client
             //
-            //  uekRE - уникальный ключ шифрования РЕ
+            //  reKey - уникальный ключ шифрования РЕ
             //  На данный момент его знает и клиент и сервер
             //  Он будет использоваться для шифрования полученных и отправленных сообщений между клиентом и сервером
 
@@ -44,11 +44,11 @@ namespace JabNetClient
 
             //  Encrypt the user login
             //  Зашифровываем полученный логин пользователя
-            string encryptedLogin;// = Encrypt(gCipherVersion, login, uekRE);
+            string encryptedLogin;// = Encrypt(gCipherVersion, login, reKey);
 
             //  Encrypt the user password
             //  Зашифровываем полученный пароль пользователя
-            string encryptedPassword;// = Encrypt(gCipherVersion, password, uekRE);
+            string encryptedPassword;// = Encrypt(gCipherVersion, password, reKey);
 
 
             //  Creating a special auth request message to send to the server
@@ -174,13 +174,13 @@ namespace JabNetClient
              //  Иначе - 0 и null    соотвественно
 
 
-        static public string TryAutoAuthorise(string uekRE, ref UInt64 staticUID)
+        static public string TryAutoAuthorise(string reKey, ref UInt64 staticUID)
         {
-            ////  uekRE - unique RE encryption key
+            ////  reKey - unique RE encryption key
             ////  It is known both by the user and the client to this point
             ////  It will be used to encrypt the send and recieved messages between the server and the client
             ////
-            ////  uekRE - уникальный ключ шифрования РЕ
+            ////  reKey - уникальный ключ шифрования РЕ
             ////  На данный момент его знает и клиент и сервер
             ////  Он будет использоваться для шифрования полученных и отправленных сообщений между клиентом и сервером
 
@@ -338,7 +338,7 @@ namespace JabNetClient
                 * and a random RE encryption key
                 * 
                 * And send the client: the auth key, and the encryption key
-                *    >  Encrypted with the old uekRE key
+                *    >  Encrypted with the old reKey key
                 *    
                 * The client will store them both in a file at a chosen path(pathtostoredencryptedaccountdetails)
                 * 
@@ -352,20 +352,20 @@ namespace JabNetClient
                 * If the decryption is successful 
                 * {
                 *    > Authorise the client
-                *    > Exchange uekRE
+                *    > Exchange reKey
                 *    
                 *    > If the client has auto authorise enabled 
                 *    {
                 *         > Generate a new encryption key, and a new auth key
                 *         >
-                *         > Enrypt the auth key, and the encryption key with the uekRE
+                *         > Enrypt the auth key, and the encryption key with the reKey
                 *         > Send the enrypted details back to the client
                 *         >
                 *         > Save the new encryption key and auth key
                 *         >
                 *         
                 *         < The client will receive the details
-                *         < The client will decrypt them with the uekRE
+                *         < The client will decrypt them with the reKey
                 *         < The client will save the decrypted at the chosen path 
                 *         < (pathtostoredencryptedaccountdetails)
                 *    }     
@@ -388,7 +388,7 @@ namespace JabNetClient
              //  Иначе - 0 и null    соотвественно
 
 
-        static public void SecureConnectionWithServer(string uekRE)
+        static public void SecureConnectionWithServer(string reKey)
         {
 
             //  Temporary placeholder for the enryption key generator
@@ -396,12 +396,12 @@ namespace JabNetClient
             string temporaryEncryptionKey = GenerateRandomSecureREkey(gCipherVersion, true, true, true, false);
 
 
-            //  Encrypting our unique RE encryption key (uekRE)
+            //  Encrypting our unique RE encryption key (reKey)
             //  With the new generated temporary encryption key
             //
             //  Зашифровываем наш уникальный ключ шифрования (uek)
             //  С помощью нового временного сгенерированного ключа шифрования
-            string ourEcryptedMessage;// = Encrypt(gCipherVersion, uekRE, temporaryEncryptionKey);
+            string ourEcryptedMessage;// = Encrypt(gCipherVersion, reKey, temporaryEncryptionKey);
 
 
             //  Create a message for the connection request for the server

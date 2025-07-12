@@ -13,7 +13,6 @@ using static JabNetClient.GlobalSettings;
 using static JabNetClient.GlobalVariables;
 
 using static JabNetClient.ServerCommunication;
-using System.Collections.Generic;
 
 
 
@@ -61,14 +60,13 @@ namespace JabNetClient
         static void Main()
         {
             Title = "JabNet Client pre-alpha";
-            OutputEncoding = System.Text.Encoding.UTF8;
+            OutputEncoding = System.Text.Encoding.Unicode;
 
             bool exitFlag = false;
 
 
-            //  uEK = unique RE encryption key
-            //  uEK = уникальный ключь РЕ шифрования
-            string uekRE;  //  temporary a string will later turn it into a struct
+            //  reKey = unique RE encryption key
+            string reKey;  //  temporary a string will later turn it into a struct
 
             //  usID = temporary unique session ID for this client
             //  usID = временный уникальный ключь доступа этой сессии для клиента
@@ -88,7 +86,7 @@ namespace JabNetClient
             //
             //  Генерируем случайный надёжный ключ РЕ
             //  (Лёш эту функцию сделаю я)
-            uekRE = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
+            //reKey = GenerateRandomSecureREkey(gCipherVersion, parameters1, parameters2, parameters3, parameters4);
 
 
 
@@ -101,7 +99,7 @@ namespace JabNetClient
             ProgramTask currentTask = ProgramTask.None;
 
             Int32 temporaryShift = 0;
-            uekRE = "1234567890 йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ";
+            reKey = "1234567890 йцукенгшщзхъфывапролджэячсмитьбюёЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮЁ";
             usID = "35абоба";
 
 
@@ -126,22 +124,21 @@ namespace JabNetClient
                         UInt64 receiverUID = GetReceiverUID();
 
 
-                        //  Our message to the chat partner
-                        //  Наше сообщение для собеседника
-                        string message = CreateMessage(uekRE);
+                        //  Console ui (temporary)
+                        string message = CreateMessage(reKey);
 
 
-                        //  Encrypting our message
+                        //  Encrypting message
                         //  Зашифровываем наше сообщение
-                        string encryptedMessage = ERE4(message, uekRE, temporaryShift);
+                        string encryptedMessage = ERE4(message, reKey, temporaryShift);
 
                         Write("\n\t\t[i]  - Зашифрованое сообщение: " + encryptedMessage);
 
 
 
-                        //  Encrypting our unique session ID
+                        //  Encrypting session ID
                         //  Зашифровываем свой ключ доступа
-                        string encryptedusID = ERE4(usID, uekRE, temporaryShift);
+                        string encryptedusID = ERE4(usID, reKey, temporaryShift);
 
                         Write("\n\t\t[i]  - Зашифрованый usID: " + encryptedusID);
 
@@ -162,8 +159,7 @@ namespace JabNetClient
 
 
                         
-                        //  Temporary function to send the message
-                        //  заглушка отвечающая за отправку сообщения
+                        //  Temporary
                         SendAbstract(uscSendMessage);
 
 
@@ -192,7 +188,7 @@ namespace JabNetClient
                 * and a random RE encryption key
                 * 
                 * And send the client: the auth key, and the encryption key
-                *    >  Encrypted with the old uekRE key
+                *    >  Encrypted with the old reKey key
                 *    
                 * The client will store them both in a file at a chosen path(pathtostoredencryptedaccountdetails)
                 * 
@@ -206,20 +202,20 @@ namespace JabNetClient
                 * If the decryption is successful 
                 * {
                 *    > Authorise the client
-                *    > Exchange uekRE
+                *    > Exchange reKey
                 *    
                 *    > If the client has auto authorise enabled 
                 *    {
                 *         > Generate a new encryption key, and a new auth key
                 *         >
-                *         > Enrypt the auth key, and the encryption key with the uekRE
+                *         > Enrypt the auth key, and the encryption key with the reKey
                 *         > Send the enrypted details back to the client
                 *         >
                 *         > Save the new encryption key and auth key
                 *         >
                 *         
                 *         < The client will receive the details
-                *         < The client will decrypt them with the uekRE
+                *         < The client will decrypt them with the reKey
                 *         < The client will save the decrypted at the chosen path 
                 *         < (pathtostoredencryptedaccountdetails)
                 *    }     

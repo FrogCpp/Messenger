@@ -55,14 +55,14 @@ namespace JabNetClient
 
 
 
-        static public void RequestContacts(string uekRE, string usID, UInt64 staticUID)
+        static public void RequestContacts(string reKey, string usID, UInt64 staticUID)
         {
             //if(CheckForAuthorisation())
             //{
             //string uscRequest = "";
 
             //  Create a universal server command to send it to the server
-            //uscRequest = CreateContactsRequest(uekRE, usID, staticUID);
+            //uscRequest = CreateContactsRequest(reKey, usID, staticUID);
 
             //SendMessageToServer(uscRequest);
 
@@ -88,14 +88,14 @@ namespace JabNetClient
         }
 
 
-        static public void RequestGroups(string uekRE, string usID, UInt64 staticUID)
+        static public void RequestGroups(string reKey, string usID, UInt64 staticUID)
         {
             //if(CheckForAuthorisation())
             //{
             //string uscRequest = "";
 
             //  Create a universal server command to send it to the server
-            //uscRequest = CreateGroupsRequest(uekRE, usID, staticUID);
+            //uscRequest = CreateGroupsRequest(reKey, usID, staticUID);
 
             //SendMessageToServer(uscRequest);
 
@@ -121,14 +121,14 @@ namespace JabNetClient
         }
 
 
-        static public void RequestHistory(string uekRE, string usID, UInt64 staticUID, string selectedChat)
+        static public void RequestHistory(string reKey, string usID, UInt64 staticUID, string selectedChat)
         {
             //if(CheckForAuthorisation())
             //{
                 //string uscRequest = "";
 
                 //  Create a universal server command to send it to the server
-                //uscRequest = CreateHistoryRequest(uekRE, usID, staticUID);
+                //uscRequest = CreateHistoryRequest(reKey, usID, staticUID);
 
                 //SendMessageToServer(uscRequest);
 

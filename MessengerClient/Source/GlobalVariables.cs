@@ -43,19 +43,19 @@
 
 
 
-            //  Window task for generating a new secure uekRE
-            //  Команда для генерации нового уникального uekRE
+            //  Window task for generating a new secure reKey
+            //  Команда для генерации нового уникального reKey
             GenerateSecureKey,
 
-            //  Communication task for changing the current uekRE to a new chosen one (fast but unsecure)
+            //  Communication task for changing the current reKey to a new chosen one (fast but unsecure)
             //  Комуникативная задача, которая заменяет ключ расшифровки между собеседниками на новый выбранный
             //  Быстрый обмен, но технически не очень безопасный
             FastKeyExchange,
 
-            //  Communication task for both clients to change their current uekRE for a new one
+            //  Communication task for both clients to change their current reKey for a new one
             //  Includes the proccess of securely exchanging them with 4 extra messages
             // 
-            //  Задача для обоих клиентов, заключается в создании нового ключа uekRE и замены старого на новый
+            //  Задача для обоих клиентов, заключается в создании нового ключа reKey и замены старого на новый
             //  В процесс входит безопасный обмен ими через 4 сообщения
             SecureKeyExchange,
 
