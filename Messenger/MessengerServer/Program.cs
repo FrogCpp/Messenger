@@ -10,8 +10,6 @@ namespace MessengerServer
 
         public static readonly ConcurrentQueue<UserTask> TaskList = new();
 
-        public static readonly ConcurrentDictionary<string, User> usersList = new();
-
         static void Main(string[] args)
         {
 
