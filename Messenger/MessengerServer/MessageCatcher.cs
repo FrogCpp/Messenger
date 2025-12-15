@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
+using NetworkDriver;
 
 namespace MessengerServer
 {
@@ -13,9 +14,9 @@ namespace MessengerServer
         private Socket _listenerSocket;
 
         private ConcurrentQueue<UserTask> _taskList = null;
-        private ConcurrentDictionary<string, User> _userList = null;
+        private ConcurrentDictionary<int, User> _userList = null;
 
-        public MessageCatcher(ref ConcurrentQueue<UserTask> tsk, ref ConcurrentDictionary<string, User> usr)
+        public MessageCatcher(ref ConcurrentQueue<UserTask> tsk, ref ConcurrentDictionary<int, User> usr)
         {
             _listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 111111));
