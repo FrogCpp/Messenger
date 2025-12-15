@@ -13,17 +13,16 @@ namespace MessengerServer
     {
         private Socket _listenerSocket;
 
-        private ConcurrentQueue<UserTask> _taskList = null;
         private ConcurrentDictionary<int, User> _userList = null;
+        private TaskHandler _taskEx = null;
 
-        public MessageCatcher(ref ConcurrentQueue<UserTask> tsk, ref ConcurrentDictionary<int, User> usr)
+        public MessageCatcher(ref TaskHandler tskEx, ref ConcurrentDictionary<int, User> usr)
         {
             _listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            _listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 111111));
+            _listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 18742));
             _listenerSocket.Listen(10);
 
-
-            _taskList = tsk;
+            _taskEx = tskEx;
             _userList = usr;
         }
 
@@ -36,11 +35,14 @@ namespace MessengerServer
                 {
                     Socket clientSocket = _listenerSocket.Accept();
 
-                    byte[] buffer = new byte[1024];
-                    clientSocket.Receive(buffer);
+                    MessageSample msg = new();
 
+                    if (!CommunicationManagement.ReadMessage(clientSocket, out msg))
+                    {
+                        clientSocket.Close();
+                    }
 
-
+                    _taskEx.StartTask(clientSocket, msg);
                 }
                 catch (SocketException)
                 {

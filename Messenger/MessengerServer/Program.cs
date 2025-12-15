@@ -2,15 +2,18 @@
 using System;
 using System.Collections.Concurrent;
 using NetworkDriver;
+using System.Net.Sockets;
 
 namespace MessengerServer
 {
     internal class Program()
     {
-        /*прим. для себя: здесь называем переменные так: _a - приватные; a - публичные; A - функции и классы*/
+        /*
+         * прим. для себя: здесь называем переменные так: _a - приватные; a - публичные; A - функции и классы
+         */
 
-        public static readonly ConcurrentQueue<UserTask> TaskList = new();
-        public static readonly ConcurrentDictionary<int, User> UserList = new();
+        public static ConcurrentDictionary<int, User> UserList = new();
+        public TaskHandler taskEx = new(ref UserList);
 
         static void Main(string[] args)
         {
@@ -20,6 +23,6 @@ namespace MessengerServer
 
     struct User 
     {
-        public int a;
+        public Socket socket;
     }
 }
