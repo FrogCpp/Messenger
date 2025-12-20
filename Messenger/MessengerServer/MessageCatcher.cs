@@ -1,11 +1,12 @@
-﻿using System;
+﻿using NetworkDriver;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
-using NetworkDriver;
+using System.Threading.Channels;
 
 namespace MessengerServer
 {
@@ -13,17 +14,17 @@ namespace MessengerServer
     {
         private Socket _listenerSocket;
 
-        private ConcurrentDictionary<int, User> _userList = null;
-        private TaskHandler _taskEx = null;
+        private ConcurrentDictionary<Guid, User> _userList = null;
+        private static Channel<TaskHandler.TaskSample> _queue = null;
 
-        public MessageCatcher(ref TaskHandler tskEx, ref ConcurrentDictionary<int, User> usr)
+        public MessageCatcher(ConcurrentDictionary<Guid, User> usr, Channel<TaskHandler.TaskSample> que)
         {
             _listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             _listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 18742));
             _listenerSocket.Listen(10);
 
-            _taskEx = tskEx;
             _userList = usr;
+            _queue = que;
         }
 
 
@@ -42,7 +43,11 @@ namespace MessengerServer
                         clientSocket.Close();
                     }
 
-                    _taskEx.StartTask(clientSocket, msg);
+                    var gd = Guid.NewGuid();
+                    if (_userList.TryAdd(gd, new User())) {
+
+                        _queue.Writer.WriteAsync(new TaskHandler.TaskSample(clientSocket, msg, gd));
+                    }
                 }
                 catch (SocketException)
                 {
