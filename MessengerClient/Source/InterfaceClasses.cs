@@ -1,23 +1,25 @@
 ﻿using System;
 
+
 using DateTime4bLib;
+
+
 
 namespace JabNetClient
 {
-    internal class InterfaceClasses
+    public class InterfaceClasses
     {
-
-        public class Message
+        public class JN_Message
         {
             private readonly DateTime4b _sendDateTime;
 
-            private readonly string _authorName;
+            private readonly string[] _authors;
             private string _message;
 
 
-            public Message(string authorName, DateTime4b sendDateTime, string message)
+            public JN_Message(string[] authors, DateTime4b sendDateTime, string message)
             {
-                _authorName = authorName;
+                _authors = authors;
                 _sendDateTime = sendDateTime;
                 _message = message;
             }
@@ -37,12 +39,12 @@ namespace JabNetClient
 
 
             public DateTime4b SendDateTime => _sendDateTime;
-            public string GetAuthor  => _authorName;
-            public string GetMessage => _message;
+            public string[] Authors  => _authors;
+            public string Message => _message;
         }
 
 
-        static public class JabNetProfile
+        static public class JN_Profile
         {
             //static byte[] Avatar;  idk how to do it 
             static string name;

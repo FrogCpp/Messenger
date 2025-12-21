@@ -3,7 +3,7 @@
 using static System.Console;
 
 
-using static JabNetClient.USC;
+using static JabNet.USC;
 using static JabNetClient.CipherSource;
 
 using static JabNetClient.MessagingLogic;
@@ -149,7 +149,8 @@ namespace JabNetClient
                         //
                         //  Создаём usc реквест на отправку сообщения конкретному пользователю
                         //  staticUID и usID используется для подтверждения нашей личности
-                        string uscSendMessage = SendMessageRequest(encryptedMessage, receiverUID, staticUID, encryptedusID);
+                        string uscSendMessage = "";
+                        //SendMessageRequest(encryptedMessage, receiverUID, staticUID, encryptedusID);
 
                         Write("\n\t\t[i]  - USC: " + uscSendMessage);
 

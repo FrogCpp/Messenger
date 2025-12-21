@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using static System.Console;
 
 
-
 using static JabNetClient.InterfaceClasses;
+
 
 
 namespace JabNetClient
@@ -20,7 +20,7 @@ namespace JabNetClient
             Write("Insert console UI output");
 
 
-            List<Message> lastMessages = new List<Message>();
+            List<JN_Message> lastMessages = new List<JN_Message>();
 
 
             //  Placeholder for the UI
