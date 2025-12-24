@@ -1,0 +1,17 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Epsilon.DesktopClient.App"
+             xmlns:local="using:Epsilon.DesktopClient"
+             xmlns:source="using:Epsilon.DesktopClient.Source"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <source:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <!-- Adding both themes, chosing automatically later -->
+        <FluentTheme />
+    </Application.Styles>
+</Application>

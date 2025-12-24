@@ -294,9 +294,7 @@ __pycache__/
 */Debug/
 *.suo
 *.cache
-*.json
 /MessengerClient/Properties
-*.csproj
 MessengerClient/obj/Release/MessengerClient.csproj.FileListAbsolute.txt
 MessengerClient/obj/Release/.NETFramework,Version=v4.7.2.AssemblyAttributes.cs
 *.targets
