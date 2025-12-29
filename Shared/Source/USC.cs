@@ -115,6 +115,10 @@ namespace JabNet
             {
                 throw new NotImplementedException();
             }
+            static public Byte[] SENDS_SendSound()
+            {
+                throw new NotImplementedException();
+            }
         }
 
         static public class Decode
@@ -185,15 +189,19 @@ namespace JabNet
             }
 
 
-            static public Byte[] SENDM_SendMessage()
+            static public Byte[] GETM_SendMessage()
             {
                 throw new NotImplementedException();
             }
-            static public Byte[] SENDP_SendPicture()
+            static public Byte[] GETP_SendPicture()
             {
                 throw new NotImplementedException();
             }
-            static public Byte[] SENDF_SendFile()
+            static public Byte[] GETF_SendFile()
+            {
+                throw new NotImplementedException();
+            }
+            static public Byte[] GETS_SendSound()
             {
                 throw new NotImplementedException();
             }
