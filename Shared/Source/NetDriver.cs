@@ -1,20 +1,28 @@
 namespace JabNet
 {
-    internal class Package : List<PackageDetail>
+    public class Package : List<PackageDetail>
     {
-        private struct PackageDetail
+        public Package() { unic_id = Guid.NewGuid(); }
+
+        public Package(Guid id) { unic_id = id; }
+
+        internal struct PackageDetail
         {
             public PackageDetail(uint16 sn, byte[] cntnt, Guid gd)
             {
                 serialNumber = sn;
                 packageOwnership = gd;
                 content = cntnt;
+                allElementsCnt = -1;
             }
 
             public uint16 serialNumber { get; private set; }
+            public uint16 allElementsCnt;
             public Guid packageOwnership { get; private set; }
             public byte[] content { get; private set; } = new byte[128 * 1024];
         }
+
+        public Guid unic_id { get; private set; }
 
         public byte[] Assemble()
         {
@@ -35,9 +43,8 @@ namespace JabNet
             if (this.Count != 0)
             {
                 if (!force) { return false; }
+                this.Clear();
             }
-
-            Guid id = Guid.NewGuid();
 
             byte[] buffer = new(128 * 1024);
 
@@ -49,7 +56,7 @@ namespace JabNet
                 if (i == 128 * 1024)
                 {
                     i = 0;
-                    this.Add(new PackageDetail(cnt, buffer, id));
+                    this.Add(new PackageDetail(cnt, buffer, unic_id));
                 }
                 else
                 {
@@ -59,8 +66,9 @@ namespace JabNet
 
             if (cnt < 1)
             {
-                this.Add(new PackageDetail(cnt, buffer, id));
+                this.Add(new PackageDetail(cnt, buffer, unic_id));
             }
+            foreach (var i in this) { i.allElementsCnt = cnt; }
         }
 
         public byte[] ReceivePackage(uint16 numb)
@@ -68,6 +76,46 @@ namespace JabNet
             PackageDetail a = this.Find(pd => pd.serialNumber == numb);
 
             return Encoding.Unicode.GetBytes(JsonSerializer.Serialize<PackageDetail>(a));
+        }
+    }
+
+
+
+    public class PackageManager 
+    {
+        private readonly List<Package> _incoming = new(0);
+        private readonly List<Package> _outcoming = new(0);
+
+        public async Task GetPackage(byte[] bt)
+        {
+            Package.PackageDetail pkg = JsonSerializer.Deserialize<Package.PackageDetail>(Encoding.Unicode.GetString(bt));
+            var a = _incoming.FindIndex(p => p.unic_id == pkg.serialNumber);
+            if (a == -1)
+            {
+                _incoming.Add(new Package(pkg.serialNumber));
+                a = _incoming.FindIndex(p => p.unic_id == pkg.serialNumber);
+            }
+            _incoming[a].Add(pkg);
+        }
+
+        public async Task PublishingPackages(Func<byte[], Task> F)
+        {
+
+        }
+    }
+
+    public class ConnectionManager
+    {
+        private Socket _socket;
+
+        public ConnectionManager(Socket sck)
+        {
+            _socket = sck;
+        }
+
+        public async Task Listen(Func<byte[], Task> F)
+        {
+
         }
     }
 }
