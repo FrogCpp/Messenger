@@ -7,4 +7,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="AVcontrol">
+      <HintPath>..\lib\AVcontrol\AVcontrol.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

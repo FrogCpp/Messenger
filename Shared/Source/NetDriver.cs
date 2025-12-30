@@ -1,121 +1,66 @@
-namespace JabNet
+﻿namespace JabNet
 {
-    public class Package : List<PackageDetail>
+    public static class NetDriver
     {
-        public Package() { unic_id = Guid.NewGuid(); }
-
-        public Package(Guid id) { unic_id = id; }
-
-        internal struct PackageDetail
+        public class PackageOperator(Action<SimplePackage> F)
         {
-            public PackageDetail(uint16 sn, byte[] cntnt, Guid gd)
+            private readonly List<SimplePackage> _incoming = new(0);
+            private readonly List<SimplePackage> _outcoming = new(0);
+            private readonly Action<SimplePackage> _f = F;
+
+            public void AcceptPkg(SimplePackage sp) // будет добавлено делегату
             {
-                serialNumber = sn;
-                packageOwnership = gd;
-                content = cntnt;
-                allElementsCnt = -1;
+                // вот здесь переделать из пакета в таску (чуть позже)
+
+                _f(sp);
+                _incoming.Remove(sp);
+                sp.packed -= AcceptPkg;
             }
 
-            public uint16 serialNumber { get; private set; }
-            public uint16 allElementsCnt;
-            public Guid packageOwnership { get; private set; }
-            public byte[] content { get; private set; } = new byte[128 * 1024];
+            public void CollectPkg(byte[] inf) // будет делегатом для слушателя
+            {
+                SimplePackage.PkgPice sp = JsonSerizlizer.Serialize<SimplePackage.PkgPice>(inf);
+                var a = _incoming.FindIndex(p => p.packageID == sp.unicPkgID);
+                if (a == -1) { _incoming.Add(new SimplePackage(sp.unicPkgID)); a = _incoming.FindIndex(p => p.packageID == sp.unicPkgID); }
+
+                _incoming[a].Add()
+            }
         }
 
-        public Guid unic_id { get; private set; }
-
-        public byte[] Assemble()
+        public class SimplePackage
         {
-            var sorted = this.OrderBy(p => p.serialNumber).ToList();
+            public SimplePackage() { packageID = Guid.NewGuid(); }
+            public SimplePackage(Guid ID) { packageID = ID; }
+            public Action<SimplePackage> packed;
+            public readonly Guid packageID;
+            private List<PkgPice> _package = new();
 
-            byte[] buffer = new(sorted.Sum(p => p.content.Length));
-            int offset = 0;
-            foreach (var item in sorted)
+            public struct PkgPice
             {
-                Buffer.BlockCopy(item.content, 0, buffer, offset, item.content.Length);
-                offset += item.content.Length;
-            }
-            return buffer;
-        }
-
-        public bool Divide(byte[] content, bool force=false)
-        {
-            if (this.Count != 0)
-            {
-                if (!force) { return false; }
-                this.Clear();
-            }
-
-            byte[] buffer = new(128 * 1024);
-
-            int i = 0;
-            int cnt = 0;
-            for (var i in content)
-            {
-                buffer[i] = i;
-                if (i == 128 * 1024)
+                public PkgPice(Guid ID, uint16 lnght, uint16 pose, byte[] cntnt)
                 {
-                    i = 0;
-                    this.Add(new PackageDetail(cnt, buffer, unic_id));
+                    unicPkgID = ID;
+                    pkgLenght = lnght;
+                    accountPosition = pose;
+                    content = cntnt;
                 }
-                else
+
+                public Guid unicPkgID { get; }
+                public uint16 pkgLenght { get; }
+                public uint16 accountPosition { get; }
+                public byte[] content { get; }
+            }
+
+            public void Add(PkgPice pps)
+            {
+                _package.Add(pps);
+                _package.Sort((a, b) => a.accountPosition.CompareTo(b.accountPosition));
+
+                if (_package.Count == _package[0].pkgLenght)
                 {
-                    i++;
+                    packed.Invoke(this);
                 }
             }
-
-            if (cnt < 1)
-            {
-                this.Add(new PackageDetail(cnt, buffer, unic_id));
-            }
-            foreach (var i in this) { i.allElementsCnt = cnt; }
-        }
-
-        public byte[] ReceivePackage(uint16 numb)
-        {
-            PackageDetail a = this.Find(pd => pd.serialNumber == numb);
-
-            return Encoding.Unicode.GetBytes(JsonSerializer.Serialize<PackageDetail>(a));
-        }
-    }
-
-
-
-    public class PackageManager 
-    {
-        private readonly List<Package> _incoming = new(0);
-        private readonly List<Package> _outcoming = new(0);
-
-        public async Task GetPackage(byte[] bt)
-        {
-            Package.PackageDetail pkg = JsonSerializer.Deserialize<Package.PackageDetail>(Encoding.Unicode.GetString(bt));
-            var a = _incoming.FindIndex(p => p.unic_id == pkg.serialNumber);
-            if (a == -1)
-            {
-                _incoming.Add(new Package(pkg.serialNumber));
-                a = _incoming.FindIndex(p => p.unic_id == pkg.serialNumber);
-            }
-            _incoming[a].Add(pkg);
-        }
-
-        public async Task PublishingPackages(Func<byte[], Task> F)
-        {
-
-        }
-    }
-
-    public class ConnectionManager
-    {
-        private Socket _socket;
-
-        public ConnectionManager(Socket sck)
-        {
-            _socket = sck;
-        }
-
-        public async Task Listen(Func<byte[], Task> F)
-        {
-
         }
     }
 }
