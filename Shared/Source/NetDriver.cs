@@ -21,7 +21,12 @@
             {
                 SimplePackage.PkgPice sp = JsonSerizlizer.Serialize<SimplePackage.PkgPice>(inf);
                 var a = _incoming.FindIndex(p => p.packageID == sp.unicPkgID);
-                if (a == -1) { _incoming.Add(new SimplePackage(sp.unicPkgID)); a = _incoming.FindIndex(p => p.packageID == sp.unicPkgID); }
+                if (a == -1)
+                {
+                    _incoming.Add(new SimplePackage(sp.unicPkgID));
+                    a = _incoming.FindIndex(p => p.packageID == sp.unicPkgID);
+                    _incoming[a].packed += AcceptPkg;
+                }
 
                 _incoming[a].Add()
             }
@@ -31,6 +36,7 @@
         {
             public SimplePackage() { packageID = Guid.NewGuid(); }
             public SimplePackage(Guid ID) { packageID = ID; }
+
             public Action<SimplePackage> packed;
             public readonly Guid packageID;
             private List<PkgPice> _package = new();
@@ -61,6 +67,33 @@
                     packed.Invoke(this);
                 }
             }
+        }
+
+
+        public static class SocketHandler
+        {
+            private List<User> _userList;
+            private List<Task<>>
+
+            public void Add(User usr)
+            {
+                _userList.Add(usr);
+            }
+
+            private async Task Listen()
+            {
+
+            }
+        }
+
+        public interface User
+        {
+            Socket socket { get; private set; }
+            Task ListenTask { get; set; }
+
+            // здесь же хранятся ключи кодирования и все остальное (все, что нужно для шифрования), как это хранить позже придумаю
+
+            PackageOperator packageOp { get; private set; }
         }
     }
 }
