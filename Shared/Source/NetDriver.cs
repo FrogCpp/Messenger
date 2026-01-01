@@ -1,4 +1,8 @@
-﻿namespace JabNet
+﻿using System;
+using System.Net.Sockets;
+using System.Text.Json;
+
+namespace JabNet
 {
     public static class NetDriver
     {
@@ -19,7 +23,7 @@
 
             public void CollectPkg(byte[] inf) // будет делегатом для слушателя
             {
-                SimplePackage.PkgPice sp = JsonSerizlizer.Serialize<SimplePackage.PkgPice>(inf);
+                SimplePackage.PkgPice sp = JsonSerializer.Deserialize<SimplePackage.PkgPice>(inf);
                 var a = _incoming.FindIndex(p => p.packageID == sp.unicPkgID);
                 if (a == -1)
                 {
@@ -28,7 +32,7 @@
                     _incoming[a].packed += AcceptPkg;
                 }
 
-                _incoming[a].Add()
+                _incoming[a].Add(sp);
             }
         }
 
@@ -43,7 +47,7 @@
 
             public struct PkgPice
             {
-                public PkgPice(Guid ID, uint16 lnght, uint16 pose, byte[] cntnt)
+                public PkgPice(Guid ID, int lnght, int pose, byte[] cntnt)
                 {
                     unicPkgID = ID;
                     pkgLenght = lnght;
@@ -52,8 +56,8 @@
                 }
 
                 public Guid unicPkgID { get; }
-                public uint16 pkgLenght { get; }
-                public uint16 accountPosition { get; }
+                public int pkgLenght { get; }
+                public int accountPosition { get; }
                 public byte[] content { get; }
             }
 
@@ -70,10 +74,10 @@
         }
 
 
-        public static class SocketHandler
+        public class SocketHandler
         {
             private List<User> _userList;
-            private List<Task<>>
+            private List<Task<>> _taskList;
 
             public void Add(User usr)
             {
@@ -88,12 +92,12 @@
 
         public interface User
         {
-            Socket socket { get; private set; }
+            Socket socket { get; set; }
             Task ListenTask { get; set; }
 
             // здесь же хранятся ключи кодирования и все остальное (все, что нужно для шифрования), как это хранить позже придумаю
 
-            PackageOperator packageOp { get; private set; }
+            PackageOperator packageOp { get; set; }
         }
     }
 }
