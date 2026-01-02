@@ -76,24 +76,33 @@ namespace JabNet
 
         public class SocketHandler
         {
-            private List<User> _userList;
-            private List<Task<>> _taskList;
+            private List<User> _userList = new(0);
 
             public void Add(User usr)
             {
                 _userList.Add(usr);
+                usr.buffer = new byte[128 * 1024];
+                usr.ListenTask = usr.socket.ReceiveAsync(usr.buffer);
             }
 
             private async Task Listen()
             {
-
+                while (true)
+                {
+                    var a = await Task.WhenAny(_userList.Select(s => s.ListenTask));
+                    var usr = _userList.First(p => p.ListenTask == a);
+                    var pkgOp = usr.packageOp;
+                    if (pkgOp == null) { continue; }
+                    pkgOp.CollectPkg(usr.buffer);
+                }
             }
         }
 
         public interface User
         {
             Socket socket { get; set; }
-            Task ListenTask { get; set; }
+            Task<int> ListenTask { get; set; }
+            byte[] buffer { get; set; }
 
             // здесь же хранятся ключи кодирования и все остальное (все, что нужно для шифрования), как это хранить позже придумаю
 
