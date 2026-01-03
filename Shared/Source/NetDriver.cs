@@ -34,6 +34,12 @@ namespace JabNet
                     if (pack.Count == 0) return 0;
                     return pack[0].content.Length; 
                 } }
+            public bool packageСompleteness { get 
+                {
+                    if (pack.Count == 0) return false;
+
+                    return pack.Count == pack[0].packageLength;
+                } }
 
             public Package(Guid? id = null)
             {
@@ -123,12 +129,12 @@ namespace JabNet
             }
 
             private readonly c_state _state;
-            private ConcurrentBag<User> _userList;
+            private ConcurrentBag<ConnectionAvatar> _avatarConnectionList;
 
-            public ConnectionController(ConcurrentBag<User> usrlst, c_state state = c_state.user)
+            public ConnectionController(ConcurrentBag<ConnectionAvatar> usrlst, c_state state = c_state.user)
             {
                 _state = state;
-                _userList = usrlst;
+                _avatarConnectionList = usrlst;
             }
 
             public async Task AsyncAcceptNewClients()
@@ -143,20 +149,34 @@ namespace JabNet
                 {
                     var clientSocket = await listner.AcceptAsync();
 
-                    _userList.Add(new User(clientSocket));
-                    var cl = _userList.First(s => s.socket == clientSocket);
+                    _avatarConnectionList.Add(new ConnectionAvatar(clientSocket));
+                    var cl = _avatarConnectionList.First(s => s.socket == clientSocket);
                     cl.ListenTask = clientSocket.ReceiveAsync(cl.buffer);
                 }
             }
 
+
+            public async Task AsyncConnectServer()
+            {
+                if (_state == c_state.server) return;
+
+                Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+                await serverSocket.ConnectAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 121221));
+
+                _avatarConnectionList.Add(new ConnectionAvatar(serverSocket));
+                var sr = _avatarConnectionList.First(s => s.socket == serverSocket);
+                sr.ListenTask = serverSocket.ReceiveAsync(sr.buffer);
+            }
+
             public async Task ListenAsync()
             {
-                await EventController.Listen(_userList.Select(user => user.ListenTask).ToList(), ReciveMessage);
+                await EventController.Listen(_avatarConnectionList.Select(user => user.ListenTask).ToList(), ReciveMessage);
             }
 
             public async Task ReciveMessage(Task reciving)
             {
-                var usr = _userList.First(t => t.ListenTask == reciving);
+                var usr = _avatarConnectionList.First(t => t.ListenTask == reciving);
 
                 PackageElement pkge = JsonSerializer.Deserialize<PackageElement>(Encoding.Unicode.GetString(usr.buffer));
 
@@ -175,7 +195,7 @@ namespace JabNet
         }
 
 
-        public class User(Socket sk)
+        public class ConnectionAvatar(Socket sk)
         {
             public readonly Socket socket = sk;
             public Task ListenTask;
@@ -183,6 +203,11 @@ namespace JabNet
 
             public readonly List<Package> incoming = new();
             public readonly List<Package> outgoing = new();
+
+            public async Task WaitComplitePackage()
+            {
+
+            }
         }
     }
 }
