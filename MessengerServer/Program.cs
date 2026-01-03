@@ -1,12 +1,20 @@
-﻿using System;
+﻿using MessengerServer;
+using System;
+using System.Collections.Concurrent;
+using static JabNet.NetDriver;
 
 namespace JabServer
 {
     internal class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            
+            ConcurrentBag<ConnectionHandler> users = new ConcurrentBag<ConnectionHandler>();
+            TaskHandler handler = new TaskHandler();
+            var coordinator = new ConnectionCoordinator(users, handler.ProcessedTasks, ConnectionCoordinator.ConnectionMode.host);
+
+            await coordinator.StartAcceptingClients();
+            await coordinator.StartListening();
         }
     }
 }

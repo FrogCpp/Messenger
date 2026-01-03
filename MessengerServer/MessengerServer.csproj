@@ -11,6 +11,9 @@
     <Reference Include="AVcontrol">
       <HintPath>..\lib\AVcontrol\AVcontrol.dll</HintPath>
     </Reference>
+    <Reference Include="Shared">
+      <HintPath>..\Shared\current versions\Shared\Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
