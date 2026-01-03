@@ -1,56 +1,51 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.IO.Pipes;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using static JabNet.NetDriver.Package;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using static JabNet.NetDriver.Packet;
 
 namespace JabNet
 {
     public static class NetDriver
     {
-        public class Package
+        public class Packet
         {
-            public struct PackageElement
+            public struct PacketFragment
             {
-                public Guid packageID;
-                public Int16 packageLength;
-                public Int16 elementIndex;
-                public byte[] content;
+                public Guid packetID;
+                public Int16 packetSize;
+                public Int16 fragmentPosition;
+                public byte[] data;
             }
 
-            public readonly List<PackageElement> pack = new(0);
-            public readonly Guid packageID;
-            public int packageLength { get { return pack.Count * elementLength; } }
-            public int elementLength { get 
-                {
-                    if (pack.Count == 0) return 0;
-                    return pack[0].content.Length; 
-                } }
-            public bool packageСompleteness { get 
-                {
-                    if (pack.Count == 0) return false;
-
-                    return pack.Count == pack[0].packageLength;
-                } }
-
-            public Package(Guid? id = null)
+            public readonly List<PacketFragment> fragments = new(0);
+            public readonly Guid packetID;
+            public int packetSize { get { return fragments.Count * fragmentSize; } }
+            public int fragmentSize
             {
-                packageID = id ?? Guid.NewGuid();
+                get
+                {
+                    if (fragments.Count == 0) return 0;
+                    return fragments[0].data.Length;
+                }
+            }
+            public Action<Packet> packetFinalized;
+
+            public Packet(Guid? id = null, Action<Packet> callback = null)
+            {
+                packetID = id ?? Guid.NewGuid();
+                packetFinalized = callback;
             }
 
-            public bool Add(PackageElement pkge)
+            public bool Append(PacketFragment fragment)
             {
-                if (pkge.packageID != packageID) return false;
-                if (pkge.packageLength == pack.Count) return false;
-                pack.Add(pkge);
+                if (fragment.packetID != packetID) return false;
+                if (fragment.packetSize == fragments.Count) return false;
+                fragments.Add(fragment);
+
+                if (packetFinalized != null && fragments.Count == fragment.packetSize) packetFinalized(this);
 
                 return true;
             }
@@ -58,155 +53,158 @@ namespace JabNet
 
 
 
-        public static class PackConstructor
+        public static class PacketBuilder
         {
-            public static Package Serealize(byte[] data)
+            public static Packet ConvertToPacket(byte[] rawData, Guid? id = null, ConnectionHandler? packetOwner = null)
             {
-                var pkg = new Package();
-                int totalPieces = (int)Math.Ceiling(data.Length / (double)(128 * 1024));
+                var packet = new Packet(id, packetOwner != null ? packetOwner.OnPacketComplete : null);
+                int totalFragments = (int)Math.Ceiling(rawData.Length / (double)(128 * 1024));
 
-                for (int i = 0; i < totalPieces; i++)
+                for (int i = 0; i < totalFragments; i++)
                 {
-                    int offset = i * (128 * 1024);
-                    int remaining = data.Length - offset;
-                    int chunkSize = Math.Min((128 * 1024), remaining);
+                    int startOffset = i * (128 * 1024);
+                    int remainingBytes = rawData.Length - startOffset;
+                    int fragmentBytes = Math.Min((128 * 1024), remainingBytes);
 
-                    byte[] chunk = new byte[chunkSize];
-                    Buffer.BlockCopy(data, offset, chunk, 0, chunkSize);
+                    byte[] fragmentData = new byte[fragmentBytes];
+                    Buffer.BlockCopy(rawData, startOffset, fragmentData, 0, fragmentBytes);
 
-                    var packEl = new Package.PackageElement();
+                    var fragment = new Packet.PacketFragment();
 
-                    packEl.packageID = pkg.packageID;
-                    packEl.packageLength = (Int16)totalPieces;
-                    packEl.elementIndex = (Int16)i;
-                    packEl.content = chunk;
+                    fragment.packetID = packet.packetID;
+                    fragment.packetSize = (Int16)totalFragments;
+                    fragment.fragmentPosition = (Int16)i;
+                    fragment.data = fragmentData;
 
 
-                    pkg.Add(packEl);
+                    packet.Append(fragment);
                 }
-                return pkg;
+                return packet;
             }
 
-            public static byte[] Desrealize(Package pack)
+            public static byte[] ConvertToBytes(Packet packet)
             {
-                var data = new byte[pack.packageLength];
-                int offset = 0;
+                var resultData = new byte[packet.packetSize];
+                int currentOffset = 0;
 
-                pack.pack.Sort((a, b) => a.elementIndex.CompareTo(b.elementIndex));
+                packet.fragments.Sort((a, b) => a.fragmentPosition.CompareTo(b.fragmentPosition));
 
-                for (int i = 0; i < pack.pack.Count; i++)
+                for (int i = 0; i < packet.fragments.Count; i++)
                 {
-                    Buffer.BlockCopy(pack.pack[i].content, 0, data, offset, pack.elementLength);
-                    offset += pack.elementLength;
+                    Buffer.BlockCopy(packet.fragments[i].data, 0, resultData, currentOffset, packet.fragmentSize);
+                    currentOffset += packet.fragmentSize;
                 }
 
-                return data;
+                return resultData;
             }
         }
 
 
 
 
-        internal static class EventController
+        internal static class TaskCoordinator
         {
-            public static async Task Listen(List<Task> tasks, Func<Task, Task> act)
+            public static async Task MonitorTasks(List<Task> taskList, Func<Task, Task> taskHandler)
             {
-                while (tasks.Count != 0)
+                while (taskList.Count != 0)
                 {
-                    var tsk= Task.WhenAny(tasks);
+                    var finishedTask = Task.WhenAny(taskList);
 
-                    await act(tsk);
+                    await taskHandler(finishedTask);
                 }
             }
         }
 
-        public class ConnectionController
+        public class ConnectionCoordinator
         {
-            public enum c_state
+            public enum ConnectionMode
             {
-                user,
-                server,
+                client,
+                host,
             }
 
-            private readonly c_state _state;
-            private ConcurrentBag<ConnectionAvatar> _avatarConnectionList;
+            private readonly ConnectionMode _currentMode;
+            private ConcurrentBag<ConnectionHandler> _activeConnections;
+            private readonly Action<byte[]> _dataProcessor;
 
-            public ConnectionController(ConcurrentBag<ConnectionAvatar> usrlst, c_state state = c_state.user)
+            public ConnectionCoordinator(ConcurrentBag<ConnectionHandler> connections, Action<byte[]> processor, ConnectionMode mode)
             {
-                _state = state;
-                _avatarConnectionList = usrlst;
+                _currentMode = mode;
+                _activeConnections = connections;
+                _dataProcessor = processor;
             }
 
-            public async Task AsyncAcceptNewClients()
+            public async Task StartAcceptingClients()
             {
-                if (_state == c_state.user) return;
+                if (_currentMode == ConnectionMode.client) return;
 
-                Socket listner = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                listner.Bind(new IPEndPoint(IPAddress.Any, 121221));
-                listner.Listen();
+                Socket listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 121221));
+                listenerSocket.Listen();
 
                 while (true)
                 {
-                    var clientSocket = await listner.AcceptAsync();
+                    var clientConnection = await listenerSocket.AcceptAsync();
 
-                    _avatarConnectionList.Add(new ConnectionAvatar(clientSocket));
-                    var cl = _avatarConnectionList.First(s => s.socket == clientSocket);
-                    cl.ListenTask = clientSocket.ReceiveAsync(cl.buffer);
+                    _activeConnections.Add(new ConnectionHandler(clientConnection, _dataProcessor));
+                    var clientHandler = _activeConnections.First(s => s.socket == clientConnection);
+                    clientHandler.ReceiveTask = clientConnection.ReceiveAsync(clientHandler.receiveBuffer);
                 }
             }
 
 
-            public async Task AsyncConnectServer()
+            public async Task ConnectToServer()
             {
-                if (_state == c_state.server) return;
+                if (_currentMode == ConnectionMode.host) return;
 
-                Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Socket serverConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                await serverSocket.ConnectAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 121221));
+                await serverConnection.ConnectAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 121221));
 
-                _avatarConnectionList.Add(new ConnectionAvatar(serverSocket));
-                var sr = _avatarConnectionList.First(s => s.socket == serverSocket);
-                sr.ListenTask = serverSocket.ReceiveAsync(sr.buffer);
+                _activeConnections.Add(new ConnectionHandler(serverConnection, _dataProcessor));
+                var serverHandler = _activeConnections.First(s => s.socket == serverConnection);
+                serverHandler.ReceiveTask = serverConnection.ReceiveAsync(serverHandler.receiveBuffer);
             }
 
-            public async Task ListenAsync()
+            public async Task StartListening()
             {
-                await EventController.Listen(_avatarConnectionList.Select(user => user.ListenTask).ToList(), ReciveMessage);
+                await TaskCoordinator.MonitorTasks(_activeConnections.Select(conn => conn.ReceiveTask).ToList(), HandleIncomingMessage);
             }
 
-            public async Task ReciveMessage(Task reciving)
+            public async Task HandleIncomingMessage(Task receiveOperation)
             {
-                var usr = _avatarConnectionList.First(t => t.ListenTask == reciving);
+                var connection = _activeConnections.First(t => t.ReceiveTask == receiveOperation);
 
-                PackageElement pkge = JsonSerializer.Deserialize<PackageElement>(Encoding.Unicode.GetString(usr.buffer));
+                PacketFragment receivedFragment = JsonSerializer.Deserialize<PacketFragment>(Encoding.Unicode.GetString(connection.receiveBuffer));
 
-                var pack = usr.incoming.SingleOrDefault(p => p.packageID == pkge.packageID);
-                if (pack.Equals(default(PackageElement)))
+                var existingPacket = connection.pendingPackets.SingleOrDefault(p => p.packetID == receivedFragment.packetID);
+                if (existingPacket.Equals(default(PacketFragment)))
                 {
-                    var pkg = new Package();
-                    pkg.Add(pkge);
-                    usr.incoming.Add(pkg);
+                    var newPacket = new Packet();
+                    newPacket.Append(receivedFragment);
+                    connection.pendingPackets.Add(newPacket);
                 }
                 else
                 {
-                    pack.Add(pkge);
+                    existingPacket.Append(receivedFragment);
                 }
             }
         }
 
 
-        public class ConnectionAvatar(Socket sk)
+        public class ConnectionHandler(Socket socket, Action<byte[]> processor)
         {
-            public readonly Socket socket = sk;
-            public Task ListenTask;
-            public readonly byte[] buffer = new byte[128 * 1024];
+            public readonly Socket socket = socket;
+            public Task ReceiveTask;
+            public readonly byte[] receiveBuffer = new byte[128 * 1024];
 
-            public readonly List<Package> incoming = new();
-            public readonly List<Package> outgoing = new();
+            public readonly List<Packet> pendingPackets = new();
+            private readonly Action<byte[]> _processData = processor;
 
-            public async Task WaitComplitePackage()
+            public void OnPacketComplete(Packet packet)
             {
-
+                pendingPackets.Remove(packet);
+                _processData(PacketBuilder.ConvertToBytes(packet));
             }
         }
     }
