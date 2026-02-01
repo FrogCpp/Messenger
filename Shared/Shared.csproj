@@ -3,8 +3,14 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="DateTime4b">
+      <HintPath>..\lib\DateTime4b\DateTime4b.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 
 </Project>

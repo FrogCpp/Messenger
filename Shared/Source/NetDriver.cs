@@ -1,29 +1,39 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using System.Collections.Concurrent;
-using System.Net;
-using System.Net.Sockets;
+
 using System.Text;
 using System.Text.Json;
-using static JabNet.NetDriver.Packet;
 
-namespace JabNet
+using System.Net;
+using System.Net.Sockets;
+
+using System.Threading.Tasks;
+
+
+using static Shared.Source.NetDriver.Packet;
+
+
+
+namespace Shared.Source
 {
     public static class NetDriver
     {
-        public class Packet
+        public class Packet(Guid? id = null, Action<NetDriver.Packet>? callback = null)
         {
             public struct PacketFragment
             {
                 public Guid packetID;
                 public Int16 packetSize;
                 public Int16 fragmentPosition;
-                public byte[] data;
+                public Byte[] data;
             }
 
             public readonly List<PacketFragment> fragments = new(0);
-            public readonly Guid packetID;
-            public int packetSize { get { return fragments.Count * fragmentSize; } }
-            public int fragmentSize
+            public readonly Guid packetID = id ?? Guid.NewGuid();
+            public Int32 PacketSize { get { return fragments.Count * FragmentSize; } }
+            public Int32 FragmentSize
             {
                 get
                 {
@@ -31,13 +41,7 @@ namespace JabNet
                     return fragments[0].data.Length;
                 }
             }
-            public Action<Packet> packetFinalized;
-
-            public Packet(Guid? id = null, Action<Packet> callback = null)
-            {
-                packetID = id ?? Guid.NewGuid();
-                packetFinalized = callback;
-            }
+            public Action<Packet>? packetFinalized = callback;
 
             public bool Append(PacketFragment fragment)
             {
@@ -55,26 +59,27 @@ namespace JabNet
 
         public static class PacketBuilder
         {
-            public static Packet ConvertToPacket(byte[] rawData, Guid? id = null, ConnectionHandler? packetOwner = null)
+            public static Packet ConvertToPacket(Byte[] rawData, Guid? id = null, ConnectionHandler? packetOwner = null)
             {
                 var packet = new Packet(id, packetOwner != null ? packetOwner.OnPacketComplete : null);
-                int totalFragments = (int)Math.Ceiling(rawData.Length / (double)(128 * 1024));
+                Int32 totalFragments = (Int32)Math.Ceiling(rawData.Length / (double)(128 * 1024));
 
-                for (int i = 0; i < totalFragments; i++)
+                for (Int32 i = 0; i < totalFragments; i++)
                 {
-                    int startOffset = i * (128 * 1024);
-                    int remainingBytes = rawData.Length - startOffset;
-                    int fragmentBytes = Math.Min((128 * 1024), remainingBytes);
+                    Int32 startOffset = i * (128 * 1024);
+                    Int32 remainingBytes = rawData.Length - startOffset;
+                    Int32 fragmentBytes = Math.Min((128 * 1024), remainingBytes);
 
-                    byte[] fragmentData = new byte[fragmentBytes];
+                    Byte[] fragmentData = new Byte[fragmentBytes];
                     Buffer.BlockCopy(rawData, startOffset, fragmentData, 0, fragmentBytes);
 
-                    var fragment = new Packet.PacketFragment();
-
-                    fragment.packetID = packet.packetID;
-                    fragment.packetSize = (Int16)totalFragments;
-                    fragment.fragmentPosition = (Int16)i;
-                    fragment.data = fragmentData;
+                    var fragment = new Packet.PacketFragment
+                    {
+                        packetID = packet.packetID,
+                        packetSize = (Int16)totalFragments,
+                        fragmentPosition = (Int16)i,
+                        data = fragmentData
+                    };
 
 
                     packet.Append(fragment);
@@ -82,17 +87,17 @@ namespace JabNet
                 return packet;
             }
 
-            public static byte[] ConvertToBytes(Packet packet)
+            public static Byte[] ConvertToBytes(Packet packet)
             {
-                var resultData = new byte[packet.packetSize];
-                int currentOffset = 0;
+                var resultData = new Byte[packet.PacketSize];
+                Int32 currentOffset = 0;
 
                 packet.fragments.Sort((a, b) => a.fragmentPosition.CompareTo(b.fragmentPosition));
 
-                for (int i = 0; i < packet.fragments.Count; i++)
+                for (Int32 i = 0; i < packet.fragments.Count; i++)
                 {
-                    Buffer.BlockCopy(packet.fragments[i].data, 0, resultData, currentOffset, packet.fragmentSize);
-                    currentOffset += packet.fragmentSize;
+                    Buffer.BlockCopy(packet.fragments[i].data, 0, resultData, currentOffset, packet.FragmentSize);
+                    currentOffset += packet.FragmentSize;
                 }
 
                 return resultData;
@@ -115,7 +120,7 @@ namespace JabNet
             }
         }
 
-        public class ConnectionCoordinator
+        public class ConnectionCoordinator(ConcurrentBag<NetDriver.ConnectionHandler> connections, Action<Byte[]> processor, ConnectionCoordinator.ConnectionMode mode)
         {
             public enum ConnectionMode
             {
@@ -123,22 +128,15 @@ namespace JabNet
                 host,
             }
 
-            private readonly ConnectionMode _currentMode;
-            private ConcurrentBag<ConnectionHandler> _activeConnections;
-            private readonly Action<byte[]> _dataProcessor;
-
-            public ConnectionCoordinator(ConcurrentBag<ConnectionHandler> connections, Action<byte[]> processor, ConnectionMode mode)
-            {
-                _currentMode = mode;
-                _activeConnections = connections;
-                _dataProcessor = processor;
-            }
+            private readonly ConnectionMode _currentMode = mode;
+            private readonly ConcurrentBag<ConnectionHandler> _activeConnections = connections;
+            private readonly Action<Byte[]> _dataProcessor = processor;
 
             public async Task StartAcceptingClients()
             {
                 if (_currentMode == ConnectionMode.client) return;
 
-                Socket listenerSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Socket listenerSocket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 121221));
                 listenerSocket.Listen();
 
@@ -157,7 +155,7 @@ namespace JabNet
             {
                 if (_currentMode == ConnectionMode.host) return;
 
-                Socket serverConnection = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Socket serverConnection = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
                 await serverConnection.ConnectAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 121221));
 
@@ -192,14 +190,14 @@ namespace JabNet
         }
 
 
-        public class ConnectionHandler(Socket socket, Action<byte[]> processor)
+        public class ConnectionHandler(Socket socket, Action<Byte[]> processor)
         {
             public readonly Socket socket = socket;
             public Task ReceiveTask;
-            public readonly byte[] receiveBuffer = new byte[128 * 1024];
+            public readonly Byte[] receiveBuffer = new Byte[128 * 1024];
 
-            public readonly List<Packet> pendingPackets = new();
-            private readonly Action<byte[]> _processData = processor;
+            public readonly List<Packet> pendingPackets = [];
+            private readonly Action<Byte[]> _processData = processor;
 
             public void OnPacketComplete(Packet packet)
             {
