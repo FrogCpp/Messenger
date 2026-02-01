@@ -80,6 +80,10 @@
               "target": "Package",
               "version": "[10.0.2, )",
               "autoReferenced": true
+            },
+            "Syncfusion.Maui.Chat": {
+              "target": "Package",
+              "version": "[32.1.25, )"
             }
           },
           "imports": [
@@ -396,6 +400,10 @@
               "target": "Package",
               "version": "[10.0.2, )",
               "autoReferenced": true
+            },
+            "Syncfusion.Maui.Chat": {
+              "target": "Package",
+              "version": "[32.1.25, )"
             }
           },
           "imports": [
@@ -712,6 +720,10 @@
               "target": "Package",
               "version": "[10.0.2, )",
               "autoReferenced": true
+            },
+            "Syncfusion.Maui.Chat": {
+              "target": "Package",
+              "version": "[32.1.25, )"
             }
           },
           "imports": [
@@ -1023,6 +1035,10 @@
             "Microsoft.Maui.Controls": {
               "target": "Package",
               "version": "[10.0.1, )"
+            },
+            "Syncfusion.Maui.Chat": {
+              "target": "Package",
+              "version": "[32.1.25, )"
             }
           },
           "imports": [

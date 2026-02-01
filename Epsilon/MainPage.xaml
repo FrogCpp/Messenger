@@ -75,7 +75,7 @@
 
             <!-- Панелька чата -->
             <Border Grid.Row="0" Padding="10" BackgroundColor="Transparent">
-                <CollectionView ItemsSource="{Binding ActualChat.Messages}" HorizontalScrollBarVisibility="Never" VerticalOptions="End">
+                <CollectionView ItemsSource="{Binding ActualChat.Messages}" HorizontalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
                     </CollectionView.ItemsLayout>
@@ -96,8 +96,9 @@
 
             <!-- Панелька ввода сообщения -->
             <Border Grid.Row="1" BackgroundColor="Transparent">
-                <Editor x:Name="MessageInputField" AutoSize="TextChanges" Placeholder="Cообщение..." MaximumHeightRequest="120" Completed="OnEditorCompleted"/>
+                <Editor x:Name="MessageInputField" AutoSize="TextChanges" Placeholder="Cообщение..." MaximumHeightRequest="120"/>
             </Border>
+            <Button Grid.Row="1" Text="|>" Clicked="SubmitText" HorizontalOptions="End" WidthRequest="30" HeightRequest="30"/>
         </Grid>
 
     </Grid>

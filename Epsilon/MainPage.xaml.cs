@@ -124,7 +124,7 @@ namespace Epsilon
                 }
             }
         }
-        private void OnEditorCompleted(object sender, EventArgs e)
+        private void SubmitText(object sender, EventArgs e)
         {
             if (ActualChat == null) return;
 

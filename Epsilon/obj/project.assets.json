@@ -494,6 +494,150 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -2977,6 +3121,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Xamarin.Android.Glide/4.16.0.14": {
@@ -5464,6 +5752,150 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -7947,6 +8379,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       },
       "Xamarin.Android.Glide/4.16.0.14": {
@@ -10434,6 +11010,150 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -12919,6 +13639,150 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Xamarin.Android.Glide/4.16.0.14": {
         "type": "package",
         "dependencies": {
@@ -15374,6 +16238,150 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
       }
     },
     "net10.0-ios26.1/android-arm64": {
@@ -15838,6 +16846,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       }
     },
@@ -16304,6 +17456,150 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
       }
     },
     "net10.0-ios26.1/iossimulator-x64": {
@@ -16768,6 +18064,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       }
     },
@@ -17234,6 +18674,150 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
       }
     },
     "net10.0-ios26.1/win-x64": {
@@ -17698,6 +19282,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       }
     },
@@ -18164,6 +19892,150 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
       }
     },
     "net10.0-maccatalyst26.1/android-arm64": {
@@ -18628,6 +20500,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       }
     },
@@ -19094,6 +21110,150 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
       }
     },
     "net10.0-maccatalyst26.1/iossimulator-x64": {
@@ -19558,6 +21718,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       }
     },
@@ -20024,6 +22328,150 @@
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        }
       }
     },
     "net10.0-maccatalyst26.1/win-x64": {
@@ -20488,6 +22936,150 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".xml"
+          }
         }
       }
     },
@@ -21205,6 +23797,150 @@
             "rid": "win-x86"
           }
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
       }
     },
     "net10.0-windows10.0.19041/android-arm64": {
@@ -21858,6 +24594,150 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
         }
       }
     },
@@ -22513,6 +25393,150 @@
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
       }
     },
     "net10.0-windows10.0.19041/iossimulator-x64": {
@@ -23167,6 +26191,150 @@
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
       }
     },
     "net10.0-windows10.0.19041/maccatalyst-x64": {
@@ -23820,6 +26988,150 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
         }
       }
     },
@@ -24484,6 +27796,150 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "Syncfusion.Licensing/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        },
+        "runtime": {
+          "lib/net10.0/Syncfusion.Licensing.dll": {}
+        }
+      },
+      "Syncfusion.Maui.Calendar/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Chat/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Calendar": "32.1.25",
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25",
+          "Syncfusion.Maui.ListView": "32.1.25",
+          "Syncfusion.Maui.Picker": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Core/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Licensing": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll": {
+            "related": ".deps.json;.pri;.xml"
+          }
+        },
+        "build": {
+          "buildTransitive/Syncfusion.Maui.Core.props": {}
+        }
+      },
+      "Syncfusion.Maui.DataSource/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.GridCommon/32.1.25": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.ListView/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.DataSource": "32.1.25",
+          "Syncfusion.Maui.GridCommon": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Picker/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25",
+          "Syncfusion.Maui.Popup": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll": {
+            "related": ".deps.json;.xml"
+          }
+        }
+      },
+      "Syncfusion.Maui.Popup/32.1.25": {
+        "type": "package",
+        "dependencies": {
+          "Syncfusion.Maui.Core": "32.1.25"
+        },
+        "compile": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll": {
+            "related": ".deps.json;.xml"
+          }
         }
       }
     }
@@ -26586,6 +30042,346 @@
         "tools/net6.0/System.Text.Json.dll",
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
+      ]
+    },
+    "Syncfusion.Licensing/32.1.25": {
+      "sha512": "N68vd3LCPB+FcYYZb3C5mO2JSSiAjxRIH/smTWWWYBzO4Srmirl+fjO60VgOu1HBKrCmRGr7lcrDqqGu/lf+/g==",
+      "type": "package",
+      "path": "syncfusion.licensing/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0/Syncfusion.Licensing.dll",
+        "lib/net462/Syncfusion.Licensing.dll",
+        "lib/net8.0/Syncfusion.Licensing.dll",
+        "lib/net9.0/Syncfusion.Licensing.dll",
+        "lib/netstandard2.0/Syncfusion.Licensing.dll",
+        "lib/uap10.0/Syncfusion.Licensing.dll",
+        "syncfusion.licensing.32.1.25.nupkg.sha512",
+        "syncfusion.licensing.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.Calendar/32.1.25": {
+      "sha512": "jN5cg5Ysy///hQM2f0FOmBe4KT3g+ceqO7Y4fUHPlDqexYJlzOSLDpmCn558/aMtyeGWQKovgr46dGkdbG8ZTw==",
+      "type": "package",
+      "path": "syncfusion.maui.calendar/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net10.0/Syncfusion.Maui.Calendar.deps.json",
+        "lib/net10.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net10.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Calendar.xml",
+        "lib/net9.0/Syncfusion.Maui.Calendar.deps.json",
+        "lib/net9.0/Syncfusion.Maui.Calendar.dll",
+        "lib/net9.0/Syncfusion.Maui.Calendar.xml",
+        "syncfusion.maui.calendar.32.1.25.nupkg.sha512",
+        "syncfusion.maui.calendar.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.Chat/32.1.25": {
+      "sha512": "5I2B2ZfkxJxcEqDSC/zAOK7Z49AdWaWOUUCw6YU/wtUpvI/sojM6d0zVXR7+zUspWWeePT5u+cHhMg5lfQ7F2w==",
+      "type": "package",
+      "path": "syncfusion.maui.chat/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Chat.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Chat.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Chat.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Chat.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Chat.xml",
+        "lib/net10.0/Syncfusion.Maui.Chat.deps.json",
+        "lib/net10.0/Syncfusion.Maui.Chat.dll",
+        "lib/net10.0/Syncfusion.Maui.Chat.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Chat.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Chat.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Chat.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Chat.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Chat.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Chat.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Chat.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Chat.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Chat.xml",
+        "lib/net9.0/Syncfusion.Maui.Chat.deps.json",
+        "lib/net9.0/Syncfusion.Maui.Chat.dll",
+        "lib/net9.0/Syncfusion.Maui.Chat.xml",
+        "syncfusion.maui.chat.32.1.25.nupkg.sha512",
+        "syncfusion.maui.chat.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.Core/32.1.25": {
+      "sha512": "ykpCJ18ITv5VUf8q+j3/4IKk54N/YhnCs01s+1TvFjLxRMM14Hh6bWTHC20WN/vwhPDXi+51eTiquTB+LNySNQ==",
+      "type": "package",
+      "path": "syncfusion.maui.core/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "buildTransitive/Resources/Fonts/MauiMaterialAssets.ttf",
+        "buildTransitive/Syncfusion.Maui.Core.props",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Core.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Core.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Core.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Core.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Core.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.pri",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/CarouselStyles.xaml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/CarouselStyles.xbf",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/Resources.xaml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/Resources.xbf",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/RotatorStyles.xaml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/RotatorStyles.xbf",
+        "lib/net10.0/Syncfusion.Maui.Core.deps.json",
+        "lib/net10.0/Syncfusion.Maui.Core.dll",
+        "lib/net10.0/Syncfusion.Maui.Core.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Core.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Core.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Core.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Core.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Core.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Core.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core.pri",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/CarouselStyles.xaml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/CarouselStyles.xbf",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/Resources.xaml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/Resources.xbf",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/RotatorStyles.xaml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Core/Platform/Windows/Styles/RotatorStyles.xbf",
+        "lib/net9.0/Syncfusion.Maui.Core.deps.json",
+        "lib/net9.0/Syncfusion.Maui.Core.dll",
+        "lib/net9.0/Syncfusion.Maui.Core.xml",
+        "syncfusion.maui.core.32.1.25.nupkg.sha512",
+        "syncfusion.maui.core.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.DataSource/32.1.25": {
+      "sha512": "cmQomKEP6jyloIe5D8wNE2drY8ss9pvpIcDBniinqhHIxf9MtWQ+MtIPefqkm5XrBNXWL+kq5GeVyjr+bq6Xxg==",
+      "type": "package",
+      "path": "syncfusion.maui.datasource/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net10.0/Syncfusion.Maui.DataSource.deps.json",
+        "lib/net10.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net10.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.DataSource.xml",
+        "lib/net9.0/Syncfusion.Maui.DataSource.deps.json",
+        "lib/net9.0/Syncfusion.Maui.DataSource.dll",
+        "lib/net9.0/Syncfusion.Maui.DataSource.xml",
+        "syncfusion.maui.datasource.32.1.25.nupkg.sha512",
+        "syncfusion.maui.datasource.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.GridCommon/32.1.25": {
+      "sha512": "UXS3BgKh9SYLYxizSuIJ/xPPEBrtHwPZ66brA11+g7P5sdg4zLazPmlP/DpRrihyBi6TTn6wdHciaKTaLKAZmw==",
+      "type": "package",
+      "path": "syncfusion.maui.gridcommon/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net10.0/Syncfusion.Maui.GridCommon.deps.json",
+        "lib/net10.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net10.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.GridCommon.xml",
+        "lib/net9.0/Syncfusion.Maui.GridCommon.deps.json",
+        "lib/net9.0/Syncfusion.Maui.GridCommon.dll",
+        "lib/net9.0/Syncfusion.Maui.GridCommon.xml",
+        "syncfusion.maui.gridcommon.32.1.25.nupkg.sha512",
+        "syncfusion.maui.gridcommon.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.ListView/32.1.25": {
+      "sha512": "fow6d2lQ3tDJz9z3xp7oQfo3Bs0PdnzAXWTuV+fPocZvzVvpCTi7KNDgWseMi4clrrsMZNICvIGWExPsg6rYoA==",
+      "type": "package",
+      "path": "syncfusion.maui.listview/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.ListView.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.ListView.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.ListView.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.ListView.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.ListView.xml",
+        "lib/net10.0/Syncfusion.Maui.ListView.deps.json",
+        "lib/net10.0/Syncfusion.Maui.ListView.dll",
+        "lib/net10.0/Syncfusion.Maui.ListView.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.ListView.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.ListView.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.ListView.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.ListView.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.ListView.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.ListView.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.ListView.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.ListView.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.ListView.xml",
+        "lib/net9.0/Syncfusion.Maui.ListView.deps.json",
+        "lib/net9.0/Syncfusion.Maui.ListView.dll",
+        "lib/net9.0/Syncfusion.Maui.ListView.xml",
+        "syncfusion.maui.listview.32.1.25.nupkg.sha512",
+        "syncfusion.maui.listview.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.Picker/32.1.25": {
+      "sha512": "EdFwjp00BNfcXC0RtC2HfG3XgFEB1mGUIWn69IkRLWex7v711FoX14VJ6Pj1yPJX8GQ2tL6ZwS1Z1mo+TaQOYw==",
+      "type": "package",
+      "path": "syncfusion.maui.picker/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Picker.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Picker.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Picker.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Picker.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Picker.xml",
+        "lib/net10.0/Syncfusion.Maui.Picker.deps.json",
+        "lib/net10.0/Syncfusion.Maui.Picker.dll",
+        "lib/net10.0/Syncfusion.Maui.Picker.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Picker.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Picker.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Picker.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Picker.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Picker.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Picker.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Picker.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Picker.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Picker.xml",
+        "lib/net9.0/Syncfusion.Maui.Picker.deps.json",
+        "lib/net9.0/Syncfusion.Maui.Picker.dll",
+        "lib/net9.0/Syncfusion.Maui.Picker.xml",
+        "syncfusion.maui.picker.32.1.25.nupkg.sha512",
+        "syncfusion.maui.picker.nuspec",
+        "syncfusion_logo.png"
+      ]
+    },
+    "Syncfusion.Maui.Popup/32.1.25": {
+      "sha512": "q5AKyRiPrXhKUfy9UX7SJoOSkHOrGAf88kKRUbuzQo++XZOH0wn4yIDY20wTo3pisxCS8XhGLPICQE0oghgqUA==",
+      "type": "package",
+      "path": "syncfusion.maui.popup/32.1.25",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "README.md",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Popup.dll",
+        "lib/net10.0-android36.0/Syncfusion.Maui.Popup.xml",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.dll",
+        "lib/net10.0-ios26.0/Syncfusion.Maui.Popup.xml",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.dll",
+        "lib/net10.0-maccatalyst26.0/Syncfusion.Maui.Popup.xml",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.deps.json",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll",
+        "lib/net10.0-windows10.0.19041.0/Syncfusion.Maui.Popup.xml",
+        "lib/net10.0/Syncfusion.Maui.Popup.deps.json",
+        "lib/net10.0/Syncfusion.Maui.Popup.dll",
+        "lib/net10.0/Syncfusion.Maui.Popup.xml",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Popup.dll",
+        "lib/net9.0-android35.0/Syncfusion.Maui.Popup.xml",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Popup.dll",
+        "lib/net9.0-ios18.0/Syncfusion.Maui.Popup.xml",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Popup.dll",
+        "lib/net9.0-maccatalyst18.0/Syncfusion.Maui.Popup.xml",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Popup.deps.json",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Popup.dll",
+        "lib/net9.0-windows10.0.19041.0/Syncfusion.Maui.Popup.xml",
+        "lib/net9.0/Syncfusion.Maui.Popup.deps.json",
+        "lib/net9.0/Syncfusion.Maui.Popup.dll",
+        "lib/net9.0/Syncfusion.Maui.Popup.xml",
+        "syncfusion.maui.popup.32.1.25.nupkg.sha512",
+        "syncfusion.maui.popup.nuspec",
+        "syncfusion_logo.png"
       ]
     },
     "Xamarin.Android.Glide/4.16.0.14": {
@@ -28971,21 +32767,25 @@
     "net10.0-android36.0": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.1",
-      "Microsoft.NET.ILLink.Tasks >= 10.0.2"
+      "Microsoft.NET.ILLink.Tasks >= 10.0.2",
+      "Syncfusion.Maui.Chat >= 32.1.25"
     ],
     "net10.0-ios26.1": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.1",
-      "Microsoft.NET.ILLink.Tasks >= 10.0.2"
+      "Microsoft.NET.ILLink.Tasks >= 10.0.2",
+      "Syncfusion.Maui.Chat >= 32.1.25"
     ],
     "net10.0-maccatalyst26.1": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.1",
-      "Microsoft.NET.ILLink.Tasks >= 10.0.2"
+      "Microsoft.NET.ILLink.Tasks >= 10.0.2",
+      "Syncfusion.Maui.Chat >= 32.1.25"
     ],
     "net10.0-windows10.0.19041": [
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
-      "Microsoft.Maui.Controls >= 10.0.1"
+      "Microsoft.Maui.Controls >= 10.0.1",
+      "Syncfusion.Maui.Chat >= 32.1.25"
     ]
   },
   "packageFolders": {
@@ -29068,6 +32868,10 @@
             "target": "Package",
             "version": "[10.0.2, )",
             "autoReferenced": true
+          },
+          "Syncfusion.Maui.Chat": {
+            "target": "Package",
+            "version": "[32.1.25, )"
           }
         },
         "imports": [
@@ -29384,6 +33188,10 @@
             "target": "Package",
             "version": "[10.0.2, )",
             "autoReferenced": true
+          },
+          "Syncfusion.Maui.Chat": {
+            "target": "Package",
+            "version": "[32.1.25, )"
           }
         },
         "imports": [
@@ -29700,6 +33508,10 @@
             "target": "Package",
             "version": "[10.0.2, )",
             "autoReferenced": true
+          },
+          "Syncfusion.Maui.Chat": {
+            "target": "Package",
+            "version": "[32.1.25, )"
           }
         },
         "imports": [
@@ -30011,6 +33823,10 @@
           "Microsoft.Maui.Controls": {
             "target": "Package",
             "version": "[10.0.1, )"
+          },
+          "Syncfusion.Maui.Chat": {
+            "target": "Package",
+            "version": "[32.1.25, )"
           }
         },
         "imports": [
