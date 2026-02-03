@@ -47,9 +47,9 @@ namespace Epsilon
                 }
             }
 
-            private ObservableCollection<Message> _messages = new();
+            private ObservableCollection<JN_Message> _messages = new();
 
-            public ObservableCollection<Message> Messages
+            public ObservableCollection<JN_Message> Messages
             {
                 get => _messages;
                 set
@@ -149,6 +149,7 @@ namespace Epsilon
         public MainPage()
         {
             InitializeComponent();
+            PageController.Init(User, Contacts);
 
             BindingContext = this;
 
@@ -185,24 +186,6 @@ namespace Epsilon
             Console.WriteLine(MessageInputField.Text);
             ActualChat.Messages.Add(new Message(DateTime4b.Now, MessageInputField.Text, 12));
             MessageInputField.Text = string.Empty;
-        }
-    }
-
-
-
-
-    public static class PageController
-    {
-        private static ObservableCollection<MainPage.Contact> _contactsList = null;
-        private static MainPage.Contact _user = null;
-
-        public static void Init(MainPage.Contact usr, ObservableCollection<MainPage.Contact> chats)
-        {
-            if (_user == null || _contactsList == null)
-            {
-                _user = usr;
-                _contactsList = chats;
-            }
         }
     }
 }
