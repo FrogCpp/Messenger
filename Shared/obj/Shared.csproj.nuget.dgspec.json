@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kessokuBand\\Documents\\projects\\Messenger\\Shared\\Shared.csproj": {}
+    "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\Shared\\Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kessokuBand\\Documents\\projects\\Messenger\\Shared\\Shared.csproj": {
+    "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\Shared\\Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kessokuBand\\Documents\\projects\\Messenger\\Shared\\Shared.csproj",
+        "projectUniqueName": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\Shared\\Shared.csproj",
         "projectName": "Shared",
-        "projectPath": "C:\\Users\\kessokuBand\\Documents\\projects\\Messenger\\Shared\\Shared.csproj",
-        "packagesPath": "C:\\Users\\kessokuBand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kessokuBand\\Documents\\projects\\Messenger\\Shared\\obj\\",
+        "projectPath": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\Shared\\Shared.csproj",
+        "packagesPath": "C:\\Users\\egorg\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\egorg\\Documents\\GitHub\\Messenger\\Shared\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\kessokuBand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\egorg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -61,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
