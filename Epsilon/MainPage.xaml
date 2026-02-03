@@ -13,7 +13,7 @@
                     <Image Source="{Binding User.Avatar}" Aspect="AspectFill"/>
                 </Border>
 
-                <Label Grid.Column="1" Text="{Binding User.Name}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
+                <Label Grid.Column="1" Text="{Binding User.FullName}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
 
             </Grid>
         </Border>
@@ -37,7 +37,7 @@
                                 </Border>
 
                                 <Label Grid.Column="1" 
-                                       Text="{Binding Name}" 
+                                       Text="{Binding FullName}" 
                                        VerticalOptions="Center" 
                                        FontSize="14" 
                                        LineBreakMode="WordWrap" 
@@ -65,7 +65,7 @@
                     <Image Source="{Binding ActualChat.Avatar}" Aspect="AspectFill"/>
                 </Border>
 
-                <Label Grid.Column="1" Text="{Binding ActualChat.Name}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
+                <Label Grid.Column="1" Text="{Binding ActualChat.FullName}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
 
             </Grid>
         </Border>
@@ -85,7 +85,7 @@
                                 <Border BackgroundColor="DimGray" Padding="10" HorizontalOptions="Start">
                                     <Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto" RowSpacing="5">
                                         <Label Grid.Row="0" Text="{Binding Text}" LineBreakMode="WordWrap"/>
-                                        <Label Grid.Row="1" Text="12:32" HorizontalOptions="End" FontSize="10" TextColor="LightGray"/>
+                                        <Label Grid.Row="1" Text="{Binding StringSentTime}" HorizontalOptions="End" FontSize="10" TextColor="LightGray"/>
                                     </Grid>
                                 </Border>
                             </Grid>

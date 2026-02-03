@@ -61,4 +61,13 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Reference Include="DateTime4b">
+	    <HintPath>..\Shared\current versions\Shared\DateTime4b.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Shared">
+	    <HintPath>..\Shared\current versions\Shared\Shared.dll</HintPath>
+	  </Reference>
+	</ItemGroup>
+
 </Project>
