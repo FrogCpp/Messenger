@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Shared.Source;
 using DateTime4bLib;
+using Observables.Specialized.Extensions;
 
 namespace Epsilon
 {
@@ -47,7 +48,7 @@ namespace Epsilon
                 }
             }
 
-            private ObservableCollection<JN_Message> _messages = new();
+            private ObservableDictionary<UInt64, JN_Message> _messages = new();
 
             public ObservableCollection<JN_Message> Messages
             {
