@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using static Epsilon.MainPage;
 
 namespace Epsilon
 {
@@ -89,6 +90,23 @@ namespace Epsilon
             }
         }
 
+
+        private Contact _user = null;
+
+        public Contact User
+        {
+            get => _user;
+            set
+            {
+                if (_user != value)
+                {
+                    _user = value;
+                    OnPropertyChanged(nameof(User));
+                }
+            }
+        }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
@@ -102,6 +120,11 @@ namespace Epsilon
             BindingContext = this;
 
             // потом убить ->
+
+
+            User = new();
+            User.Avatar = ImageSource.FromFile("C:\\Users\\suzi\\Pictures\\Avatars\\photo_2026-01-17_23-19-08.jpg");
+            User.Name = "Frogges-Name";
 
             Contacts.Add(new Contact() { Name = "aboba", Avatar = ImageSource.FromFile("C:\\Users\\suzi\\Pictures\\Avatars\\photo_2026-01-17_23-19-06.jpg") });
             Contacts.Add(new Contact() { Name = "aboba1", Avatar = ImageSource.FromFile("C:\\Users\\suzi\\Pictures\\Avatars\\photo_2026-01-17_23-19-08.jpg") });
@@ -131,6 +154,20 @@ namespace Epsilon
             Console.WriteLine(MessageInputField.Text);
             ActualChat.Messages.Add(new Message() { Text = MessageInputField.Text });
             MessageInputField.Text = string.Empty;
+        }
+    }
+
+
+
+
+    public static class PageController
+    {
+        private static ObservableCollection<MainPage.Contact> _contactsList = null;
+        private static MainPage.Contact _user = null;
+
+        public static void Init()
+        {
+
         }
     }
 }

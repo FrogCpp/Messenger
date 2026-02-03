@@ -10,10 +10,10 @@
             <Grid RowDefinitions="*" ColumnDefinitions="Auto, *" Padding="10" ColumnSpacing="20">
 
                 <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" StrokeShape="RoundRectangle 32.5">
-                    <Image Source="a.jpg" Aspect="AspectFill"/>
+                    <Image Source="{Binding User.Avatar}" Aspect="AspectFill"/>
                 </Border>
 
-                <Label Grid.Column="1" Text="Froge" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
+                <Label Grid.Column="1" Text="{Binding User.Name}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
 
             </Grid>
         </Border>

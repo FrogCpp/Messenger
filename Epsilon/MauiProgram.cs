@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Syncfusion.Maui.Core.Hosting;
 
 namespace Epsilon
 {
@@ -15,10 +14,6 @@ namespace Epsilon
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
-            builder
-                .UseMauiApp<App>()
-                .ConfigureSyncfusionCore();
 
             #if DEBUG
             builder.Logging.AddDebug();
