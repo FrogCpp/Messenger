@@ -64,10 +64,10 @@
 
 	<ItemGroup>
 	  <Reference Include="DateTime4b">
-	    <HintPath>..\Shared\current versions\Shared\DateTime4b.dll</HintPath>
+	    <HintPath>..\Shared\bin\Release\net10.0\DateTime4b.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Shared">
-	    <HintPath>..\Shared\current versions\Shared\Shared.dll</HintPath>
+	    <HintPath>..\Shared\bin\Release\net10.0\Shared.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

@@ -71,10 +71,19 @@ namespace Epsilon
         {
             get => _chatStory;
         }
+        public List<UInt64> MembersSUID
+        {
+            get => membersSUID;
+            set
+            {
+                membersSUID = value;
+                OnPropertyChanged();
+            }
+        }
 
         public void SendMessage(JN_Message msg)
         {
-            _chatStory.Add(ref msg.mesageSUID, msg);
+            _chatStory.Add(msg.mesageSUID, msg);
             OnPropertyChanged();
         }
 
@@ -107,6 +116,18 @@ namespace Epsilon
             this.authorSUID = authorSUID;
             this.mesageSUID = mesageSUID;
         }
+
+        public string Mesage
+        {
+            get => message;
+            set
+            {
+                message = value;
+                OnPropertyChanged();
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
