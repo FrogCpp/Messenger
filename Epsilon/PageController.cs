@@ -23,12 +23,12 @@ namespace Epsilon
 
         public static void ChangeName(string newName)
         {
-            _user.Name = newName;
+            _user.name = newName;
         }
 
         public static void ChangeSurname(string newSurname)
         {
-            _user.Surname = newSurname;
+            _user.surname = newSurname;
         }
 
         public static void ChangeBio(string newBio)
@@ -38,19 +38,19 @@ namespace Epsilon
 
         public static void ChangeAvatar(ImageSource newAvatar)
         {
-            _user.Avatar = newAvatar;
+            _user.avatar = newAvatar;
         }
 
         public static void AddChat(JN_Chat newChat)
         {
-            _chatsList.Add(newChat.MembersSUID[0],  newChat);
+            _chatsList.Add(newChat.membersSUID[0],  newChat);
         }
 
         public static bool RemoveChat(JN_Chat chat)
         {
             try
             {
-                _chatsList.Remove(chat.MembersSUID[0]);
+                _chatsList.Remove(chat.membersSUID[0]);
                 return true;
             }
             catch
@@ -63,7 +63,7 @@ namespace Epsilon
         {
             try
             {
-                _chatsList[chat.MembersSUID[0]].SendMessage(message);
+                _chatsList[chat.membersSUID[0]].SendMessage(message);
                 return true;
             }
             catch
@@ -76,7 +76,7 @@ namespace Epsilon
         {
             try
             {
-                _chatsList[chat.MembersSUID[0]].RemoveMessage(messageID);
+                _chatsList[chat.membersSUID[0]].RemoveMessage(messageID);
                 return true;
             }
             catch
@@ -89,7 +89,7 @@ namespace Epsilon
         {
             try
             {
-                _chatsList[chat.MembersSUID[0]].ChangeMessage(messageID, newMessageText);
+                _chatsList[chat.membersSUID[0]].ChangeMessage(messageID, newMessageText);
                 return true;
             }
             catch
