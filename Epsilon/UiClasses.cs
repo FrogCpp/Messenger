@@ -59,18 +59,14 @@ namespace Epsilon
 
     internal class Chat : JN_Chat, INotifyPropertyChanged
     {
-        private Dictionary<UInt64, JN_Message> _chatStory;
-        public Chat(List<ulong> membersSUID, ImageSource chatAvatar) : base(membersSUID, chatAvatar)
+        public Dictionary<UInt64, JN_Message> ChatStory { get; private set; }
+        public Chat(List<ulong> membersSUID, ImageSource chatAvatar, string chatName) : base(membersSUID, chatAvatar, chatName)
         {
             this.membersSUID = membersSUID;
             this.chatAvatar = chatAvatar;
+            this.chatName = chatName;
         }
-
-        public Dictionary<UInt64, JN_Message> ChatStory
-        {
-            get => _chatStory;
-        }
-        public List<UInt64> MembersSUID
+        public override List<UInt64> MembersSUID
         {
             get => membersSUID;
             set
@@ -79,22 +75,31 @@ namespace Epsilon
                 OnPropertyChanged();
             }
         }
-
-        public void SendMessage(JN_Message msg)
+        public override string ChatName
         {
-            _chatStory.Add(msg.mesageSUID, msg);
+            get => base.ChatName;
+            set
+            {
+                chatName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public override void SendMessage(JN_Message msg)
+        {
+            ChatStory.Add(msg.mesageSUID, msg);
             OnPropertyChanged();
         }
 
-        public void RemoveMessage(UInt64 id)
+        public override void RemoveMessage(UInt64 id)
         {
-            _chatStory.Remove(id);
+            ChatStory.Remove(id);
             OnPropertyChanged();
         }
 
-        public void ChangeMesage(UInt64 id, string text)
+        public override void ChangeMessage(UInt64 id, string text)
         {
-            _chatStory[id].MessageText = text;
+            ChatStory[id].MessageText = text;
             OnPropertyChanged();
         }
 
@@ -115,6 +120,8 @@ namespace Epsilon
             this.authorSUID = authorSUID;
             this.mesageSUID = mesageSUID;
         }
+
+        public string StringSentTime { get => sentTime.CurrentToStandardString(); }
 
         public override string MessageText
         {

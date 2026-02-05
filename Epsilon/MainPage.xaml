@@ -20,7 +20,7 @@
 
         <!-- Панелька выбора чата -->
         <Border Grid.Row="1" Grid.Column="0" Padding="5" BackgroundColor="Transparent">
-            <CollectionView ItemsSource="{Binding Contacts}" VerticalOptions="Start">
+            <CollectionView ItemsSource="{Binding Chats}" VerticalOptions="Start">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
@@ -33,11 +33,11 @@
                             <Grid ColumnDefinitions="Auto, *" ColumnSpacing="10">
 
                                 <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" StrokeShape="RoundRectangle 32.5">
-                                    <Image Source="{Binding Avatar}" Aspect="AspectFill"/>
+                                    <Image Source="{Binding chatAvatar}" Aspect="AspectFill"/>
                                 </Border>
 
                                 <Label Grid.Column="1" 
-                                       Text="{Binding FullName}" 
+                                       Text="{Binding ChatName}" 
                                        VerticalOptions="Center" 
                                        FontSize="14" 
                                        LineBreakMode="WordWrap" 
@@ -65,7 +65,7 @@
                     <Image Source="{Binding ActualChat.Avatar}" Aspect="AspectFill"/>
                 </Border>
 
-                <Label Grid.Column="1" Text="{Binding ActualChat.FullName}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
+                <Label Grid.Column="1" Text="{Binding ActualChat.ChatName}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
 
             </Grid>
         </Border>
@@ -75,7 +75,7 @@
 
             <!-- Панелька чата -->
             <Border Grid.Row="0" Padding="10" BackgroundColor="Transparent">
-                <CollectionView ItemsSource="{Binding ActualChat.Messages}" HorizontalScrollBarVisibility="Never">
+                <CollectionView ItemsSource="{Binding ActualChat.ChatStory}" HorizontalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
                     </CollectionView.ItemsLayout>
@@ -84,7 +84,7 @@
                             <Grid HorizontalOptions="Start" WidthRequest="560">
                                 <Border BackgroundColor="DimGray" Padding="10" HorizontalOptions="Start">
                                     <Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto" RowSpacing="5">
-                                        <Label Grid.Row="0" Text="{Binding Text}" LineBreakMode="WordWrap"/>
+                                        <Label Grid.Row="0" Text="{Binding MessageText}" LineBreakMode="WordWrap"/>
                                         <Label Grid.Row="1" Text="{Binding StringSentTime}" HorizontalOptions="End" FontSize="10" TextColor="LightGray"/>
                                     </Grid>
                                 </Border>

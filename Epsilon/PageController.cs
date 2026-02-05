@@ -41,39 +41,61 @@ namespace Epsilon
             _user.Avatar = newAvatar;
         }
 
-        public static void AddContact(JN_Chat newChat)
+        public static void AddChat(JN_Chat newChat)
         {
-            _chatsList.Add(newChat.membersSUID[0],  newChat);
+            _chatsList.Add(newChat.MembersSUID[0],  newChat);
         }
 
-        public static bool RemoveContact(JN_Chat chat)
+        public static bool RemoveChat(JN_Chat chat)
         {
-            if (!_chatsList.Contains(chat)) return false;
-            _chatsList.Remove(chat);
-            return true;
+            try
+            {
+                _chatsList.Remove(chat.MembersSUID[0]);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public static bool SendMesage(JN_Chat contact, JN_Message message)
+        public static bool SendMesage(JN_Chat chat, JN_Message message)
         {
-            if (!_chatsList.Contains(contact)) return false;
-            _chatsList.FirstOrDefault(contact).MessageText.Add(message);
-            return true;
+            try
+            {
+                _chatsList[chat.MembersSUID[0]].SendMessage(message);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public static bool RemoveMesage(MainPage.Contact contact, JN_Message message)
+        public static bool RemoveMesage(JN_Chat chat, UInt64 messageID)
         {
-            if (!_chatsList.Contains(contact)) return false;
-            if (!_chatsList.FirstOrDefault(contact).Messages.Contains(message)) return false;
-            _chatsList.FirstOrDefault(contact).Messages.Remove(message);
-            return true;
+            try
+            {
+                _chatsList[chat.MembersSUID[0]].RemoveMessage(messageID);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
-        public static bool ChangeMesage(MainPage.Contact contact, JN_Message oldMessage, JN_Message newMessage)
+        public static bool ChangeMesage(JN_Chat chat, UInt64 messageID, string newMessageText)
         {
-            if (!_chatsList.Contains(contact)) return false;
-            if (!_chatsList.FirstOrDefault(contact).Messages.Contains(oldMessage)) return false;
-            //_contactsList.FirstOrDefault(contact).Messages.FirstOrDefault(oldMessage) = newMessage;
-            return true;
+            try
+            {
+                _chatsList[chat.MembersSUID[0]].ChangeMessage(messageID, newMessageText);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
