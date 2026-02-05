@@ -9,7 +9,7 @@ using System.Text;
 
 namespace Epsilon
 {
-    internal class Accaunt : JN_Author, INotifyPropertyChanged
+    public class Accaunt : JN_Author, INotifyPropertyChanged
     {
         public Accaunt(string name, string surname, string bio, ulong suid, ImageSource avatar) : base(name, surname, bio, suid, avatar)
         {
@@ -57,7 +57,7 @@ namespace Epsilon
     }
 
 
-    internal class Chat : JN_Chat, INotifyPropertyChanged
+    public class Chat : JN_Chat, INotifyPropertyChanged
     {
         public Dictionary<UInt64, JN_Message> ChatStory { get; private set; }
         public Chat(List<ulong> membersSUID, ImageSource chatAvatar, string chatName) : base(membersSUID, chatAvatar, chatName)
@@ -110,7 +110,7 @@ namespace Epsilon
         }
     }
 
-    internal class Message : JN_Message, INotifyPropertyChanged
+    public class Message : JN_Message, INotifyPropertyChanged
     {
         public Message(DateTime4b sentTime, string message, ulong authorSUID, ulong mesageSUID) : base(sentTime, message, authorSUID, mesageSUID)
         {

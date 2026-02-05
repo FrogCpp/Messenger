@@ -20,7 +20,7 @@
 
         <!-- Панелька выбора чата -->
         <Border Grid.Row="1" Grid.Column="0" Padding="5" BackgroundColor="Transparent">
-            <CollectionView ItemsSource="{Binding Chats}" VerticalOptions="Start">
+            <CollectionView ItemsSource="{Binding Chats.Values}" VerticalOptions="Start">
 
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
