@@ -20,7 +20,8 @@ namespace Epsilon
             this.suid = suid;
             this.avatar = avatar;
         }
-        public string Name
+
+        public override string Name
         {
             get => name;
             set
@@ -29,7 +30,7 @@ namespace Epsilon
                 OnPropertyChanged();
             }
         }
-        public string Surname
+        public override string Surname
         {
             get => surname;
             set
@@ -38,7 +39,7 @@ namespace Epsilon
                 OnPropertyChanged();
             }
         }
-        public ImageSource Avatar
+        public override ImageSource Avatar
         {
             get => avatar;
             set
@@ -47,8 +48,6 @@ namespace Epsilon
                 OnPropertyChanged();
             }
         }
-
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -95,7 +94,7 @@ namespace Epsilon
 
         public void ChangeMesage(UInt64 id, string text)
         {
-            _chatStory[id].message = text;
+            _chatStory[id].MessageText = text;
             OnPropertyChanged();
         }
 
@@ -117,7 +116,7 @@ namespace Epsilon
             this.mesageSUID = mesageSUID;
         }
 
-        public string Mesage
+        public override string MessageText
         {
             get => message;
             set

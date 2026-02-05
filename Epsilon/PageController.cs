@@ -9,15 +9,15 @@ namespace Epsilon
 {
     public static class PageController
     {
-        private static ObservableCollection<MainPage.Contact> _contactsList = null;
-        private static MainPage.Contact _user = null;
+        private static Dictionary<UInt64, JN_Chat> _chatsList = null;
+        private static JN_Author _user = null;
 
-        public static void Init(MainPage.Contact usr, ObservableCollection<MainPage.Contact> chats)
+        public static void Init(JN_Author usr, Dictionary<UInt64, JN_Chat> chats)
         {
-            if (_user == null || _contactsList == null)
+            if (_user == null || _chatsList == null)
             {
                 _user = usr;
-                _contactsList = chats;
+                _chatsList = chats;
             }
         }
 
@@ -28,7 +28,7 @@ namespace Epsilon
 
         public static void ChangeSurname(string newSurname)
         {
-            _user.surname = newSurname;
+            _user.Surname = newSurname;
         }
 
         public static void ChangeBio(string newBio)
@@ -41,37 +41,37 @@ namespace Epsilon
             _user.Avatar = newAvatar;
         }
 
-        public static void AddContact(MainPage.Contact newContact)
+        public static void AddContact(JN_Chat newChat)
         {
-            _contactsList.Add(newContact);
+            _chatsList.Add(newChat.membersSUID[0],  newChat);
         }
 
-        public static bool RemoveContact(MainPage.Contact contact)
+        public static bool RemoveContact(JN_Chat chat)
         {
-            if (!_contactsList.Contains(contact)) return false;
-            _contactsList.Remove(contact);
+            if (!_chatsList.Contains(chat)) return false;
+            _chatsList.Remove(chat);
             return true;
         }
 
-        public static bool SendMesage(MainPage.Contact contact, JN_Message message)
+        public static bool SendMesage(JN_Chat contact, JN_Message message)
         {
-            if (!_contactsList.Contains(contact)) return false;
-            _contactsList.FirstOrDefault(contact).Messages.Add(message);
+            if (!_chatsList.Contains(contact)) return false;
+            _chatsList.FirstOrDefault(contact).MessageText.Add(message);
             return true;
         }
 
         public static bool RemoveMesage(MainPage.Contact contact, JN_Message message)
         {
-            if (!_contactsList.Contains(contact)) return false;
-            if (!_contactsList.FirstOrDefault(contact).Messages.Contains(message)) return false;
-            _contactsList.FirstOrDefault(contact).Messages.Remove(message);
+            if (!_chatsList.Contains(contact)) return false;
+            if (!_chatsList.FirstOrDefault(contact).Messages.Contains(message)) return false;
+            _chatsList.FirstOrDefault(contact).Messages.Remove(message);
             return true;
         }
 
         public static bool ChangeMesage(MainPage.Contact contact, JN_Message oldMessage, JN_Message newMessage)
         {
-            if (!_contactsList.Contains(contact)) return false;
-            if (!_contactsList.FirstOrDefault(contact).Messages.Contains(oldMessage)) return false;
+            if (!_chatsList.Contains(contact)) return false;
+            if (!_chatsList.FirstOrDefault(contact).Messages.Contains(oldMessage)) return false;
             //_contactsList.FirstOrDefault(contact).Messages.FirstOrDefault(oldMessage) = newMessage;
             return true;
         }

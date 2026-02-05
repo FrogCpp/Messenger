@@ -12,10 +12,13 @@ namespace Shared.Source
     public class JN_Message(DateTime4b sentTime, string message, UInt64 authorSUID, UInt64 mesageSUID)
     {
         public DateTime4b sentTime = sentTime;
-        public string message = message;
+        protected string message = message;
 
         public UInt64 authorSUID = authorSUID;
         public UInt64 mesageSUID = mesageSUID;
+
+
+        public virtual string MessageText { get; set; }
     }
 
 
@@ -31,6 +34,11 @@ namespace Shared.Source
 
 
         public string FullName => name + " " + surname;
+
+
+        public virtual string Name { get; set; }
+        public virtual string Surname { get; set; }
+        public virtual ImageSource Avatar { get; set; }
     }
 
 
