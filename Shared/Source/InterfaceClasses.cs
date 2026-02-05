@@ -46,10 +46,11 @@ namespace Shared.Source
     {
         protected List<UInt64> membersSUID = membersSUID;
         protected string chatName = chatName;
-        public ImageSource chatAvatar = chatAvatar;
+        protected ImageSource chatAvatar = chatAvatar;
 
         public virtual List<UInt64> MembersSUID { get; set; }
         public virtual string ChatName { get; set; }
+        public virtual ImageSource ChatAvatar { get; set; }
 
         public virtual void SendMessage(JN_Message msg) { }
         public virtual void RemoveMessage(UInt64 id) { }

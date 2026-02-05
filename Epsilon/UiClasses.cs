@@ -59,7 +59,8 @@ namespace Epsilon
 
     public class Chat : JN_Chat, INotifyPropertyChanged
     {
-        public Dictionary<UInt64, JN_Message> ChatStory { get; private set; }
+        public Dictionary<UInt64, JN_Message> ChatStory { get; private set; } = new();
+        public UInt64 latest = 0;
         public Chat(List<ulong> membersSUID, ImageSource chatAvatar, string chatName) : base(membersSUID, chatAvatar, chatName)
         {
             this.membersSUID = membersSUID;
@@ -84,10 +85,20 @@ namespace Epsilon
                 OnPropertyChanged();
             }
         }
+        public override ImageSource ChatAvatar
+        {
+            get => chatAvatar;
+            set
+            {
+                chatAvatar = value;
+                OnPropertyChanged();
+            }
+        }
 
         public override void SendMessage(JN_Message msg)
         {
             ChatStory.Add(msg.mesageSUID, msg);
+            latest = msg.mesageSUID;
             OnPropertyChanged();
         }
 

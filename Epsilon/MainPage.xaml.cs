@@ -99,13 +99,14 @@ namespace Epsilon
         }
         private void SubmitText(object sender, EventArgs e)
         {
-            /*
             if (ActualChat == null) return;
 
-            Console.WriteLine(MessageInputField.Text);
-            ActualChat.Messages.Add(new Message(DateTime4b.Now, MessageInputField.Text, 12));
+            UInt64 msgSUID = 0;
+
+            if (ActualChat.latest > 0) msgSUID = ActualChat.latest + 1;
+
+            PageController.SendMesage(ActualChat, new Message(DateTime4b.Now, MessageInputField.Text, User.suid, msgSUID));
             MessageInputField.Text = string.Empty;
-            */
         }
     }
 }

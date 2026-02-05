@@ -3,36 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Epsilon.MainPage">
 
-    <Grid RowDefinitions="*, 5*" ColumnDefinitions="*, 3*" ColumnSpacing="5" RowSpacing="5">
+    <Grid RowDefinitions="*, 5*" ColumnDefinitions="*, 3*" ColumnSpacing="8" RowSpacing="8" Padding="10">
 
         <!-- Панелька с профилем пользователя -->
-        <Border Grid.Row="0" Grid.Column="0" Padding="8" BackgroundColor="Transparent">
-            <Grid RowDefinitions="*" ColumnDefinitions="Auto, *" Padding="10" ColumnSpacing="20">
+        <Border Grid.Row="0" Grid.Column="0" Padding="12" BackgroundColor="#2A2A3E" 
+                StrokeThickness="0" StrokeShape="RoundRectangle 16">
+            <Grid RowDefinitions="*" ColumnDefinitions="Auto, *" Padding="10" ColumnSpacing="16">
 
-                <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" StrokeShape="RoundRectangle 32.5">
+                <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" 
+                        StrokeThickness="2" Stroke="#F8BBD0" StrokeShape="RoundRectangle 32.5">
                     <Image Source="{Binding User.Avatar}" Aspect="AspectFill"/>
                 </Border>
 
-                <Label Grid.Column="1" Text="{Binding User.FullName}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
+                <Label Grid.Column="1" Text="{Binding User.FullName}" VerticalOptions="Center" 
+                       FontSize="14" LineBreakMode="WordWrap" TextColor="#F8F8F8"/>
 
             </Grid>
         </Border>
 
         <!-- Панелька выбора чата -->
-        <Border Grid.Row="1" Grid.Column="0" Padding="5" BackgroundColor="Transparent">
+        <Border Grid.Row="1" Grid.Column="0" Padding="8" BackgroundColor="#2A2A3E" 
+                StrokeThickness="0" StrokeShape="RoundRectangle 16">
             <CollectionView ItemsSource="{Binding Chats.Values}" VerticalOptions="Start">
 
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                 </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
 
-                        <Border Stroke="Transparent" StrokeThickness="0" Padding="10" BackgroundColor="Gray" StrokeShape="RoundRectangle 10">
-                            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="10">
+                        <Border Stroke="#3A3A4E" StrokeThickness="1" Padding="12" 
+                                BackgroundColor="#2D2D40" StrokeShape="RoundRectangle 12">
+                            <Grid ColumnDefinitions="Auto, *" ColumnSpacing="12">
 
-                                <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" StrokeShape="RoundRectangle 32.5">
+                                <Border Grid.Column="0" WidthRequest="60" HeightRequest="60" Padding="0" 
+                                        StrokeThickness="1" Stroke="#4A4A5E" StrokeShape="RoundRectangle 30">
                                     <Image Source="{Binding ChatAvatar}" Aspect="AspectFill"/>
                                 </Border>
 
@@ -41,7 +47,7 @@
                                        VerticalOptions="Center" 
                                        FontSize="14" 
                                        LineBreakMode="WordWrap" 
-                                       TextColor="Red"/>
+                                       TextColor="#F8F8F8"/>
 
                             </Grid>
 
@@ -58,34 +64,41 @@
         </Border>
 
         <!-- Панелька профиля контакта, чат с которым открыт -->
-        <Border Grid.Column="1" Grid.Row="0" Padding="10" BackgroundColor="Transparent">
-            <Grid ColumnDefinitions="Auto, *" RowDefinitions="*" ColumnSpacing="20">
+        <Border Grid.Column="1" Grid.Row="0" Padding="12" BackgroundColor="#2A2A3E" 
+                StrokeThickness="0" StrokeShape="RoundRectangle 16">
+            <Grid ColumnDefinitions="Auto, *" RowDefinitions="*" ColumnSpacing="16">
 
-                <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" StrokeShape="RoundRectangle 32.5">
-                    <Image Source="{Binding ActualChat.Avatar}" Aspect="AspectFill"/>
+                <Border Grid.Column="0" WidthRequest="65" HeightRequest="65" Padding="0" 
+                        StrokeThickness="2" Stroke="#F8BBD0" StrokeShape="RoundRectangle 32.5">
+                    <Image Source="{Binding ActualChat.ChatAvatar}" Aspect="AspectFill"/>
                 </Border>
 
-                <Label Grid.Column="1" Text="{Binding ActualChat.ChatName}" VerticalOptions="Center" FontSize="14" LineBreakMode="WordWrap" TextColor="White"/>
+                <Label Grid.Column="1" Text="{Binding ActualChat.ChatName}" VerticalOptions="Center" 
+                       FontSize="14" LineBreakMode="WordWrap" TextColor="#F8F8F8"/>
 
             </Grid>
         </Border>
 
         <!-- добавим сюда разделитель для ввода -->
-        <Grid RowDefinitions="*, Auto" ColumnDefinitions="*" RowSpacing="5" Grid.Column="1" Grid.Row="1">
+        <Grid RowDefinitions="*, Auto" ColumnDefinitions="*" RowSpacing="8" Grid.Column="1" Grid.Row="1">
 
             <!-- Панелька чата -->
-            <Border Grid.Row="0" Padding="10" BackgroundColor="Transparent">
-                <CollectionView ItemsSource="{Binding ActualChat.ChatStory}" HorizontalScrollBarVisibility="Never">
+            <Border Grid.Row="0" Padding="12" BackgroundColor="#2A2A3E" 
+                    StrokeThickness="0" StrokeShape="RoundRectangle 16">
+                <CollectionView ItemsSource="{Binding ActualChat.ChatStory.Values}" HorizontalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="8"/>
+                        <LinearItemsLayout Orientation="Vertical" ItemSpacing="10"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid HorizontalOptions="Start" WidthRequest="560">
-                                <Border BackgroundColor="DimGray" Padding="10" HorizontalOptions="Start">
-                                    <Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto" RowSpacing="5">
-                                        <Label Grid.Row="0" Text="{Binding MessageText}" LineBreakMode="WordWrap"/>
-                                        <Label Grid.Row="1" Text="{Binding StringSentTime}" HorizontalOptions="End" FontSize="10" TextColor="LightGray"/>
+                                <Border BackgroundColor="#3A3A4E" Padding="14" 
+                                        HorizontalOptions="Start" StrokeShape="RoundRectangle 14">
+                                    <Grid ColumnDefinitions="*" RowDefinitions="Auto, Auto" RowSpacing="6">
+                                        <Label Grid.Row="0" Text="{Binding MessageText}" 
+                                               LineBreakMode="WordWrap" TextColor="#F8F8F8"/>
+                                        <Label Grid.Row="1" Text="{Binding StringSentTime}" 
+                                               HorizontalOptions="End" FontSize="11" TextColor="#A0A0B0"/>
                                     </Grid>
                                 </Border>
                             </Grid>
@@ -95,10 +108,17 @@
             </Border>
 
             <!-- Панелька ввода сообщения -->
-            <Border Grid.Row="1" BackgroundColor="Transparent">
-                <Editor x:Name="MessageInputField" AutoSize="TextChanges" Placeholder="Cообщение..." MaximumHeightRequest="120"/>
+            <Border Grid.Row="1" BackgroundColor="#2A2A3E" Padding="12" StrokeShape="RoundRectangle 12">
+                <Editor x:Name="MessageInputField" AutoSize="TextChanges" 
+                        Placeholder="Cообщение..." MaximumHeightRequest="120"
+                        BackgroundColor="Transparent" TextColor="#F8F8F8"
+                        PlaceholderColor="#A0A0B0"/>
             </Border>
-            <Button Grid.Row="1" Text="|>" Clicked="SubmitText" HorizontalOptions="End" WidthRequest="30" HeightRequest="30"/>
+            <Button Grid.Row="1" Text="→" Clicked="SubmitText" HorizontalOptions="End" 
+                    WidthRequest="42" HeightRequest="42" Margin="0,0,12,0"
+                    BackgroundColor="#F8BBD0" TextColor="#1E1E2E"
+                    FontSize="16" FontAttributes="Bold"
+                    CornerRadius="21"/>
         </Grid>
 
     </Grid>
