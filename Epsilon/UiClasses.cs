@@ -77,7 +77,7 @@ namespace Epsilon
         }
         public override string ChatName
         {
-            get => base.ChatName;
+            get => chatName;
             set
             {
                 chatName = value;
