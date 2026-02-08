@@ -61,11 +61,12 @@ namespace Epsilon
     {
         public Dictionary<UInt64, JN_Message> ChatStory { get; private set; } = new();
         public UInt64 latest = 0;
-        public Chat(List<ulong> membersSUID, ImageSource chatAvatar, string chatName) : base(membersSUID, chatAvatar, chatName)
+        public Chat(List<ulong> membersSUID, ImageSource chatAvatar, string chatName, UInt64 chatSUID) : base(membersSUID, chatAvatar, chatName, chatSUID)
         {
             this.membersSUID = membersSUID;
             this.chatAvatar = chatAvatar;
             this.chatName = chatName;
+            this.chatSUID = chatSUID;
         }
         public override List<UInt64> MembersSUID
         {

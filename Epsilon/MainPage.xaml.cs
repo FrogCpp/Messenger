@@ -81,7 +81,8 @@ namespace Epsilon
             PageController.AddChat(new Chat(
                 new List<UInt64>() { 12, 13, 14 }, 
                 ImageSource.FromFile("C:\\Users\\suzi\\Pictures\\Avatars\\photo_2026-01-17_23-19-05.jpg"),
-                "bibabobaba"
+                "bibabobaba",
+                PageController.latest
                 ));
 
             OnParentChanged();

@@ -11,6 +11,7 @@ namespace Epsilon
     {
         private static Dictionary<UInt64, JN_Chat> _chatsList = null;
         private static JN_Author _user = null;
+        public static UInt64 latest = 0;
 
         public static void Init(JN_Author usr, Dictionary<UInt64, JN_Chat> chats)
         {
@@ -43,7 +44,8 @@ namespace Epsilon
 
         public static void AddChat(JN_Chat newChat)
         {
-            _chatsList.Add(newChat.MembersSUID[0],  newChat);
+            _chatsList.Add(newChat.chatSUID,  newChat);
+            latest = newChat.chatSUID;
         }
 
         public static bool RemoveChat(JN_Chat chat)
