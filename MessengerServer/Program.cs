@@ -1,7 +1,6 @@
 ﻿using MessengerServer;
-using System;
 using System.Collections.Concurrent;
-using static JabNet.NetDriver;
+using static Shared.Source.NetDriver;
 
 namespace JabServer
 {
