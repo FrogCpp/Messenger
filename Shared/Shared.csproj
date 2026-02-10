@@ -8,12 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.30" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.31" />
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="DateTime4b">
-      <HintPath>..\lib\DateTime4b\DateTime4b.dll</HintPath>
+    <Reference Include="AVcontrol">
+      <HintPath>..\lib\AVcontrol\AVcontrol.dll</HintPath>
     </Reference>
   </ItemGroup>
 
