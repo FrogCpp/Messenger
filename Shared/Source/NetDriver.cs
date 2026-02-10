@@ -13,11 +13,20 @@ using System.Threading.Tasks;
 
 
 using static Shared.Source.NetDriver.Packet;
+using System.Runtime.CompilerServices;
 
 
 
 namespace Shared.Source
 {
+    public static class NetConst
+    {
+        public static int PORT = 23891;
+        public static IPAddress IP = IPAddress.Parse("127.0.0.1");
+    }
+
+
+
     public static class NetDriver
     {
         public class Packet(Guid? id = null, Action<NetDriver.Packet>? callback = null)
@@ -137,7 +146,7 @@ namespace Shared.Source
                 if (_currentMode == ConnectionMode.client) return;
 
                 Socket listenerSocket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                listenerSocket.Bind(new IPEndPoint(IPAddress.Any, 121221));
+                listenerSocket.Bind(new IPEndPoint(IPAddress.Any, NetConst.PORT));
                 listenerSocket.Listen();
 
                 while (true)
@@ -157,7 +166,7 @@ namespace Shared.Source
 
                 Socket serverConnection = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
-                await serverConnection.ConnectAsync(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 121221));
+                await serverConnection.ConnectAsync(new IPEndPoint(NetConst.IP, NetConst.PORT));
 
                 _activeConnections.Add(new ConnectionHandler(serverConnection, _dataProcessor));
                 var serverHandler = _activeConnections.First(s => s.socket == serverConnection);

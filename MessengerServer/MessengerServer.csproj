@@ -8,11 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.2" />
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.31" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="AVcontrol">
       <HintPath>..\lib\AVcontrol\AVcontrol.dll</HintPath>
     </Reference>
+    <Reference Include="DateTime4b">
+      <HintPath>..\Shared\bin\Release\net10.0\DateTime4b.dll</HintPath>
+    </Reference>
     <Reference Include="Shared">
-      <HintPath>..\Shared\current versions\Shared\Shared.dll</HintPath>
+      <HintPath>..\Shared\bin\Release\net10.0\Shared.dll</HintPath>
     </Reference>
   </ItemGroup>
 

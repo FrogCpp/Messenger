@@ -50,6 +50,16 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[10.0.2, )"
+            },
+            "Microsoft.Maui.Controls": {
+              "target": "Package",
+              "version": "[10.0.31, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
