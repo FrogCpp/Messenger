@@ -1,4 +1,5 @@
-﻿using Shared.Source;
+﻿using JabNet;
+using Shared.Source;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -22,7 +23,7 @@ namespace MessengerServer
                 else
                 {
                     string userName = Environment.UserName;  
-                    return Path.Combine("/var/lib", userName, "myappname");
+                    return Path.Combine("/var/lib", userName);
                 }
             }
         }
@@ -33,6 +34,8 @@ namespace MessengerServer
             public string Bio {  get; set; }
             public UInt64 Suid { get; set; }
             public string AvatarPath { get; set; }
+
+            private string filesName { get => "\\" + Name + "__" + Surname + "___" + Suid.ToString() + "_"; }
 
 
             public JN_Author ParseTo_JN()
@@ -63,9 +66,11 @@ namespace MessengerServer
                 return ImageSource.FromFile(Path);
             }
 
-            private string SetAvatar(ImageSource avatar)
+            private string SetAvatar(ImageSource avatar, UserTable usr)
             {
-                string a = "";
+                string name = usr.filesName + "avatar.png";
+                string a = Path.Combine(PATH, "MessengerDataBase", "UsersSource", name);
+                Directory.CreateDirectory(Path.Combine(PATH, "MessengerDataBase", "UsersSource"));
                 return a;
             }
         }
@@ -76,6 +81,7 @@ namespace MessengerServer
             Console.WriteLine(PATH);
 
             Directory.CreateDirectory(PATH + "\\MessengerDataBase");
+            Directory.CreateDirectory(PATH + "\\MessengerDataBase" + "\\UsersSource");
             Console.WriteLine(PATH + "\\MessengerDataBase");
         }
     }
