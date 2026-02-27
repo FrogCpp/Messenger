@@ -13,7 +13,7 @@ namespace JabServer
         {
             Console.WriteLine("Start!");
             
-            new SQLiteHandler("heh");
+            SQLiteHandler.Init();
 
             //NetConst.PORT = 11111;                это для клиента надо.
             //IP = IPAddress.Parse("127.0.0.1");    указать айпи\домен сервера.
