@@ -2,6 +2,7 @@
 using Shared.Source;
 using System.Collections.Concurrent;
 using System.Net;
+using static MessengerServer.SQLiteHandler;
 using static Shared.Source.NetConst;
 using static Shared.Source.NetDriver;
 
@@ -13,9 +14,18 @@ namespace JabServer
         {
             Console.WriteLine("Start!");
             
-            SQLiteHandler.Init();
+            InitAsync();
+            await DebugPrintAsync();
 
-            //NetConst.PORT = 11111;                это для клиента надо.
+            foreach (var i in TableList)
+            {
+                Console.WriteLine(i);
+            }
+
+            Console.WriteLine(await RemoveTableAsync(TableList[1]));
+            await DebugPrintAsync();
+
+            //PORT = 11111;                         это для клиента надо.
             //IP = IPAddress.Parse("127.0.0.1");    указать айпи\домен сервера.
 
             ConcurrentBag<ConnectionHandler> users = new ConcurrentBag<ConnectionHandler>();
