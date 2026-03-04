@@ -11,7 +11,7 @@ namespace MessengerServer
             public Column(string name, Column.Types type, int? lenght = null)
             {
                 Name = name;
-                Type = type;
+                Type = type == Types.VARCHAR && lenght == null ? Types.TEXT : type;
                 Lenght = lenght;
             }
             public readonly string Name;
@@ -40,7 +40,6 @@ namespace MessengerServer
         public static readonly string ImageSourcePATH = Path.Combine(PATH, "massiveUserData");                                                             // путь к папке с картинками
         public static readonly string DataBasePATH = Path.Combine(PATH, "userDataStorage.db");                                                             // путь к бд
 
-        public static readonly SqliteConnection connection = new($"Data Source={DataBasePATH}");
         private static readonly List<Table> _tableList = new();
         public static List<Table> TableList { get => _tableList.Where(n => !n.name.StartsWith("sqlite_")).ToList(); }
 
@@ -49,44 +48,47 @@ namespace MessengerServer
             Directory.CreateDirectory(PATH);
             Directory.CreateDirectory(ImageSourcePATH);
 
-            await connection.OpenAsync();
-            try
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
             {
-                var cmdTables = connection.CreateCommand();
-                cmdTables.CommandText = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
-                using var readerTables = await cmdTables.ExecuteReaderAsync();
-
-                while (await readerTables.ReadAsync())
+                await connection.OpenAsync();
+                try
                 {
-                    string tableName = readerTables.GetString(0);
+                    var cmdTables = connection.CreateCommand();
+                    cmdTables.CommandText = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
+                    using var readerTables = await cmdTables.ExecuteReaderAsync();
 
-                    if (tableName.StartsWith("sqlite_"))
-                        continue;
-
-                    var cmdPragma = connection.CreateCommand();
-                    cmdPragma.CommandText = $"PRAGMA table_info(\"{tableName}\");";
-                    using var readerColumns = await cmdPragma.ExecuteReaderAsync();
-
-                    var columns = new List<Column>();
-
-                    while (await readerColumns.ReadAsync())
+                    while (await readerTables.ReadAsync())
                     {
-                        if (readerColumns.GetInt32(readerColumns.GetOrdinal("pk")) == 1)
+                        string tableName = readerTables.GetString(0);
+
+                        if (tableName.StartsWith("sqlite_"))
                             continue;
 
-                        string colName = readerColumns.GetString(readerColumns.GetOrdinal("name"));
-                        string colType = readerColumns.GetString(readerColumns.GetOrdinal("type"));
+                        var cmdPragma = connection.CreateCommand();
+                        cmdPragma.CommandText = $"PRAGMA table_info(\"{tableName}\");";
+                        using var readerColumns = await cmdPragma.ExecuteReaderAsync();
 
-                        var column = ParseColumnType(colName, colType);
-                        columns.Add(column);
+                        var columns = new List<Column>();
+
+                        while (await readerColumns.ReadAsync())
+                        {
+                            if (readerColumns.GetInt32(readerColumns.GetOrdinal("pk")) == 1)
+                                continue;
+
+                            string colName = readerColumns.GetString(readerColumns.GetOrdinal("name"));
+                            string colType = readerColumns.GetString(readerColumns.GetOrdinal("type"));
+
+                            var column = ParseColumnType(colName, colType);
+                            columns.Add(column);
+                        }
+
+                        _tableList.Add(new Table(tableName, columns.ToArray()));
                     }
-
-                    _tableList.Add(new Table(tableName, columns.ToArray()));
                 }
-            }
-            finally
-            {
-                await connection.CloseAsync();
+                finally
+                {
+                    await connection.CloseAsync();
+                }
             }
         }
 
@@ -123,160 +125,181 @@ namespace MessengerServer
 
         public static async Task<bool> RemoveTableAsync(string name)
         {
-            await connection.OpenAsync();
-            var Cmd = connection.CreateCommand();
-            Cmd.CommandText = $"DROP TABLE {name}";
-            try
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
             {
-                await Cmd.ExecuteNonQueryAsync();
-                _tableList.RemoveAll(t => t.name == name);
-                await connection.CloseAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                await connection.CloseAsync();
-                return false;
+                await connection.OpenAsync();
+                var Cmd = connection.CreateCommand();
+                Cmd.CommandText = $"DROP TABLE {name}";
+                try
+                {
+                    await Cmd.ExecuteNonQueryAsync();
+                    _tableList.RemoveAll(t => t.name == name);
+                    await connection.CloseAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    await connection.CloseAsync();
+                    return false;
+                }
             }
         }
 
         public static async Task<bool> CreateTableAsync(string tableName, Column[] columns)
         {
-            await connection.OpenAsync();
-            if (columns.Length == 0) return false;
-
-            string args = "ID INTEGER PRIMARY KEY AUTOINCREMENT, ";
-            foreach (var arg in columns)
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
             {
-                if (arg.Type != Column.Types.VARCHAR && arg.Lenght != 0)
+                await connection.OpenAsync();
+                if (columns.Length == 0) return false;
+
+                string args = "ID INTEGER PRIMARY KEY AUTOINCREMENT, ";
+                foreach (var arg in columns)
                 {
-                    args += $"{arg.Name} {arg.Type.ToString()}, ";
+                    if (arg.Type != Column.Types.VARCHAR)
+                    {
+                        args += $"{arg.Name} {arg.Type.ToString()}, ";
+                    }
+                    else
+                    {
+                        args += $"{arg.Name} {arg.Type.ToString()}({arg.Lenght}), ";
+                    }
                 }
-                else
+                args = args[..^2];
+
+                var Cmd = connection.CreateCommand();
+                Cmd.CommandText = $"CREATE TABLE {tableName} ({args})";
+
+                try
                 {
-                    args += $"{arg.Name} {arg.Type.ToString()}({arg.Lenght}), ";
+                    await Cmd.ExecuteNonQueryAsync();
+                    _tableList.Add(new Table(tableName, columns));
+                    await connection.CloseAsync();
+                    return true;
                 }
-            }
-            args = args[..^2];
-
-            var Cmd = connection.CreateCommand();
-            Cmd.CommandText = $"CREATE TABLE {tableName} ({args})";
-
-            try
-            {
-                await Cmd.ExecuteNonQueryAsync();
-                _tableList.Add(new Table(tableName, columns));
-                await connection.CloseAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                await connection.CloseAsync();
-                return false;
+                catch (Exception ex)
+                {
+                    await connection.CloseAsync();
+                    return false;
+                }
             }
         }
 
         public static async Task<bool> RewriteValueAsync<T>(string tableName, string column, T val, UInt32 stringID)
         {
-            await connection.OpenAsync();
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = $"UPDATE {tableName} SET {column} = @value WHERE ID = @id";
-            cmd.Parameters.AddWithValue("@value", val);
-            cmd.Parameters.AddWithValue("@id", stringID);
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
+            {
+                await connection.OpenAsync();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = $"UPDATE {tableName} SET {column} = @value WHERE ID = @id";
+                cmd.Parameters.AddWithValue("@value", val);
+                cmd.Parameters.AddWithValue("@id", stringID);
 
-            try
-            {
-                await cmd.ExecuteNonQueryAsync();
-                await connection.CloseAsync();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                await connection.CloseAsync();
-                return false;
+                try
+                {
+                    await cmd.ExecuteNonQueryAsync();
+                    await connection.CloseAsync();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    await connection.CloseAsync();
+                    return false;
+                }
             }
         }
 
         public static async Task<UInt32?> InsertRowAsync(string tableName)
         {
-            await connection.OpenAsync();
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = $"INSERT INTO {tableName} DEFAULT VALUES; SELECT last_insert_rowid();";
-            var newId = await cmd.ExecuteScalarAsync();
-            await connection.CloseAsync();
-            return newId != null ? Convert.ToUInt32(newId) : (UInt32?)null;
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
+            {
+                await connection.OpenAsync();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = $"INSERT INTO {tableName} DEFAULT VALUES; SELECT last_insert_rowid();";
+                var newId = await cmd.ExecuteScalarAsync();
+                await connection.CloseAsync();
+                return newId != null ? Convert.ToUInt32(newId) : (UInt32?)null;
+            }
         }
 
         public static async Task RemoveRowAsync(string tableName, UInt32 id)
         {
-            await connection.OpenAsync();
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = $"DELETE FROM {tableName} WHERE id = {id};";
-            await cmd.ExecuteNonQueryAsync();
-            await connection.CloseAsync();
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
+            {
+                await connection.OpenAsync();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = $"DELETE FROM {tableName} WHERE id = {id};";
+                await cmd.ExecuteNonQueryAsync();
+                await connection.CloseAsync();
+            }
         }
 
         public static async Task<uint?> SearchIdByValueAsync<T>(string tableName, string columnName, T value)
         {
-            await connection.OpenAsync();
-            var cmd = connection.CreateCommand();
-            cmd.CommandText = $"SELECT ID FROM {tableName} WHERE {columnName} = @value";
-            cmd.Parameters.AddWithValue("@value", value);
-            var result = await cmd.ExecuteScalarAsync();
-            await connection.CloseAsync();
-            return result != null ? Convert.ToUInt32(result) : (uint?)null;
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
+            {
+                await connection.OpenAsync();
+                var cmd = connection.CreateCommand();
+                cmd.CommandText = $"SELECT ID FROM {tableName} WHERE {columnName} = @value";
+                cmd.Parameters.AddWithValue("@value", value);
+                var result = await cmd.ExecuteScalarAsync();
+                await connection.CloseAsync();
+                return result != null ? Convert.ToUInt32(result) : (uint?)null;
+            }
         }
 
         public static async Task DebugPrintAsync()
         {
-            await connection.OpenAsync();
-            var cmdTables = connection.CreateCommand();
-            cmdTables.CommandText = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
-
-            using (var readerTables = await cmdTables.ExecuteReaderAsync())
+            using (SqliteConnection connection = new($"Data Source={DataBasePATH}"))
             {
-                while (await readerTables.ReadAsync())
+                await connection.OpenAsync();
+                var cmdTables = connection.CreateCommand();
+                cmdTables.CommandText = "SELECT name FROM sqlite_master WHERE type='table' ORDER BY name;";
+
+                using (var readerTables = await cmdTables.ExecuteReaderAsync())
                 {
-                    string tableName = readerTables.GetString(0);
-                    Console.WriteLine($"\n=== Таблица: {tableName} ===");
-
-                    var cmdPragma = connection.CreateCommand();
-                    cmdPragma.CommandText = $"PRAGMA table_info(\"{tableName}\");";
-
-                    using (var readerColumns = await cmdPragma.ExecuteReaderAsync())
+                    while (await readerTables.ReadAsync())
                     {
-                        Console.WriteLine("Колонки:");
-                        while (await readerColumns.ReadAsync())
-                        {
-                            string columnName = readerColumns.GetString(readerColumns.GetOrdinal("name"));
-                            string columnType = readerColumns.GetString(readerColumns.GetOrdinal("type"));
-                            Console.WriteLine($"  - {columnName} ({columnType})");
-                        }
-                    }
-                    var cmdData = connection.CreateCommand();
-                    cmdData.CommandText = $"SELECT * FROM \"{tableName}\" LIMIT 50;";
+                        string tableName = readerTables.GetString(0);
+                        Console.WriteLine($"\n=== Таблица: {tableName} ===");
 
-                    using (var readerData = await cmdData.ExecuteReaderAsync())
-                    {
-                        Console.WriteLine("Содержимое (первые 50 строк):");
-                        for (int i = 0; i < readerData.FieldCount; i++)
-                        {
-                            Console.Write(readerData.GetName(i) + "\t");
-                        }
-                        Console.WriteLine();
+                        var cmdPragma = connection.CreateCommand();
+                        cmdPragma.CommandText = $"PRAGMA table_info(\"{tableName}\");";
 
-                        while (await readerData.ReadAsync())
+                        using (var readerColumns = await cmdPragma.ExecuteReaderAsync())
                         {
+                            Console.WriteLine("Колонки:");
+                            while (await readerColumns.ReadAsync())
+                            {
+                                string columnName = readerColumns.GetString(readerColumns.GetOrdinal("name"));
+                                string columnType = readerColumns.GetString(readerColumns.GetOrdinal("type"));
+                                Console.WriteLine($"  - {columnName} ({columnType})");
+                            }
+                        }
+                        var cmdData = connection.CreateCommand();
+                        cmdData.CommandText = $"SELECT * FROM \"{tableName}\" LIMIT 50;";
+
+                        using (var readerData = await cmdData.ExecuteReaderAsync())
+                        {
+                            Console.WriteLine("Содержимое (первые 50 строк):");
                             for (int i = 0; i < readerData.FieldCount; i++)
                             {
-                                Console.Write(readerData.GetValue(i)?.ToString() + "\t");
+                                Console.Write(readerData.GetName(i) + "\t");
                             }
                             Console.WriteLine();
+
+                            while (await readerData.ReadAsync())
+                            {
+                                for (int i = 0; i < readerData.FieldCount; i++)
+                                {
+                                    Console.Write(readerData.GetValue(i)?.ToString() + "\t");
+                                }
+                                Console.WriteLine();
+                            }
                         }
                     }
                 }
+                await connection.CloseAsync();
             }
-            await connection.CloseAsync();
         }
     }
 }
