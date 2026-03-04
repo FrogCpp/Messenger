@@ -15,15 +15,6 @@ namespace JabServer
             Console.WriteLine("Start!");
             
             InitAsync();
-            await DebugPrintAsync();
-
-            foreach (var i in TableList)
-            {
-                Console.WriteLine(i);
-            }
-
-            Console.WriteLine(await RemoveTableAsync(TableList[1]));
-            await DebugPrintAsync();
 
             //PORT = 11111;                         это для клиента надо.
             //IP = IPAddress.Parse("127.0.0.1");    указать айпи\домен сервера.
