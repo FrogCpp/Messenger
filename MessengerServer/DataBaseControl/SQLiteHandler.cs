@@ -1,5 +1,4 @@
 ﻿using Microsoft.Data.Sqlite;
-using System.Runtime.InteropServices;
 using static JabNet.USC;
 
 namespace MessengerServer
@@ -43,7 +42,7 @@ namespace MessengerServer
         private static readonly List<Table> _tableList = new();
         public static List<Table> TableList { get => _tableList.Where(n => !n.name.StartsWith("sqlite_")).ToList(); }
 
-        public static async void InitAsync()
+        public static async Task InitAsync()
         {
             Directory.CreateDirectory(PATH);
             Directory.CreateDirectory(ImageSourcePATH);
@@ -244,6 +243,24 @@ namespace MessengerServer
                 var result = await cmd.ExecuteScalarAsync();
                 await connection.CloseAsync();
                 return result != null ? Convert.ToUInt32(result) : (uint?)null;
+            }
+        }
+
+        public static async Task<byte[]> ReadMassiveObjData(string pathToData)
+        {
+            return await File.ReadAllBytesAsync(pathToData);
+        }
+
+        public static async Task<bool> WriteMassiveObjData(string pathToData, byte[] data)
+        {
+            try
+            {
+                await File.WriteAllBytesAsync(pathToData, data);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
 

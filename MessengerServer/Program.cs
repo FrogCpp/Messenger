@@ -13,8 +13,7 @@ namespace JabServer
         public static async Task Main(string[] args)
         {
             Console.WriteLine("Start!");
-            
-            InitAsync();
+            await InitAsync();                  // обязательно перед инициализацией структуры бд
 
             //PORT = 11111;                         это для клиента надо.
             //IP = IPAddress.Parse("127.0.0.1");    указать айпи\домен сервера.
