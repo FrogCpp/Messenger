@@ -6,11 +6,10 @@ using System.Runtime.InteropServices.Marshalling;
 
 namespace Shared.Source.NetDriver.AC
 {
-    internal class Message
+    public class Message
     {
         public readonly Guid msgsuid;
         public readonly byte[] content;
-        public Appointment appointment;
         public int size 
         { 
             get 
