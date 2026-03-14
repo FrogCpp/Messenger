@@ -1,48 +1,46 @@
 ﻿using AVcontrol;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Shared.Source.NetDriver.AB
 {
 
     internal class PackageFragment
     {
-        public readonly UInt32 sn;
-        public readonly byte[] uid;
+        public enum Types
+        {
+            Request = 0,
+            Answer = 1,
+        }
         public readonly byte[] content;
-        public UInt64 size {  get => (ushort)(2 + 2 + 4 + content.Length + uid.Length); }
-        public byte[] pack { 
+        public readonly Types type;
+        public int size {  get => 1 + 4 + content.Length; }
+        public byte[] Pack { 
             get
             {
                 byte[] msg = new byte[size];
-                Buffer.BlockCopy(ToBinary.LittleEndian((UInt16)content.Length), 0, msg, 0, 2);
-                Buffer.BlockCopy(ToBinary.LittleEndian((UInt16)uid.Length), 0, msg, 2, 2);
-                Buffer.BlockCopy(ToBinary.LittleEndian(sn), 0, msg, 4, 4);
-                Buffer.BlockCopy(uid, 0, msg, 8, uid.Length);
-                Buffer.BlockCopy(content, 0, msg, 8 + uid.Length, content.Length);
+                Buffer.BlockCopy(ToBinary.LittleEndian(content.Length), 0, msg, 0, 4);
+                Buffer.BlockCopy(ToBinary.LittleEndian<Types>(type), 0, msg, 4, 1);
+                Buffer.BlockCopy(content, 0, msg, 4 + 1, content.Length);
                 return msg;
             } 
         }
 
-        public PackageFragment(Guid? uid, byte[] content, UInt32 sn)
+        public PackageFragment(byte[] content, Types type)
         {
-            if (content.Length > ushort.MaxValue)
-                throw new ArgumentException($"Content length exceeds maximum allowed {ushort.MaxValue} bytes.", nameof(content));
+            if (content.Length > int.MaxValue - 4)
+                throw new ArgumentException($"Content length exceeds maximum allowed {int.MaxValue} bytes.", nameof(content));
 
             this.content = content;
-            this.uid = uid.HasValue ? uid.Value.ToByteArray() : Guid.NewGuid().ToByteArray();
-            this.sn = sn;
+            this.type = type;
         }
 
         public static PackageFragment Decode(byte[] mesg)
         {
-            UInt16 cl = FromBinary.LittleEndian<UInt16>(mesg.AsSpan(0, 2).ToArray());
-            UInt16 uidl = FromBinary.LittleEndian<UInt16>(mesg.AsSpan(2, 2).ToArray());
-            UInt32 sn = FromBinary.LittleEndian<UInt32>(mesg.AsSpan(4, 4).ToArray());
-            byte[] uid = mesg.AsSpan(8, uidl).ToArray();
-            byte[] content = mesg.AsSpan(8 + uidl, cl).ToArray();
-            return new PackageFragment(new Guid(uid), content, sn);
+            int cl = FromBinary.LittleEndian<int>(mesg.AsSpan(0, 4).ToArray());
+            Types type = FromBinary.LittleEndian<Types>(mesg.AsSpan(4, 1).ToArray());
+            byte[] content = new byte[cl];
+            Buffer.BlockCopy(mesg, 5, content, 0, cl);
+            return new PackageFragment(content, type);
         }
     }
 }
