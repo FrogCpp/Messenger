@@ -9,7 +9,12 @@ namespace Shared.Source.NetDriver.AC.Client
 {
     public class ClientNetDriver : NetDriverCore
     {
-        public readonly Socket socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        public readonly Socket socket = new(
+            AddressFamily.InterNetwork, 
+            SocketType.Stream, 
+            ProtocolType.Tcp
+        );
+
         public ClientNetDriver(IPAddress domain, int port, Func<Request, Task<byte[]?>> Processor) 
         {
             socket.ConnectAsync(new IPEndPoint(domain, port));

@@ -11,7 +11,12 @@ namespace Shared.Source.NetDriver.AC.Server
 {
     public class ServerNetDriver : NetDriverCore
     {
-        public readonly Socket socket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+        public readonly Socket socket = new(
+            AddressFamily.InterNetwork, 
+            SocketType.Stream, 
+            ProtocolType.Tcp
+        );
+
         private readonly ConcurrentDictionary<Socket, Task> Users = new();
         public ServerNetDriver(Func<Request, Task<byte[]?>> Processor)
         {

@@ -56,6 +56,12 @@ namespace Shared.Source.NetDriver.AC
 
                     var sc = Message.PartialParse(lenghtBuffer);
 
+                    if (sc.idSize != 16 || sc.contentSize > int.MaxValue)
+                    {
+                        continue;
+                    }
+
+
                     var mainBuffer = new byte[sc.size + 4 + 4];
                     Buffer.BlockCopy(lenghtBuffer, 0, mainBuffer, 0, lenghtBuffer.Length);
 
@@ -63,7 +69,7 @@ namespace Shared.Source.NetDriver.AC
                     read = 0;
                     while (read < mainBuffer.Length)
                     {
-                        read += await sock.ReceiveAsync(mainBuffer.AsMemory(read + 8, mainBuffer.Length - read));
+                        read += await sock.ReceiveAsync(mainBuffer.AsMemory(8 + read, mainBuffer.Length - (8 + read)));
                     }
 
                     var rq = new Request(new Message(mainBuffer), sock);
