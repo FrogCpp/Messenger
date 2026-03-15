@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using Shared.Source.tools;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Sockets;
@@ -13,12 +15,14 @@ namespace Shared.Source.NetDriver.AC
 {
     public class NetDriverCore
     {
-        protected Func<Request, Task<byte[]?>> processor;
+        protected Func<Request, Task<byte[]?>>? processor;
         protected readonly ConcurrentDictionary<Guid, Request> _messageDict = new();
         protected readonly Channel<Request> _dispatchChannel = Channel.CreateUnbounded<Request>();
         protected readonly Channel<Request> _incomingChannel = Channel.CreateUnbounded<Request>();
         protected readonly ConcurrentBag<Task> _backgroundTasks = new();
         private readonly CancellationTokenSource _cts = new();
+
+        public readonly string LOGFOLDER = "logs.txt";
 
 
         public async Task InitalizeNetDriver()
@@ -30,7 +34,8 @@ namespace Shared.Source.NetDriver.AC
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                //Console.WriteLine(ex.Message);
+                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, ex.Message, LOGFOLDER));
             }
         }
         public void Shutdown()
@@ -89,6 +94,7 @@ namespace Shared.Source.NetDriver.AC
             }
             catch (Exception ex)
             {
+                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, ex.Message, LOGFOLDER));
                 return ex;
             }
         }
@@ -100,7 +106,7 @@ namespace Shared.Source.NetDriver.AC
             var rq = new Request(new Message(null, content), sock, tcs);
             if (!_messageDict.TryAdd(rq.message.msgsuid, rq))
             {
-                throw new Exception("can`t add message to dict");
+                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, "SendReqMessageAsync: can`t add message to dict", LOGFOLDER));
             }
 
             _dispatchChannel.Writer.TryWrite(rq);
@@ -108,7 +114,7 @@ namespace Shared.Source.NetDriver.AC
             var msg = (await tcs.Task).message;
             if (!_messageDict.TryRemove(rq.message.msgsuid, out var a))
             {
-                throw new Exception("can`t remove message from dict");
+                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, "SendReqMessageAsync: can`t remove message from dict", LOGFOLDER));
             }
             return msg;
         }
@@ -131,7 +137,7 @@ namespace Shared.Source.NetDriver.AC
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, ex.Message, LOGFOLDER));
                 }
             }
         }
@@ -151,7 +157,7 @@ namespace Shared.Source.NetDriver.AC
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, ex.Message, LOGFOLDER));
                 }
             }
         }

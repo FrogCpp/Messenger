@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shared.Source.tools;
+using System;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Text;
@@ -30,7 +31,7 @@ namespace Shared.Source.NetDriver.AC
             }
             else
             {
-                throw new Exception("attempt to reply to a message that is not a request");
+                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, "attempt to reply to a message that is not a request", "RequestLogs.txt"));
             }
         }
     }
