@@ -38,5 +38,16 @@ namespace Shared.Source.NetDriver.AC.Server
                 Users.TryAdd(clientConnection, ListeningSocket(clientConnection));
             }
         }
+
+        public override void Shutdown()
+        {
+            foreach (var s in Users)
+            {
+                s.Value.Dispose();
+                s.Key.Close();
+                s.Key.Dispose();
+            }
+            base.Shutdown();
+        }
     }
 }

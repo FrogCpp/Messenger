@@ -34,14 +34,22 @@ namespace Shared.Source.NetDriver.AC
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex.Message);
                 DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, ex.Message, LOGFOLDER));
             }
         }
-        public void Shutdown()
+        public virtual void Shutdown()
         {
             _cts.Cancel();
+            foreach(var bt in _backgroundTasks)
+            {
+                bt.Dispose();
+            }
             _dispatchChannel.Writer.TryComplete();
+            _incomingChannel.Writer.TryComplete();
+            foreach (var bt in _backgroundTasks)
+            {
+                bt.Dispose();
+            }
         }
 
 
