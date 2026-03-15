@@ -72,7 +72,7 @@ namespace Shared.Source.NetDriver.AC
             }
         }
     }
-    internal enum Appointment
+    public enum Appointment
     {
         Send,
         Read

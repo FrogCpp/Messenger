@@ -13,9 +13,11 @@ namespace Shared.Source.NetDriver.AC
 {
     public class NetDriverCore
     {
-        private readonly ConcurrentDictionary<Guid, Request> _messageDict = new();
-        private readonly Channel<Request> _dispatchChannel = Channel.CreateUnbounded<Request>();
-        private readonly List<Task> _backgroundTasks = new();
+        protected Func<Request, Task<byte[]?>> processor;
+        protected readonly ConcurrentDictionary<Guid, Request> _messageDict = new();
+        protected readonly Channel<Request> _dispatchChannel = Channel.CreateUnbounded<Request>();
+        protected readonly Channel<Request> _incomingChannel = Channel.CreateUnbounded<Request>();
+        protected readonly ConcurrentBag<Task> _backgroundTasks = new();
         private readonly CancellationTokenSource _cts = new();
 
 
@@ -24,6 +26,7 @@ namespace Shared.Source.NetDriver.AC
             try
             {
                 _backgroundTasks.Add(DispatchQueueController(_cts.Token));
+                _backgroundTasks.Add(IncomingQueueController(_cts.Token));
             }
             catch (Exception ex)
             {
@@ -72,9 +75,9 @@ namespace Shared.Source.NetDriver.AC
                     {
                         rqOut.GetAnswer(rq);
                     }
-                    else if (!_messageDict.TryAdd(rq.message.msgsuid, rq))
+                    else
                     {
-                        throw new Exception("can`t add message to dict");
+                        _incomingChannel.Writer.TryWrite(rq);
                     }
                 }
             }
@@ -88,7 +91,7 @@ namespace Shared.Source.NetDriver.AC
         public async Task<Message> SendReqMessageAsync(Socket sock, byte[] content)                 // ожидаем ответ
         {
             var tcs = new TaskCompletionSource<Request>();
-            var rq = new Request(new Message(Guid.NewGuid(), content), sock, tcs);
+            var rq = new Request(new Message(null, content), sock, tcs);
             if (!_messageDict.TryAdd(rq.message.msgsuid, rq))
             {
                 throw new Exception("can`t add message to dict");
@@ -103,14 +106,14 @@ namespace Shared.Source.NetDriver.AC
             }
             return msg;
         }
-        public void SendAnsMessageAsync(Socket sock, byte[] content)                                // не ожидаем ответа
+        public void SendAnsMessageAsync(Socket sock, byte[] content, Guid msgsuid)                                // не ожидаем ответа
         {
-            var rq = new Request(new Message(Guid.NewGuid(), content), sock);
+            var rq = new Request(new Message(msgsuid, content), sock);
 
             _dispatchChannel.Writer.TryWrite(rq);
         }
 
-        public async Task DispatchQueueController(CancellationToken cancellationToken = default)
+        protected async Task DispatchQueueController(CancellationToken cancellationToken = default)
         {
             var reader = _dispatchChannel.Reader;
 
@@ -119,6 +122,26 @@ namespace Shared.Source.NetDriver.AC
                 try
                 {
                     await req.socket.SendAsync(req.message.pack, cancellationToken);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        public async Task IncomingQueueController(CancellationToken cancellationToken = default)
+        {
+            var reader = _incomingChannel.Reader;
+
+            await foreach (var req in reader.ReadAllAsync(cancellationToken))
+            {
+                try
+                {
+                    var res = await processor(req);
+                    if (res == null) continue;
+
+                    SendAnsMessageAsync(req.socket, res, req.message.msgsuid);
                 }
                 catch (Exception ex)
                 {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared.Source.NetDriver.AC
 {
-    internal class Request
+    public class Request
     {
         public Message message;
         public Socket socket;
