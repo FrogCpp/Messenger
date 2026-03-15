@@ -100,8 +100,11 @@ namespace Shared.Source.NetDriver.AC
         }
 
 
-        public async Task<Message> SendReqMessageAsync(Socket sock, byte[] content)                 // ожидаем ответ
+        public async Task<Message?> SendReqMessageAsync(Socket sock, byte[] content)                 // ожидаем ответ
         {
+            using var cts = CancellationTokenSource.CreateLinkedTokenSource();
+            cts.CancelAfter(TimeSpan.FromSeconds(30));
+
             var tcs = new TaskCompletionSource<Request>();
             var rq = new Request(new Message(null, content), sock, tcs);
             if (!_messageDict.TryAdd(rq.message.msgsuid, rq))
@@ -111,12 +114,22 @@ namespace Shared.Source.NetDriver.AC
 
             _dispatchChannel.Writer.TryWrite(rq);
 
-            var msg = (await tcs.Task).message;
-            if (!_messageDict.TryRemove(rq.message.msgsuid, out var a))
+
+            using (cts.Token.Register(() => tcs.TrySetCanceled()))
             {
-                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, "SendReqMessageAsync: can`t remove message from dict", LOGFOLDER));
+                var completedTask = await Task.WhenAny(tcs.Task, Task.Delay(-1, cts.Token));
+                if (completedTask == tcs.Task)
+                {
+                    _messageDict.TryRemove(rq.message.msgsuid, out _);
+                    return (await tcs.Task).message;
+                }
+                else
+                {
+                    _messageDict.TryRemove(rq.message.msgsuid, out _);
+                    DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Warning, "Response timeout", LOGFOLDER));
+                    return null;
+                }
             }
-            return msg;
         }
         public void SendAnsMessageAsync(Socket sock, byte[] content, Guid msgsuid)                                // не ожидаем ответа
         {
@@ -150,6 +163,7 @@ namespace Shared.Source.NetDriver.AC
             {
                 try
                 {
+                    if (processor == null) continue;
                     var res = await processor(req);
                     if (res == null) continue;
 

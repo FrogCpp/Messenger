@@ -1,8 +1,9 @@
-﻿using System;
-using AVcontrol;
+﻿using AVcontrol;
+using Shared.Source.tools;
+using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices.Marshalling;
+using System.Text;
 
 namespace Shared.Source.NetDriver.AC
 {
@@ -43,6 +44,10 @@ namespace Shared.Source.NetDriver.AC
         }
         public Message(byte[] pack)
         {
+            if (pack.Length < 8)
+            {
+                DebugTool.Log(new DebugTool.log(DebugTool.log.Level.Error, "pack too short", "MessageLogs.txt"));
+            }
             int contentSize = FromBinary.LittleEndian<int>(pack.AsSpan(0, 4).ToArray());
             int idSize = FromBinary.LittleEndian<int>(pack.AsSpan(4, 4).ToArray());
             var idBuffer = new byte[idSize];
