@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -12,20 +14,26 @@ namespace Shared.Source.NetDriver.AC
     public class NetDriverCore
     {
         private readonly ConcurrentDictionary<Guid, Request> _messageDict = new();
-        private readonly ConcurrentQueue<Request> _dispatchQueue = new();
+        private readonly Channel<Request> _dispatchChannel = Channel.CreateUnbounded<Request>();
         private readonly List<Task> _backgroundTasks = new();
+        private readonly CancellationTokenSource _cts = new();
 
 
         public async Task InitalizeNetDriver()
         {
             try
             {
-                _backgroundTasks.Add(DispatchQueueController());
+                _backgroundTasks.Add(DispatchQueueController(_cts.Token));
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+        public void Shutdown()
+        {
+            _cts.Cancel();
+            _dispatchChannel.Writer.TryComplete();
         }
 
 
@@ -37,31 +45,32 @@ namespace Shared.Source.NetDriver.AC
                 while (true)
                 {
                     var lenghtBuffer = new byte[8];
-                    await sock.ReceiveAsync(lenghtBuffer);
+                    int read = 0;
+                    while (read < lenghtBuffer.Length)
+                    {
+                        read += await sock.ReceiveAsync(lenghtBuffer.AsMemory(read, 8 - read));
+                    }
 
                     var sc = Message.PartialParse(lenghtBuffer);
 
                     var mainBuffer = new byte[sc.size + 4 + 4];
                     Buffer.BlockCopy(lenghtBuffer, 0, mainBuffer, 0, lenghtBuffer.Length);
-                    int offset = 1024;                       // здесь выберем отступ, с которым будем читать пакеты
-                    while (sc.size % offset != 0)
+
+
+                    read = 0;
+                    while (read < mainBuffer.Length)
                     {
-                        offset--;
-                    }
-                    int step = 0;
-                    while (step * offset < sc.size)
-                    {
-                        var smallBuffer = new byte[offset];
-                        await sock.ReceiveAsync(smallBuffer);
-                        Buffer.BlockCopy(smallBuffer, 0, mainBuffer, (step * offset) + 4 + 4, offset);
-                        step++;
+                        read += await sock.ReceiveAsync(mainBuffer.AsMemory(read + 8, mainBuffer.Length - read));
                     }
 
                     var rq = new Request(new Message(mainBuffer), sock);
                     rq.appointment = Appointment.Read;
+
+
+
                     if (_messageDict.TryGetValue(rq.message.msgsuid, out var rqOut))
                     {
-                        rq.GetAnswer(rqOut);
+                        rqOut.GetAnswer(rq);
                     }
                     else if (!_messageDict.TryAdd(rq.message.msgsuid, rq))
                     {
@@ -85,24 +94,35 @@ namespace Shared.Source.NetDriver.AC
                 throw new Exception("can`t add message to dict");
             }
 
-            _dispatchQueue.Enqueue(rq);
+            _dispatchChannel.Writer.TryWrite(rq);
 
-            return (await tcs.Task).message;
+            var msg = (await tcs.Task).message;
+            if (!_messageDict.TryRemove(rq.message.msgsuid, out var a))
+            {
+                throw new Exception("can`t remove message from dict");
+            }
+            return msg;
         }
         public void SendAnsMessageAsync(Socket sock, byte[] content)                                // не ожидаем ответа
         {
             var rq = new Request(new Message(Guid.NewGuid(), content), sock);
 
-            _dispatchQueue.Enqueue(rq);
+            _dispatchChannel.Writer.TryWrite(rq);
         }
 
-        public async Task DispatchQueueController()
+        public async Task DispatchQueueController(CancellationToken cancellationToken = default)
         {
-            while (true)
+            var reader = _dispatchChannel.Reader;
+
+            await foreach (var req in reader.ReadAllAsync(cancellationToken))
             {
-                if (_dispatchQueue.TryDequeue(out var req))
+                try
                 {
-                    await req.socket.SendAsync(req.message.pack);
+                    await req.socket.SendAsync(req.message.pack, cancellationToken);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
